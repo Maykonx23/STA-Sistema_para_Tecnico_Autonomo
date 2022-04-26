@@ -1,0 +1,15 @@
+.container-criar-servico {
+  margin: 40px 150px;
+}
+
+.criar-servico {
+  display: flex;
+  justify-content: flex-end;
+  padding: 10px;
+}
+
+.container-form-criar {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}

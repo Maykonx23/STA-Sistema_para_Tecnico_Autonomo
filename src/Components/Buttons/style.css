@@ -1,0 +1,36 @@
+@media (min-width: 760px) {
+  .form-btn {
+    padding: 10px 20px;
+    font-size: 1.1em;
+    font-weight: bold;
+    color: white;
+    background: blue;
+    border: 2px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-bottom: 30px;
+  }
+
+  .form-btn:hover {
+    background: rgb(45, 45, 199);
+  }
+
+  .btn-criar-servico {
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+
+  .btn-criar {
+    margin: 20px auto 0 auto;
+    background-color: blue;
+    color: white;
+    padding: 10px 20px;
+    border: 1px solid black;
+    border-radius: 10px;
+    cursor: pointer;
+  }
+}

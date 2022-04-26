@@ -1,0 +1,26 @@
+.menu-span {
+  cursor: pointer;
+  color: #ffffff;
+}
+
+@media (min-width: 760px) {
+  .menu-span {
+    font-size: 1.2em;
+    line-height: 1.4em;
+    font-weight: 400;
+
+    border: 1px solid #ff7708;
+    border-radius: 10px;
+
+    padding: 2px 10px;
+    margin-right: 40px;
+  }
+
+  .menu-span:hover {
+    border: 1px solid black;
+  }
+
+  .erro-span {
+    height: 40px;
+  }
+}

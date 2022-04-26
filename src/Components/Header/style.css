@@ -1,0 +1,65 @@
+header {
+  background: linear-gradient(#e88b05, #ff7708, #e84a05);
+  border-bottom: 3px inset #997e42;
+}
+
+.Logo h1 {
+  color: white;
+}
+
+@media (min-width: 760px) {
+  header {
+    display: flex;
+    align-items: center;
+    height: 9vh;
+  }
+
+  .Logo {
+    width: 100%;
+  }
+
+  .Logo h1 {
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+
+    margin-left: 5%;
+
+    font-weight: bold;
+
+    font-size: 1.5em;
+
+    text-shadow: 1px 3px 2px black;
+  }
+
+  .menu-home {
+    display: flex;
+    align-items: center;
+    justify-content: right;
+
+    width: 100%;
+  }
+
+  .perfil {
+    display: flex;
+    align-items: center;
+  }
+
+  .perfil span {
+    margin-right: 15px;
+  }
+
+  .img-perfil {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid rgb(139, 139, 139);
+    margin-right: 20px;
+  }
+
+  .img-perfil img {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+  }
+}
