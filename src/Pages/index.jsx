@@ -1,7 +1,7 @@
-import { HeaderIndex } from "../Components/Header/Index";
-import { useState } from "react";
-import { Login } from "../Components/Forms/FormLogin";
-import { Cadastro } from "../Components/Forms/FormCad";
+import { HeaderIndex } from '../Components/Header/Index';
+import { useState } from 'react';
+import { Login } from '../Components/Forms/FormLogin';
+import { Cadastro } from '../Components/Forms/FormCad';
 
 export const Index = () => {
   const [statusLogin, setStatusLogin] = useState(false);
@@ -25,7 +25,7 @@ export const Index = () => {
     }
   };
   const CloseForm = () => {
-    console.log("Close");
+    console.log('Close');
     if (statusLogin === true || statusCad === true) {
       setStatusLogin(false);
       setStatusCad(false);

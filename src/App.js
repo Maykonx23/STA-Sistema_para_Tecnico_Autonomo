@@ -1,9 +1,9 @@
-import "./App.css";
-import { Switch, Route } from "react-router-dom";
-import { Index } from "./Pages";
-import { ClienteIndex } from "./Pages/Cliente";
-import { Tecnicoindex } from "./Pages/Tecnico";
-import { TecnicoCriarServico } from "./Pages/Tecnico/criarServico";
+import './App.css';
+import { Switch, Route } from 'react-router-dom';
+import { Index } from './Pages';
+import { ClienteIndex } from './Pages/Cliente';
+import { Tecnicoindex } from './Pages/Tecnico';
+import { TecnicoCriarServico } from './Pages/Tecnico/criarServico';
 
 function App() {
   return (

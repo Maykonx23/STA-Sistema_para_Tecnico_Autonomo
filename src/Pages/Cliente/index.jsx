@@ -1,4 +1,4 @@
-import { HeaderClient } from "../../Components/Header/Cliente";
+import { HeaderClient } from '../../Components/Header/Cliente';
 
 export const ClienteIndex = () => {
   return (
