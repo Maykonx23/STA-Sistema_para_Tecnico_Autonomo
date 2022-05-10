@@ -1,9 +1,9 @@
-import { HeaderTecnico } from "../../Components/Header/Tecnico";
+import { HeaderTecnico } from '../../Components/Header/Tecnico';
 
 export const Tecnicoindex = () => {
-  return (
-    <>
-      <HeaderTecnico />
-    </>
-  );
+    return (
+        <>
+            <HeaderTecnico />
+        </>
+    );
 };
