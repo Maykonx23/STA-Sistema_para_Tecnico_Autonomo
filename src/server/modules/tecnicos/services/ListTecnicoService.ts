@@ -7,7 +7,7 @@ export class ListTecnicoService {
         const tecnicosRepository = getCustomRepository(TecnicosRepository);
 
         const tecnico = await tecnicosRepository.find({
-            relations: ['cliente'],
+            relations: ['cliente', 'servicos'],
         });
 
         return tecnico;

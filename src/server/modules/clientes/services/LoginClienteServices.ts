@@ -4,6 +4,7 @@ import { ClientesRepository } from '../typeorm/repositories/ClientesRepository';
 import { compare } from 'bcryptjs';
 import { sign } from 'jsonwebtoken';
 import { Cliente } from '../typeorm/entities/Cliente';
+import authConfig from '@config/auth';
 
 interface IRequest {
     email: string;
@@ -31,9 +32,9 @@ export class LoginClienteService {
             throw new AppError('Email/Senha invalido.', 401);
         }
 
-        const token = sign({}, '1d48933f7f397c016d2ac818d3a4c220', {
+        const token = sign({}, authConfig.jwt.secret, {
             subject: cliente.id,
-            expiresIn: '2d',
+            expiresIn: authConfig.jwt.expiresIn,
         });
 
         return { cliente, token };

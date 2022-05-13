@@ -21,7 +21,7 @@ enderecosRouter.post(
     '/',
     celebrate({
         [Segments.BODY]: {
-            cep: Joi.number().required(),
+            cep: Joi.string().required(),
             rua: Joi.string().required(),
             bairro: Joi.string().required(),
             cidade: Joi.string().required(),
@@ -37,7 +37,7 @@ enderecosRouter.put(
     '/:id',
     celebrate({
         [Segments.BODY]: {
-            cep: Joi.number().required(),
+            cep: Joi.string().required(),
             rua: Joi.string().required(),
             bairro: Joi.string().required(),
             cidade: Joi.string().required(),

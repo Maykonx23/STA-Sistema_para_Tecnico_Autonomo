@@ -11,8 +11,8 @@ export class Endereco {
     @PrimaryGeneratedColumn('uuid')
     id: string;
 
-    @Column('int8')
-    cep: number;
+    @Column()
+    cep: string;
 
     @Column()
     uf: string;

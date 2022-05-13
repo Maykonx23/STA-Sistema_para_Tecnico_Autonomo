@@ -1,15 +1,32 @@
 .container-criar-servico {
-  margin: 40px 150px;
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px 150px;
 }
 
 .criar-servico {
-  display: flex;
-  justify-content: flex-end;
-  padding: 10px;
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.criar-servico span {
+    box-sizing: border-box;
+    margin-right: 50%;
+    font-size: 2em;
+    font-weight: 600;
+}
+
+.container-table {
+    margin-top: 50px;
 }
 
 .container-form-criar {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }

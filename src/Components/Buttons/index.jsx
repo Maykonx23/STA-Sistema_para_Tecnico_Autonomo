@@ -1,9 +1,17 @@
 import './style.css';
 
-export const Button = ({ children, classe, type }) => {
+export const Button = ({ children, classe, type, click }) => {
     return (
-        <button type={type} className={classe}>
-            {children}
-        </button>
+        <>
+            {click ? (
+                <button onClick={click} type={type} className={classe}>
+                    {children}
+                </button>
+            ) : (
+                <button type={type} className={classe}>
+                    {children}
+                </button>
+            )}
+        </>
     );
 };

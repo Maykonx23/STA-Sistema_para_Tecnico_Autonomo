@@ -27,12 +27,6 @@ export class ClientesRepository extends Repository<Cliente> {
         return cliente;
     }
 
-    public async findByName(name: string): Promise<Cliente | undefined> {
-        const cliente = await this.findOne({ where: { name } });
-
-        return cliente;
-    }
-
     public async findById(id: string): Promise<Cliente | undefined> {
         const cliente = await this.findOne(id, {
             relations: ['endereco'],

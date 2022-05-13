@@ -1,11 +1,12 @@
 import { Router } from 'express';
 import { celebrate, Joi, Segments } from 'celebrate';
 import ClienteController from '../controllers/ClienteController';
+import isAuthenticated from '../../../shared/http/middlewares/isAuthenticated';
 
 const clientesRouter = Router();
 const clienteController = new ClienteController();
 
-clientesRouter.get('/', clienteController.index);
+clientesRouter.get('/', isAuthenticated, clienteController.index);
 
 clientesRouter.get(
     '/:id',
@@ -37,6 +38,7 @@ clientesRouter.post(
 
 clientesRouter.put(
     '/:id',
+    isAuthenticated,
     celebrate({
         [Segments.BODY]: {
             name: Joi.string(),

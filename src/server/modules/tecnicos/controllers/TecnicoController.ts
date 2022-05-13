@@ -1,4 +1,5 @@
 import { Request, Response } from 'express';
+import { ClienteIDTecnicoService } from '../services/ClienteIDTecnicoServices';
 import { CreateTecnicoService } from '../services/CreateTecnicoServices';
 import { DeleteTecnicoService } from '../services/DeleteTecnicoService';
 import { ListTecnicoService } from '../services/ListTecnicoService';
@@ -76,5 +77,18 @@ export default class TecnicoController {
         await deleteTecnico.execute({ id });
 
         return response.json([]);
+    }
+
+    public async showCliente(
+        request: Request,
+        response: Response,
+    ): Promise<Response> {
+        const { id } = request.params;
+
+        const showIDClienteTecnico = new ClienteIDTecnicoService();
+
+        const tecnico = await showIDClienteTecnico.execute({ id });
+
+        return response.json(tecnico);
     }
 }

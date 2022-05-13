@@ -5,7 +5,7 @@ import { EnderecoRepository } from '../typeorm/repositories/EnderecosReposutirie
 
 interface IRequest {
     id: string;
-    cep: number;
+    cep: string;
     uf: string;
     cidade: string;
     bairro: string;

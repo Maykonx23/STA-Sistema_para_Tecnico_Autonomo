@@ -3,7 +3,7 @@ import { Endereco } from '../typeorm/entities/Endereco';
 import { EnderecoRepository } from '../typeorm/repositories/EnderecosReposutiries';
 
 interface IRequest {
-    cep: number;
+    cep: string;
     rua: string;
     bairro: string;
     cidade: string;

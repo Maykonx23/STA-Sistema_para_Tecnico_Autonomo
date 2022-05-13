@@ -1,36 +1,68 @@
 @media (min-width: 760px) {
-  .form-btn {
-    padding: 10px 20px;
-    font-size: 1.1em;
-    font-weight: bold;
-    color: white;
-    background: blue;
-    border: 2px solid black;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-bottom: 30px;
-  }
+    .form-btn {
+        padding: 10px 20px;
+        font-size: 1.1em;
+        font-weight: bold;
+        color: white;
+        background: blue;
+        border: 2px solid black;
+        border-radius: 10px;
+        cursor: pointer;
+        margin-bottom: 30px;
+    }
 
-  .form-btn:hover {
-    background: rgb(45, 45, 199);
-  }
+    .form-btn:hover {
+        background: rgb(45, 45, 199);
+    }
 
-  .btn-criar-servico {
-    background-color: blue;
-    color: white;
-    padding: 10px 20px;
-    border: 1px solid black;
-    border-radius: 10px;
-    cursor: pointer;
-  }
+    .btn-criar-servico {
+        background-color: blue;
+        color: white;
+        padding: 10px 20px;
+        border: 1px solid black;
+        border-radius: 10px;
+        cursor: pointer;
+    }
 
-  .btn-criar {
-    margin: 20px auto 0 auto;
-    background-color: blue;
-    color: white;
-    padding: 10px 20px;
-    border: 1px solid black;
-    border-radius: 10px;
-    cursor: pointer;
-  }
+    .btn-criar {
+        margin: 20px auto 0 auto;
+        background-color: blue;
+        color: white;
+        padding: 20px 40px;
+        border: 1px solid transparent;
+        border-radius: 10px;
+        cursor: pointer;
+    }
+
+    .btn-criar:hover {
+        border: 1px solid blue;
+    }
+
+    .modalExcluir {
+        padding: 10px 20px;
+        border-radius: 10px;
+        border: none;
+        background-color: red;
+        color: white;
+        font-weight: 600;
+    }
+
+    .modalCancelar {
+        padding: 10px 20px;
+        border-radius: 10px;
+        border: none;
+        background-color: gray;
+        color: white;
+        font-weight: 600;
+    }
+
+    .btn-perfil-tec {
+        padding: 15px 30px;
+        border-radius: 10px;
+        border: none;
+        color: white;
+        font-weight: 600;
+        background-color: blue;
+        margin-top: 30px;
+    }
 }

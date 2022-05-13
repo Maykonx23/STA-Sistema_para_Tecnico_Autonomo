@@ -8,6 +8,16 @@ const tecnicoController = new TecnicoController();
 tecnicosRouter.get('/', tecnicoController.index);
 
 tecnicosRouter.get(
+    '/clientes/:id',
+    celebrate({
+        [Segments.PARAMS]: {
+            id: Joi.string().uuid().required(),
+        },
+    }),
+    tecnicoController.showCliente,
+);
+
+tecnicosRouter.get(
     '/:id',
     celebrate({
         [Segments.PARAMS]: {

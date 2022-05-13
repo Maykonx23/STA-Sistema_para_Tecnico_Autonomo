@@ -38,7 +38,7 @@ export class CreateServicoService {
             tecnico: tecnicoExists,
         });
 
-        await tecnicosRepository.save(servico);
+        await servicosRepository.save(servico);
 
         return servico;
     }

@@ -15,10 +15,25 @@ interface IRequest {
     servicos: IServicos[];
 }
 
+interface ICliente {
+    id: string;
+}
+
 @EntityRepository(Tecnico)
 export class TecnicosRepository extends Repository<Tecnico> {
     public async findById(id: string): Promise<Tecnico | undefined> {
-        const tecnico = await this.findOne(id, { relations: ['cliente'] });
+        const tecnico = await this.findOne(id, {
+            relations: ['cliente', 'servicos'],
+        });
+        return tecnico;
+    }
+
+    public async findByIdCliente({ id }: ICliente): Promise<Tecnico[]> {
+        const tecnico = await this.find({
+            where: { cliente: { id } },
+            relations: ['cliente', 'servicos'],
+        });
+
         return tecnico;
     }
 

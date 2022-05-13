@@ -15,7 +15,7 @@ export class CreateEnderecos1651190589938 implements MigrationInterface {
                     },
                     {
                         name: 'cep',
-                        type: 'int8',
+                        type: 'varchar',
                     },
 
                     {

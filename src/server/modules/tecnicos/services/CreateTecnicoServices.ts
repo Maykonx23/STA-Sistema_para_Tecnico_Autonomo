@@ -1,4 +1,5 @@
 import { ClientesRepository } from '@modules/clientes/typeorm/repositories/ClientesRepository';
+import { ServicosRepository } from '@modules/servicos/typeorm/repositories/ServicosRepository';
 import AppError from '@shared/errors/AppError';
 import { getCustomRepository } from 'typeorm';
 import { Tecnico } from '../typeorm/entities/Tecnico';
@@ -28,7 +29,11 @@ export class CreateTecnicoService {
 
         const clientesRepository = getCustomRepository(ClientesRepository);
 
+        const servicosRepository = getCustomRepository(ServicosRepository);
+
         const clienteExists = await clientesRepository.findById(cliente_id);
+        /* 
+        const servicoExists = await servicosRepository; */
 
         if (!clienteExists) {
             throw new AppError('Esse Cliente não existe.');
