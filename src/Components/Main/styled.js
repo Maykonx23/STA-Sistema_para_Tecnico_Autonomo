@@ -38,5 +38,6 @@ export const ContePerfil = styled.div`
 
 export const DivImg = styled.div`
     @media (min-width: 760px) {
+        display: flex;
     }
 `;

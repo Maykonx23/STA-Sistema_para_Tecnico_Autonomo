@@ -53,9 +53,11 @@ export const Main = ({ home, solicitacao, perfil }) => {
             {perfil && (
                 <ConteMain onClick={openMenu}>
                     <ContePerfil>
-                        <div>
-                            <img src={User} alt="" />
-                        </div>
+                        <DivImg>
+                            <div>
+                                <img src={User} alt="" />
+                            </div>
+                        </DivImg>
                     </ContePerfil>
                 </ConteMain>
             )}
