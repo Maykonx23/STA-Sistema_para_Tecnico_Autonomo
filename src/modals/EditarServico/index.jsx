@@ -1,15 +1,14 @@
-import { useEffect, useState } from 'react';
-import { useForm } from 'react-hook-form';
-import { useHistory } from 'react-router-dom';
-import apiTcc from '../../APIs/TCC-STA';
-import { Button } from '../../Components/Buttons';
-import { Close } from '../../Components/Close/Close';
-import { Input } from '../../Components/Inputs';
+import { useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { useHistory } from "react-router-dom";
+import apiTcc from "../../APIs/TCC-STA";
+import { Button } from "../../Components/Buttons";
+import { Input } from "../../Components/Inputs";
 import {
     ModalEditarServConte,
     ModalEditarServForm,
     ModalEditarServInput,
-} from './styled';
+} from "./styled";
 
 export const EditarService = ({ setEditarService, editarService }) => {
     const { register, handleSubmit } = useForm();
@@ -22,36 +21,36 @@ export const EditarService = ({ setEditarService, editarService }) => {
     useEffect(() => {
         apiTcc
             .get(`/servicos/${editarService}`)
-            .then(response => {
+            .then((response) => {
                 setInfoService(response.data);
             })
-            .catch(err => {
+            .catch((err) => {
                 console.log(err);
             });
     }, [setInfoService]);
 
-    const onSubmitFunc = data => {
-        if (data.titulo === '') {
+    const onSubmitFunc = (data) => {
+        if (data.titulo === "") {
             delete data.titulo;
         }
-        if (data.mediaTempo === '') {
+        if (data.mediaTempo === "") {
             delete data.mediaTempo;
         }
-        if (data.price === '') {
+        if (data.price === "") {
             delete data.price;
         }
-        if (data.descricao === '') {
+        if (data.descricao === "") {
             delete data.descricao;
         }
 
         apiTcc
             .put(`/servicos/${editarService}`, data)
-            .then(response => {
+            .then((response) => {
                 setEditarService(false);
                 console.log(response.data);
                 return response.data;
             })
-            .catch(err => {
+            .catch((err) => {
                 console.log(err);
             });
     };
@@ -60,10 +59,10 @@ export const EditarService = ({ setEditarService, editarService }) => {
             {infoService && (
                 <ModalEditarServConte>
                     <ModalEditarServForm onSubmit={handleSubmit(onSubmitFunc)}>
-                        <Close
+                        {/* <Close
                             CloseForm={FormEditarService}
                             classe="close-criar-servico"
-                        />
+                        /> */}
                         <div className="info-criar">
                             <ModalEditarServInput>
                                 <label>Titulo</label>

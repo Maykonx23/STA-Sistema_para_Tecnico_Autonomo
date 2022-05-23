@@ -1,9 +1,20 @@
-import { HeaderClient } from '../../Components/Header/Cliente';
+import { useContext } from "react";
+import { Header } from "../../Components/Header";
+import { Main } from "../../Components/Main";
+import { MenuHamburgerContext } from "../../Providers/MenuHamburger";
 
-export const ClienteIndex = () => {
+export const Cliente = () => {
+    const { openMenuHamb, setOpenMenuHamb } = useContext(MenuHamburgerContext);
+
+    const closeMenu = () => {
+        setOpenMenuHamb(false);
+    };
     return (
         <>
-            <HeaderClient />
+            <Header cliente />
+            <Main home />
+            {/* 
+            <div onClick={closeMenu}></div> */}
         </>
     );
 };

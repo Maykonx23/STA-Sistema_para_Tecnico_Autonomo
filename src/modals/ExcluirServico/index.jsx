@@ -1,11 +1,10 @@
-import apiTcc from '../../APIs/TCC-STA';
-import { Button } from '../../Components/Buttons';
-import { Close } from '../../Components/Close/Close';
+import apiTcc from "../../APIs/TCC-STA";
+import { Button } from "../../Components/Buttons";
 import {
     ModalCriarServBtn,
     ModalCriarServExcluir,
     ModalExcluirServConte,
-} from './styled';
+} from "./styled";
 
 export const ExcluirServico = ({
     setExcluirService,
@@ -20,12 +19,12 @@ export const ExcluirServico = ({
     const excluirServicoId = () => {
         apiTcc
             .delete(`/servicos/${excluirService}`)
-            .then(response => {
+            .then((response) => {
                 setExcluirService(false);
                 lists;
                 return response;
             })
-            .catch(err => {
+            .catch((err) => {
                 return err;
             });
     };
@@ -33,10 +32,10 @@ export const ExcluirServico = ({
     return (
         <ModalExcluirServConte>
             <ModalCriarServExcluir>
-                <Close
+                {/*  <Close
                     CloseForm={closeExcluir}
                     classe="close-excluir-servico"
-                />
+                /> */}
                 <span>Deseja Excluir?</span>
                 <ModalCriarServBtn>
                     <Button click={editarServicoId} classe="modalCancelar">

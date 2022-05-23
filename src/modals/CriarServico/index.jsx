@@ -1,14 +1,13 @@
-import { useForm } from 'react-hook-form';
-import { Button } from '../../Components/Buttons';
-import { Close } from '../../Components/Close/Close';
-import { Input } from '../../Components/Inputs';
-import apiTcc from '../../APIs/TCC-STA/';
+import { useForm } from "react-hook-form";
+import { Button } from "../../Components/Buttons";
+import { Input } from "../../Components/Inputs";
+import apiTcc from "../../APIs/TCC-STA/";
 import {
     ModalCriarServConte,
     ModalCriarServForm,
     ModalCriarServInput,
-} from './styled';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+} from "./styled";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 export const CriarServico = ({ setCriarService, lists }) => {
     const { register, handleSubmit } = useForm();
@@ -18,16 +17,16 @@ export const CriarServico = ({ setCriarService, lists }) => {
         setCriarService(false);
     };
 
-    const onSubmitFunc = data => {
-        data.tecnico_id = window.localStorage.getItem('idTcc');
+    const onSubmitFunc = (data) => {
+        data.tecnico_id = window.localStorage.getItem("idTcc");
 
         apiTcc
             .post(`/servicos`, data)
-            .then(response => {
+            .then((response) => {
                 lists;
                 return response.data;
             })
-            .catch(err => {
+            .catch((err) => {
                 console.log(err);
             });
     };
@@ -36,10 +35,10 @@ export const CriarServico = ({ setCriarService, lists }) => {
         <>
             <ModalCriarServConte>
                 <ModalCriarServForm onSubmit={handleSubmit(onSubmitFunc)}>
-                    <Close
+                    {/* <Close
                         CloseForm={FormCriarService}
                         classe="close-criar-servico"
-                    />
+                    /> */}
                     <div className="info-criar">
                         <ModalCriarServInput>
                             <label>Titulo</label>

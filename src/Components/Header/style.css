@@ -1,18 +1,18 @@
-header {
+/* /* header {
     background: linear-gradient(#e88b05, #ff7708, #e84a05);
     border-bottom: 3px inset #997e42;
-}
+} 
 
 .Logo h1 {
     color: white;
 }
 
 @media (min-width: 760px) {
-    header {
+    /* header {
         display: flex;
         align-items: center;
         height: 9vh;
-    }
+    } 
 
     .Logo {
         width: 100%;
@@ -64,3 +64,4 @@ header {
         border-radius: 50%;
     }
 }
+ */

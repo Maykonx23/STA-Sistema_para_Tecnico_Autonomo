@@ -1,10 +1,10 @@
-import '../style.css';
-import { Span } from '../../Span';
-import { Img } from '../../Img';
-import ImgPerfil from '../../../Imgs/perfil.png';
-import { useHistory } from 'react-router-dom';
-import { useState } from 'react';
-import { ModalPerfil } from '../../../modals/ModalPerfil';
+/* import "../style.css";
+import { Span } from "../../Span";
+import { Img } from "../../Img";
+import ImgPerfil from "../../../Imgs/perfil.png";
+import { useHistory } from "react-router-dom";
+import { useState } from "react";
+import { ModalPerfil } from "../../../modals/ModalPerfil";
 
 export const HeaderClient = () => {
     const history = useHistory();
@@ -20,15 +20,15 @@ export const HeaderClient = () => {
     };
 
     const funcDashboard = () => {
-        const id = window.localStorage.getItem('idTcc');
+        const id = window.localStorage.getItem("idTcc");
         setStatusPerfil(false);
         history.push(`/cliente/${id}`);
     };
 
     function funcLogout() {
-        window.localStorage.removeItem('authToken');
-        window.localStorage.removeItem('idTcc');
-        history.push('/');
+        window.localStorage.removeItem("authToken");
+        window.localStorage.removeItem("idTcc");
+        history.push("/");
     }
 
     return (
@@ -58,3 +58,4 @@ export const HeaderClient = () => {
         </>
     );
 };
+ */

@@ -1,8 +1,8 @@
-import { HeaderIndex } from '../Components/Header/Index';
-import { useState } from 'react';
-import { Login } from '../Components/Forms/FormLogin';
-import { Cadastro } from '../Components/Forms/FormCad';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { Header } from "../Components/Header";
+import { useState } from "react";
+import { Login } from "../Components/Forms/FormLogin";
+import { Cadastro } from "../Components/Forms/FormCad";
+import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
 
 export const Index = ({ setToken }) => {
     const [statusLogin, setStatusLogin] = useState(false);
@@ -39,10 +39,11 @@ export const Index = ({ setToken }) => {
 
     return (
         <>
-            <HeaderIndex
+            {/* <HeaderIndex
                 StatusCad={StatusCad}
                 StatusLog={StatusLog}
-            ></HeaderIndex>
+            ></HeaderIndex> */}
+            <Header index />
             {statusLogin ? (
                 <Login
                     setToken={setToken}

@@ -1,9 +1,27 @@
-import './style.css';
+import { InputLogin } from "./styled";
 
-export const Input = ({ classe, type, children, register, name }) => {
+export const Input = ({ classe, type, children, register, name, login }) => {
     return (
         <>
-            {register ? (
+            {login && (
+                <>
+                    {register ? (
+                        <InputLogin
+                            {...register(name)}
+                            className={classe}
+                            type={type}
+                            placeholder={children}
+                        />
+                    ) : (
+                        <InputLogin
+                            className={classe}
+                            type={type}
+                            placeholder={children}
+                        />
+                    )}
+                </>
+            )}
+            {/* {register ? (
                 <input
                     {...register(name)}
                     className={classe}
@@ -12,7 +30,7 @@ export const Input = ({ classe, type, children, register, name }) => {
                 />
             ) : (
                 <input className={classe} type={type} placeholder={children} />
-            )}
+            )} */}
         </>
     );
 };

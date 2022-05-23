@@ -1,11 +1,10 @@
-import axios from 'axios';
-import { useForm } from 'react-hook-form';
-import apiTcc from '../../../APIs/TCC-STA';
-import { Button } from '../../Buttons';
-import { Close } from '../../Close/Close';
-import { Input } from '../../Inputs';
-import { Span } from '../../Span';
-import './style.css';
+import axios from "axios";
+import { useForm } from "react-hook-form";
+import apiTcc from "../../../APIs/TCC-STA";
+import { Button } from "../../Buttons";
+import { Input } from "../../Inputs";
+import { Span } from "../../Span";
+import "./style.css";
 
 export const Cadastro = ({
     CloseForm,
@@ -15,42 +14,42 @@ export const Cadastro = ({
 }) => {
     const { register, handleSubmit } = useForm();
 
-    const onSubmitFunc = async data => {
+    const onSubmitFunc = async (data) => {
         delete data.confirmPassword;
-        data.nivel = 'cliente';
+        data.nivel = "cliente";
         data.avaliacao = 0;
 
         axios
             .get(`https://viacep.com.br/ws/${data.cep}/json/`)
-            .then(response => {
+            .then((response) => {
                 apiTcc
-                    .post('/enderecos', {
+                    .post("/enderecos", {
                         cep: response.data.cep,
                         rua: response.data.logradouro,
                         bairro: response.data.bairro,
                         cidade: response.data.localidade,
                         uf: response.data.uf,
                     })
-                    .then(response => {
+                    .then((response) => {
                         data.endereco_id = response.data.id;
                         delete data.cep;
                         apiTcc
-                            .post('/clientes', data)
-                            .then(response => {
+                            .post("/clientes", data)
+                            .then((response) => {
                                 setStatusCad(false);
                                 setStatusLogin(true);
                                 return response.data;
                             })
-                            .catch(error => {
+                            .catch((error) => {
                                 apiTcc.delete(`/enderecos/${response.data.id}`);
                                 return error;
                             });
                     })
-                    .catch(err => {
+                    .catch((err) => {
                         return err;
                     });
             })
-            .catch(error => {
+            .catch((error) => {
                 return error;
             });
     };
@@ -58,7 +57,9 @@ export const Cadastro = ({
     return (
         <div className={classe}>
             <div className="form-cadastrar">
-                <Close CloseForm={CloseForm} classe="close-form" />
+                {" "}
+                {/* 
+                <Close CloseForm={CloseForm}  classe="close-form" />*/}
                 <h1>Cadastro</h1>
                 <form
                     onSubmit={handleSubmit(onSubmitFunc)}

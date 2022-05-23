@@ -1,19 +1,18 @@
-import { useForm } from 'react-hook-form';
-import { Button } from '../../Buttons';
-import { Close } from '../../Close/Close';
-import { Input } from '../../Inputs';
-import { Span } from '../../Span';
-import { yupResolver } from '@hookform/resolvers/yup';
-import * as yup from 'yup';
-import './style.css';
-import { useHistory } from 'react-router-dom';
-import apiTcc from '../../../APIs/TCC-STA';
+import { useForm } from "react-hook-form";
+import { Button } from "../../Buttons";
+import { Input } from "../../Inputs";
+import { Span } from "../../Span";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+import "./style.css";
+import { useHistory } from "react-router-dom";
+import apiTcc from "../../../APIs/TCC-STA";
 
 export const Login = ({ classe, CloseForm, setToken }) => {
     const history = useHistory();
     const formSchema = yup.object().shape({
-        email: yup.string().email().required('Campo Obrigatório*'),
-        password: yup.string().required('Campo Obrigatório*'),
+        email: yup.string().email().required("Campo Obrigatório*"),
+        password: yup.string().required("Campo Obrigatório*"),
     });
 
     const {
@@ -22,45 +21,46 @@ export const Login = ({ classe, CloseForm, setToken }) => {
         formState: { errors },
     } = useForm({ resolver: yupResolver(formSchema) });
 
-    const onSubmitFunc = data => {
+    const onSubmitFunc = (data) => {
         apiTcc
-            .post('/sessions', data)
-            .then(response => {
+            .post("/sessions", data)
+            .then((response) => {
                 window.localStorage.clear();
-                window.localStorage.setItem('authToken', response.data.token);
+                window.localStorage.setItem("authToken", response.data.token);
 
                 setToken(response.data.token);
 
-                if (response.data.cliente.nivel === 'cliente') {
+                if (response.data.cliente.nivel === "cliente") {
                     window.localStorage.setItem(
-                        'idTcc',
-                        response.data.cliente.id,
+                        "idTcc",
+                        response.data.cliente.id
                     );
                     history.push(`/cliente/${response.data.cliente.id}`);
                 }
 
-                if (response.data.cliente.nivel === 'tecnico') {
+                if (response.data.cliente.nivel === "tecnico") {
                     apiTcc
                         .get(`/tecnicos/clientes/${response.data.cliente.id}`)
-                        .then(res => {
+                        .then((res) => {
                             /* 
                             console.log(res.data[0].id); */
                             window.localStorage.setItem(
-                                'idTcc',
-                                res.data[0].id,
+                                "idTcc",
+                                res.data[0].id
                             );
                             history.push(`/tecnico/${res.data[0].id}`);
                         })
-                        .catch(err => console.log(err));
+                        .catch((err) => console.log(err));
                 }
             })
-            .catch(err => console.log(err));
+            .catch((err) => console.log(err));
     };
 
     return (
         <section onSubmit={handleSubmit(onSubmitFunc)} className={classe}>
             <div className="form-logar">
-                <Close CloseForm={CloseForm} classe="close-form" />
+                {/* 
+                <Close CloseForm={CloseForm} classe="close-form" /> */}
                 <h1>Login</h1>
                 <form className="login-form">
                     <Input

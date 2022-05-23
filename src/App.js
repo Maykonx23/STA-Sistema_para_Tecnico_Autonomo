@@ -1,15 +1,18 @@
-import './App.css';
-import { Switch, Route } from 'react-router-dom';
-import { Index } from './Pages';
-import { ClienteIndex } from './Pages/Cliente';
-import { Tecnicoindex } from './Pages/Tecnico';
-import { useState } from 'react';
-import { TecnicoCriarServico } from './Pages/Tecnico/CriarServiços/criarServico';
-import { PagePerfil } from './Pages/Tecnico/Perfil/Perfil';
+import { Switch, Route } from "react-router-dom";
+import { Index } from "./Pages";
+import { Cliente } from "./Pages/Cliente";
+import { Tecnicoindex } from "./Pages/Tecnico";
+import { useState } from "react";
+import { TecnicoCriarServico } from "./Pages/Tecnico/CriarServiços/criarServico";
+import { PagePerfil } from "./Pages/Tecnico/Perfil/Perfil";
+import { Login } from "./Pages/Login";
+import { Cadastro } from "./Pages/Cadastro";
+import { ClienteSolicitacao } from "./Pages/Cliente/Solicitacao";
+import { ClientePerfil } from "./Pages/Cliente/perfil";
 
 function App() {
     const [token, setToken] = useState(
-        window.localStorage.getItem('authToken'),
+        window.localStorage.getItem("authToken")
     );
 
     return (
@@ -18,9 +21,24 @@ function App() {
                 <Route exact path="/">
                     <Index setToken={setToken} />
                 </Route>
-                <Route exact path="/cliente/:id">
-                    <ClienteIndex />
+                <Route exact path="/login">
+                    <Login />
                 </Route>
+                <Route exact path="/cadastro">
+                    <Cadastro />
+                </Route>
+                {/* Inicio Clientes */}
+                <Route exact path="/cliente/:id">
+                    <Cliente />
+                </Route>
+                <Route path="/cliente/:id/solicitacao">
+                    <ClienteSolicitacao />
+                </Route>
+                <Route path="/cliente/:id/perfil">
+                    <ClientePerfil />
+                </Route>
+                {/* Fim Clientes */}
+                {/* Inicio Tecnicos */}
                 <Route exact path="/tecnico/:id">
                     <Tecnicoindex token={token} />
                 </Route>
@@ -30,6 +48,7 @@ function App() {
                 <Route path="/tecnico/:id/perfil">
                     <PagePerfil />
                 </Route>
+                {/* Fim Tecnicos */}
             </Switch>
         </div>
     );
