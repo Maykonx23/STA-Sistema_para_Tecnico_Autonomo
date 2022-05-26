@@ -9,10 +9,11 @@ import { Login } from "./Pages/Login";
 import { Cadastro } from "./Pages/Cadastro";
 import { ClienteSolicitacao } from "./Pages/Cliente/Solicitacao";
 import { ClientePerfil } from "./Pages/Cliente/perfil";
+import { ClienteSolicitacaoID } from "./Pages/Cliente/SolicitacaoID";
 
 function App() {
     const [token, setToken] = useState(
-        window.localStorage.getItem("authToken")
+        window.localStorage.getItem("authToken") // eslint-disable-line
     );
 
     return (
@@ -24,15 +25,18 @@ function App() {
                 <Route exact path="/login">
                     <Login />
                 </Route>
-                <Route exact path="/cadastro">
+                <Route exact path="/register">
                     <Cadastro />
                 </Route>
                 {/* Inicio Clientes */}
                 <Route exact path="/cliente/:id">
                     <Cliente />
                 </Route>
-                <Route path="/cliente/:id/solicitacao">
+                <Route exact path="/cliente/:id/solicitacao">
                     <ClienteSolicitacao />
+                </Route>
+                <Route path="/cliente/:id/solicitacao/:id">
+                    <ClienteSolicitacaoID />
                 </Route>
                 <Route path="/cliente/:id/perfil">
                     <ClientePerfil />

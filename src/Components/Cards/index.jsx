@@ -1,8 +1,11 @@
 import {
     ConteCard,
+    ConteCardImg,
     ConteCardServico,
     ConteCardServicoSolicitacao,
     ConteCardSolicitacao,
+    ConteInfoServico,
+    ConteStrela,
     DivAcao,
     DivAcaoSolicitacao,
     DivDescription,
@@ -11,11 +14,18 @@ import {
     DivServicoSolicitacao,
     DivStatusSolicitacao,
     DivTecnicoSolicitacao,
+    FiltroBtn,
+    FiltroPesq,
 } from "./styled";
 import DropDown from "./arrow_drop_down.svg";
 import DropUp from "./arrow_drop_up.svg";
 import { useContext } from "react";
 import { DropFilterContext } from "../../Providers/DropFiltro";
+import { Input } from "../Inputs";
+import Perquisa from "./search.svg";
+import { Button } from "../Buttons";
+import Computador from "../../Imgs/computer.svg";
+import StarVazio from "../../Imgs/star_vazia.svg";
 
 export const Card = ({
     listCabecalho,
@@ -27,50 +37,39 @@ export const Card = ({
         openDropServico,
         openDropDescription,
         openDropPreco,
+        openDropAvaliacao,
         dropServico,
         dropDescription,
         dropPreco,
+        dropAvaliacao,
     } = useContext(DropFilterContext);
 
     return (
         <>
             {listCabecalho && (
                 <ConteCard>
-                    <DivServico>
-                        <p>SERVIÇO</p>
-                        {openDropServico ? (
-                            <img onClick={dropServico} src={DropUp} alt="" />
-                        ) : (
-                            <img onClick={dropServico} src={DropDown} alt="" />
-                        )}
-                    </DivServico>
-                    <DivDescription>
-                        <p>DESCRIÇÃO</p>
-                        {openDropDescription ? (
-                            <img
-                                onClick={dropDescription}
-                                src={DropUp}
-                                alt=""
-                            />
-                        ) : (
-                            <img
-                                onClick={dropDescription}
-                                src={DropDown}
-                                alt=""
-                            />
-                        )}
-                    </DivDescription>
-                    <DivPreco>
-                        <p>PREÇO</p>
-                        {openDropPreco ? (
-                            <img onClick={dropPreco} src={DropUp} alt="" />
-                        ) : (
-                            <img onClick={dropPreco} src={DropDown} alt="" />
-                        )}
-                    </DivPreco>
-                    <DivAcao>
-                        <p>AÇÃO</p>
-                    </DivAcao>
+                    <FiltroPesq>
+                        <Input pesquisaServico>Pesquisar</Input>
+                        <img src={Perquisa} alt="Pesquisar" />
+                    </FiltroPesq>
+                    <FiltroBtn>
+                        <Button filterServico click={dropPreco}>
+                            Preço
+                            {openDropPreco ? (
+                                <img src={DropUp} alt="" />
+                            ) : (
+                                <img src={DropDown} alt="" />
+                            )}
+                        </Button>
+                        <Button filterServico click={dropAvaliacao}>
+                            Avaliação
+                            {openDropAvaliacao ? (
+                                <img src={DropUp} alt="" />
+                            ) : (
+                                <img src={DropDown} alt="" />
+                            )}
+                        </Button>
+                    </FiltroBtn>
                 </ConteCard>
             )}
 
@@ -116,18 +115,27 @@ export const Card = ({
 
             {listServicos && (
                 <ConteCardServico>
-                    <DivServico>
-                        <p>Manutenção de Impressora</p>
-                    </DivServico>
-                    <DivDescription>
-                        <p>Realizo limpeza de Impressora</p>
-                    </DivDescription>
-                    <DivPreco>
-                        <p>R$ 80,00</p>
-                    </DivPreco>
-                    <DivAcao>
-                        <p>Visualizar</p>
-                    </DivAcao>
+                    <ConteCardImg>
+                        <img src={Computador} alt="Computador" />
+                    </ConteCardImg>
+                    <ConteInfoServico>
+                        <h2>Nome do Tecnico</h2>
+                        <ConteStrela>
+                            <img src={StarVazio} alt="" />
+                            <img src={StarVazio} alt="" />
+                            <img src={StarVazio} alt="" />
+                            <img src={StarVazio} alt="" />
+                            <img src={StarVazio} alt="" />
+                        </ConteStrela>
+                        <p>
+                            Neque porro quisquam est qui dolorem ipsum quia
+                            dolor sit amet, consectetur, adipisci velit...
+                        </p>
+                        <span>R$ 30, 00</span>
+                    </ConteInfoServico>
+                    <button>
+                        <span>+</span> Detalhes
+                    </button>
                 </ConteCardServico>
             )}
 

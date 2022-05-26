@@ -6,6 +6,7 @@ export const DropFilterProvider = ({ children }) => {
     const [openDropServico, setOpenDropServico] = useState(false);
     const [openDropDescription, setOpenDropDescription] = useState(false);
     const [openDropPreco, setOpenDropPreco] = useState(false);
+    const [openDropAvaliacao, setOpenDropAvaliacao] = useState(false);
 
     const dropServico = () => {
         if (openDropServico) {
@@ -14,6 +15,7 @@ export const DropFilterProvider = ({ children }) => {
             setOpenDropServico(true);
             setOpenDropDescription(false);
             setOpenDropPreco(false);
+            setOpenDropAvaliacao(false);
         }
     };
 
@@ -24,6 +26,7 @@ export const DropFilterProvider = ({ children }) => {
             setOpenDropDescription(true);
             setOpenDropServico(false);
             setOpenDropPreco(false);
+            setOpenDropAvaliacao(false);
         }
     };
 
@@ -32,6 +35,18 @@ export const DropFilterProvider = ({ children }) => {
             setOpenDropPreco(false);
         } else {
             setOpenDropPreco(true);
+            setOpenDropServico(false);
+            setOpenDropDescription(false);
+            setOpenDropAvaliacao(false);
+        }
+    };
+
+    const dropAvaliacao = () => {
+        if (openDropAvaliacao) {
+            setOpenDropAvaliacao(false);
+        } else {
+            setOpenDropAvaliacao(true);
+            setOpenDropPreco(false);
             setOpenDropServico(false);
             setOpenDropDescription(false);
         }
@@ -43,6 +58,8 @@ export const DropFilterProvider = ({ children }) => {
                 openDropServico,
                 openDropDescription,
                 openDropPreco,
+                openDropAvaliacao,
+                dropAvaliacao,
                 dropServico,
                 dropDescription,
                 dropPreco,

@@ -19,7 +19,7 @@ export const ConteMenu = styled.div`
 
 export const ConteMenuCliente = styled.div`
     @media (min-width: 760px) {
-        position: absolute;
+        position: fixed;
         top: 0;
         left: 0;
         display: flex;

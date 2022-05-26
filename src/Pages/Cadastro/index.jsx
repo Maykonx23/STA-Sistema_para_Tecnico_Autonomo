@@ -4,12 +4,22 @@ import { ConteCad, ConteForm } from "./styled";
 import { Button } from "../../Components/Buttons";
 import { Divisao } from "../../Components/Divisao";
 import { useForm } from "react-hook-form";
+import { RoutesContext } from "../../Providers/Routes";
+import { useContext } from "react";
+import { CadastroContext } from "../../Providers/Cadastrar";
 
 export const Cadastro = () => {
+    const { cadastrarUser } = useContext(CadastroContext);
+    const { returnLogin, returnCadastro } = useContext(RoutesContext);
     const { register, handleSubmit } = useForm();
 
     const onSubmitFunc = (data) => {
-        console.log(data);
+        delete data.confirmPassword;
+        data.nivel = "cliente";
+        data.avaliacao = 0;
+        console.log(data); // eslint-disable-line
+        cadastrarUser(data);
+        returnLogin();
     };
     return (
         <>
@@ -87,7 +97,8 @@ export const Cadastro = () => {
                     </ConteForm>
                     <Divisao login />
                     <p>
-                        Já tem Login? Clique <span>Aqui</span>
+                        Já tem Login? Clique{" "}
+                        <span onClick={returnLogin}>Aqui</span>
                     </p>
                 </div>
             </ConteCad>

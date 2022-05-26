@@ -1,6 +1,7 @@
 import { useContext } from "react";
 import { DropMenuContext } from "../../Providers/DropMenu";
 import { MenuHamburgerContext } from "../../Providers/MenuHamburger";
+import { RoutesContext } from "../../Providers/Routes";
 import { Button } from "../Buttons";
 import { Divisao } from "../Divisao";
 import {
@@ -24,12 +25,18 @@ export const Menu = ({ index, cliente }) => {
         funcDropConfig,
     } = useContext(DropMenuContext);
 
+    const { returnLogin, returnCadastro } = useContext(RoutesContext);
+
     return (
         <>
             {index && (
                 <ConteMenu>
-                    <Button menu>Login</Button>
-                    <Button menu>Cadastre-se</Button>
+                    <Button click={returnLogin} menu>
+                        Login
+                    </Button>
+                    <Button click={returnCadastro} menu>
+                        Cadastre-se
+                    </Button>
                 </ConteMenu>
             )}
             {cliente && (

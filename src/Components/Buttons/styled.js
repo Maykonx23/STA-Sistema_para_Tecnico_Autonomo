@@ -118,3 +118,75 @@ export const BtnDrop = styled.button`
         }
     }
 `;
+
+export const BtnEdit = styled.button`
+    @media (min-width: 760px) {
+        color: #000036;
+        font-size: 1.2em;
+        font-weight: 700;
+        background-color: transparent;
+        border: 1px solid #000036;
+        border-radius: 10px;
+        box-sizing: border-box;
+        padding: 10px 20px;
+        cursor: pointer;
+
+        :hover {
+            color: #fefefe;
+            background-color: #000036;
+        }
+    }
+`;
+
+export const BtnVoltar = styled.div`
+    @media (min-width: 760px) {
+        width: 100%;
+        text-align: right;
+        button {
+            color: #000036;
+            font-size: 1.2em;
+            font-weight: 700;
+            background-color: transparent;
+            border: 1px solid #000036;
+            border-radius: 10px;
+            box-sizing: border-box;
+            padding: 10px 20px;
+            cursor: pointer;
+
+            :hover {
+                color: #fefefe;
+                background-color: #000036;
+            }
+        }
+    }
+`;
+
+export const BtnFilterServico = styled.div`
+    @media (min-width: 760px) {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        border: 2px solid transparent;
+        border-radius: 10px;
+        padding: 2px 4px;
+        background-color: #d99607;
+        cursor: pointer;
+        :hover {
+            border: 2px solid rgb(194, 115, 4, 10);
+        }
+        button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            background-color: transparent;
+            font-size: 1.2em;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            img {
+                width: 30px;
+            }
+        }
+    }
+`;
