@@ -190,3 +190,82 @@ export const BtnFilterServico = styled.div`
         }
     }
 `;
+
+export const BtnSolicitar = styled.div`
+    @media (min-width: 760px) {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        border: 2px solid transparent;
+        border-radius: 10px;
+        padding: 2px 4px;
+        background-color: #d99607;
+        cursor: pointer;
+        :hover {
+            border: 2px solid rgb(194, 115, 4, 10);
+        }
+        button {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: none;
+            background-color: transparent;
+            font-size: 1.2em;
+            font-weight: 600;
+            color: white;
+            cursor: pointer;
+            img {
+                width: 30px;
+            }
+        }
+    }
+`;
+
+export const BtnSolicitarServico = styled.button`
+    @media (min-width: 760px) {
+        /* 
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        padding: 2px 4px;
+        cursor: pointer;
+         */
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background-color: transparent;
+        font-size: 1.2em;
+        font-weight: 600;
+        color: #d99607;
+        border: 2px solid rgb(194, 115, 4, 10);
+        border-radius: 10px;
+        padding: 10px 20px;
+        cursor: pointer;
+        :hover {
+            color: white;
+            background-color: #d99607;
+        }
+    }
+`;
+
+export const BtnCancelarServico = styled.button`
+    @media (min-width: 760px) {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background-color: transparent;
+        font-size: 1.2em;
+        font-weight: 600;
+        color: #000036;
+        border: 1px solid #000036;
+        border-radius: 10px;
+        cursor: pointer;
+        padding: 10px 20px;
+        :hover {
+            color: #fefefe;
+            background-color: #000036;
+        }
+    }
+`;

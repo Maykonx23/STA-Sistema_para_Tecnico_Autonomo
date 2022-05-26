@@ -1,10 +1,11 @@
 import { useContext, useState } from "react";
 import { Header } from "../../../Components/Header";
 import { Main } from "../../../Components/Main";
+import { MenuHamburgerContext } from "../../../Providers/MenuHamburger";
 import { RoutesContext } from "../../../Providers/Routes";
 
-export const ClientePerfil = () => {
-    const [token, settoken] = useState(
+export const TecnicoSolicitacao = () => {
+    const [token, setToken] = useState(
         window.localStorage.getItem("@TCC/Token") // eslint-disable-line
     );
 
@@ -13,10 +14,13 @@ export const ClientePerfil = () => {
     if (!token) {
         returnIndex();
     }
+
+    const { openMenuHamb, setOpenMenuHamb } = useContext(MenuHamburgerContext);
+
     return (
         <>
-            <Header cliente />
-            <Main perfil />
+            <Header tecnico />
+            <Main solicitacao />
         </>
     );
 };

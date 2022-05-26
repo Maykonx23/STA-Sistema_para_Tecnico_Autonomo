@@ -1,7 +1,7 @@
-import AppError from '@shared/errors/AppError';
-import { getCustomRepository } from 'typeorm';
-import { Servico } from '../typeorm/entities/Servico';
-import { ServicosRepository } from '../typeorm/repositories/ServicosRepository';
+import AppError from "@shared/errors/AppError";
+import { getCustomRepository } from "typeorm";
+import { Servico } from "../typeorm/entities/Servico";
+import { ServicosRepository } from "../typeorm/repositories/ServicosRepository";
 
 interface IRequest {
     id: string;
@@ -14,7 +14,7 @@ export class ShowServicoService {
         const servico = await servicosRepository.findById(id);
 
         if (!servico) {
-            throw new AppError('Servico não existe.');
+            throw new AppError("Servico não existe.");
         }
 
         return servico;

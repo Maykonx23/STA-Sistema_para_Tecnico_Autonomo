@@ -116,6 +116,11 @@ export const ConteInfoServico = styled.div`
             color: #000036;
             margin: 20px 0 0 0;
         }
+
+        h3 {
+            color: #000036;
+            margin: 20px 0 0 0;
+        }
         p {
             height: 70px;
             margin: 10px 0;

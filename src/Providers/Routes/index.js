@@ -1,4 +1,5 @@
 import { createContext } from "react";
+import { Link } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 export const RoutesContext = createContext();
@@ -18,9 +19,67 @@ export const RoutesProvider = ({ children }) => {
     const returnCliente = (id) => {
         history.push(`/cliente/${id}`);
     };
+
+    const returnTecnico = (id) => {
+        history.push(`/tecnico/${id}`);
+    };
+
+    const returnLogout = () => {
+        window.localStorage.removeItem("@TCC/Token"); // eslint-disable-line
+        window.localStorage.removeItem("@TCC/ID"); // eslint-disable-line
+
+        history.push(`/cliente/1`);
+        history.push(`/`);
+    };
+
+    const returnHome = (id, type) => {
+        if (type == "cliente") {
+            history.push(`/cliente/${id}`);
+        }
+        if (type == "tecnico") {
+            history.push(`/tecnico/${id}`);
+        }
+        if (type == "admin") {
+            history.push(`/admin/${id}`);
+        }
+    };
+
+    const returnSolicitacao = (id, type) => {
+        if (type == "cliente") {
+            history.push(`/cliente/${id}/solicitacao`);
+        }
+        if (type == "tecnico") {
+            history.push(`/tecnico/${id}/solicitacao`);
+        }
+        if (type == "admin") {
+            history.push(`/admin/${id}/solicitacao`);
+        }
+    };
+
+    const returnPerfil = (id, type) => {
+        if (type == "cliente") {
+            history.push(`/cliente/${id}/perfil`);
+        }
+        if (type == "tecnico") {
+            history.push(`/tecnico/${id}/perfil`);
+        }
+        if (type == "admin") {
+            history.push(`/admin/${id}/perfil`);
+        }
+    };
     return (
         <RoutesContext.Provider
-            value={{ returnLogin, returnCadastro, returnIndex, returnCliente }}
+            value={{
+                returnLogin,
+                returnCadastro,
+                returnIndex,
+                returnCliente,
+                returnHome,
+                returnSolicitacao,
+                returnPerfil,
+                returnLogout,
+                returnTecnico,
+            }}
         >
             {children}
         </RoutesContext.Provider>

@@ -1,6 +1,6 @@
-import { Cliente } from '../../../clientes/typeorm/entities/Cliente';
-import { EntityRepository, Repository } from 'typeorm';
-import { Tecnico } from '../entities/Tecnico';
+import { Cliente } from "../../../clientes/typeorm/entities/Cliente";
+import { EntityRepository, Repository } from "typeorm";
+import { Tecnico } from "../entities/Tecnico";
 
 interface IServicos {
     id: string;
@@ -23,7 +23,7 @@ interface ICliente {
 export class TecnicosRepository extends Repository<Tecnico> {
     public async findById(id: string): Promise<Tecnico | undefined> {
         const tecnico = await this.findOne(id, {
-            relations: ['cliente', 'servicos'],
+            relations: ["cliente", "servicos"],
         });
         return tecnico;
     }
@@ -31,7 +31,7 @@ export class TecnicosRepository extends Repository<Tecnico> {
     public async findByIdCliente({ id }: ICliente): Promise<Tecnico[]> {
         const tecnico = await this.find({
             where: { cliente: { id } },
-            relations: ['cliente', 'servicos'],
+            relations: ["cliente", "servicos"],
         });
 
         return tecnico;

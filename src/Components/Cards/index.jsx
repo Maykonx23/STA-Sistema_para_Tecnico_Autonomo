@@ -19,19 +19,21 @@ import {
 } from "./styled";
 import DropDown from "./arrow_drop_down.svg";
 import DropUp from "./arrow_drop_up.svg";
-import { useContext } from "react";
+import { useContext, useEffect } from "react";
 import { DropFilterContext } from "../../Providers/DropFiltro";
 import { Input } from "../Inputs";
 import Perquisa from "./search.svg";
 import { Button } from "../Buttons";
 import Computador from "../../Imgs/computer.svg";
 import StarVazio from "../../Imgs/star_vazia.svg";
+import { ListServicosContext } from "../../Providers/ListServicos";
 
 export const Card = ({
     listCabecalho,
     listServicos,
     listCabecalhoSolicitacao,
     listServicosSolicitacao,
+    elemento,
 }) => {
     const {
         openDropServico,
@@ -43,6 +45,9 @@ export const Card = ({
         dropPreco,
         dropAvaliacao,
     } = useContext(DropFilterContext);
+
+    const { tecnicoServico, infotecnicoService, servicoId } =
+        useContext(ListServicosContext);
 
     return (
         <>
@@ -114,29 +119,28 @@ export const Card = ({
             )}
 
             {listServicos && (
-                <ConteCardServico>
-                    <ConteCardImg>
-                        <img src={Computador} alt="Computador" />
-                    </ConteCardImg>
-                    <ConteInfoServico>
-                        <h2>Nome do Tecnico</h2>
-                        <ConteStrela>
-                            <img src={StarVazio} alt="" />
-                            <img src={StarVazio} alt="" />
-                            <img src={StarVazio} alt="" />
-                            <img src={StarVazio} alt="" />
-                            <img src={StarVazio} alt="" />
-                        </ConteStrela>
-                        <p>
-                            Neque porro quisquam est qui dolorem ipsum quia
-                            dolor sit amet, consectetur, adipisci velit...
-                        </p>
-                        <span>R$ 30, 00</span>
-                    </ConteInfoServico>
-                    <button>
-                        <span>+</span> Detalhes
-                    </button>
-                </ConteCardServico>
+                <>
+                    <ConteCardServico>
+                        <ConteCardImg>
+                            <img src={Computador} alt="Computador" />
+                        </ConteCardImg>
+                        <ConteInfoServico>
+                            <h2>{elemento.titulo}</h2>
+                            <ConteStrela>
+                                <img src={StarVazio} alt="" />
+                                <img src={StarVazio} alt="" />
+                                <img src={StarVazio} alt="" />
+                                <img src={StarVazio} alt="" />
+                                <img src={StarVazio} alt="" />
+                            </ConteStrela>
+                            <p>{elemento.descricao}</p>
+                            <span>R$ {elemento.price}</span>
+                        </ConteInfoServico>
+                        <button onClick={servicoId} id={elemento.id}>
+                            <span id={elemento.id}>+</span> Detalhes
+                        </button>
+                    </ConteCardServico>
+                </>
             )}
 
             {listServicosSolicitacao && (

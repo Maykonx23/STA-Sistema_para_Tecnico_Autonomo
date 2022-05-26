@@ -1,17 +1,17 @@
-import '../style.css';
-import { Span } from '../../Span';
-import { Img } from '../../Img';
-import ImgPerfil from '../../../Imgs/perfil.png';
-import { useHistory } from 'react-router-dom';
-import { ModalPerfil } from '../../../modals/ModalPerfil';
-import { useState } from 'react';
+import "../style.css";
+import { Span } from "../../Span";
+import { Img } from "../../Img";
+import ImgPerfil from "../../../Imgs/perfil.png";
+import { useHistory } from "react-router-dom"; /* 
+import { ModalPerfil } from '../../../modals/ModalPerfil'; */
+import { useState } from "react";
 
 export const HeaderTecnico = () => {
     const history = useHistory();
-    const id = window.localStorage.getItem('idTcc');
+    const id = window.localStorage.getItem("idTcc");
 
     const PageCriarService = () => {
-        history.push('/tecnico/criar/servico');
+        history.push("/tecnico/criar/servico");
     };
 
     const [statusPerfil, setStatusPerfil] = useState(false);
@@ -30,9 +30,9 @@ export const HeaderTecnico = () => {
     };
 
     function funcLogout() {
-        window.localStorage.removeItem('authToken');
-        window.localStorage.removeItem('idTcc');
-        history.push('/');
+        window.localStorage.removeItem("authToken");
+        window.localStorage.removeItem("idTcc");
+        history.push("/");
     }
 
     const funcPerfil = () => {
@@ -64,11 +64,12 @@ export const HeaderTecnico = () => {
                     </div>
                 </section>
             </header>
+            {/* 
             <ModalPerfil
                 funcPerfil={funcPerfil}
                 funcLogout={funcLogout}
                 status={statusPerfil}
-            />
+            /> */}
         </>
     );
 };

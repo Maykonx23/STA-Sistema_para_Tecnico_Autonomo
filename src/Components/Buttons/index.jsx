@@ -1,4 +1,5 @@
 import {
+    BtnCancelarServico,
     BtnClose,
     BtnDrop,
     BtnEdit,
@@ -7,6 +8,8 @@ import {
     BtnHamburg,
     BtnMenu,
     BtnMenuL,
+    BtnSolicitar,
+    BtnSolicitarServico,
     BtnVoltar,
 } from "./styled";
 import MenuH from "./menu_H.svg";
@@ -31,6 +34,9 @@ export const Button = ({
     filterServico,
     dropAvaliacao,
     dropPreco,
+    solicitar,
+    solicitarServico,
+    voltarServico,
 }) => {
     return (
         <>
@@ -109,6 +115,23 @@ export const Button = ({
                 <BtnFilterServico>
                     <button onClick={click}>{children}</button>
                 </BtnFilterServico>
+            )}
+            {solicitar && (
+                <BtnSolicitar>
+                    <button onClick={click}>{children}</button>
+                </BtnSolicitar>
+            )}
+
+            {solicitarServico && (
+                <BtnSolicitarServico onClick={click}>
+                    {children}
+                </BtnSolicitarServico>
+            )}
+
+            {voltarServico && (
+                <BtnCancelarServico onClick={click}>
+                    {children}
+                </BtnCancelarServico>
             )}
         </>
     );

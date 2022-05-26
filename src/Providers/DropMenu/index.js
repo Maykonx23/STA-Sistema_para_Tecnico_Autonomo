@@ -38,6 +38,12 @@ export const DropHomeProvider = ({ children }) => {
         }
     };
 
+    const FuncCloseAll = () => {
+        setOpenDropPerfil(false);
+        setOpenDropConfig(false);
+        setOpenDropServico(false);
+    };
+
     return (
         <DropMenuContext.Provider
             value={{
@@ -52,6 +58,7 @@ export const DropHomeProvider = ({ children }) => {
                 setOpenDropServico,
                 setOpenDropConfig,
                 setOpenDropPerfil,
+                FuncCloseAll,
             }}
         >
             {children}

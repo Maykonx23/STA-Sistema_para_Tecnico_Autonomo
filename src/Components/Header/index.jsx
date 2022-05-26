@@ -5,7 +5,7 @@ import { Logo } from "../Logo";
 import { Menu } from "../Menus";
 import { ConteHeader, ConteHeaderCliente, ConteHeaderLC } from "./styled";
 
-export const Header = ({ index, login, cadastro, cliente }) => {
+export const Header = ({ index, login, cadastro, cliente, tecnico }) => {
     const { openMenuHamb, openMenuFunc } = useContext(MenuHamburgerContext);
 
     return (
@@ -25,6 +25,17 @@ export const Header = ({ index, login, cadastro, cliente }) => {
             {cliente && (
                 <>
                     {openMenuHamb && <Menu cliente />}
+                    <ConteHeaderCliente>
+                        {!openMenuHamb && (
+                            <Button click={openMenuFunc} menuHamburger />
+                        )}
+                        <Logo cliente />
+                    </ConteHeaderCliente>
+                </>
+            )}
+            {tecnico && (
+                <>
+                    {openMenuHamb && <Menu tecnico />}
                     <ConteHeaderCliente>
                         {!openMenuHamb && (
                             <Button click={openMenuFunc} menuHamburger />

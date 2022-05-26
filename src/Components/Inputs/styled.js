@@ -17,6 +17,7 @@ export const InputLogin = styled.input`
 
 export const InputPerfil = styled.input`
     @media (min-width: 760px) {
+        width: 100%;
         font-size: 1.6em;
         padding: 10px 20px;
         border: 2px solid #05182a;

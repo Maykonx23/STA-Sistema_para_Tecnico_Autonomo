@@ -1,6 +1,6 @@
-import { Tecnico } from '@modules/tecnicos/typeorm/entities/Tecnico';
-import { EntityRepository, Repository } from 'typeorm';
-import { Servico } from '../entities/Servico';
+import { Tecnico } from "@modules/tecnicos/typeorm/entities/Tecnico";
+import { EntityRepository, Repository } from "typeorm";
+import { Servico } from "../entities/Servico";
 interface IRequest {
     titulo: string;
     mediaTempo: string;
@@ -12,7 +12,9 @@ interface IRequest {
 @EntityRepository(Servico)
 export class ServicosRepository extends Repository<Servico> {
     public async findById(id: string): Promise<Servico | undefined> {
-        const servico = await this.findOne(id, { relations: ['tecnico'] });
+        const servico = await this.findOne(id, {
+            relations: ["tecnico"],
+        });
 
         return servico;
     }

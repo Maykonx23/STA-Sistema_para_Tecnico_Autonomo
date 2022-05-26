@@ -1,76 +1,22 @@
-import { useEffect, useState } from 'react';
-import apiTcc from '../../../APIs/TCC-STA';
-import { HeaderTecnico } from '../../../Components/Header/Tecnico';
-import {
-    ContePerfilInput,
-    ContePerfilSpan,
-    ContePerfilTec,
-    ContePerfilTecForm,
-    ContePerfilTecImg,
-} from './style';
-import { Button } from '../../../Components/Buttons/index';
-import Perfil from '../../../Imgs/perfil.png';
-import { Input } from '../../../Components/Inputs';
+import { useContext, useState } from "react";
+import { Header } from "../../../Components/Header";
+import { Main } from "../../../Components/Main";
+import { RoutesContext } from "../../../Providers/Routes";
 
-export const PagePerfil = () => {
-    const [tecnico, setTecnico] = useState();
+export const TecnicoPerfil = () => {
+    const [token, settoken] = useState(
+        window.localStorage.getItem("@TCC/Token") // eslint-disable-line
+    );
 
-    useEffect(() => {
-        apiTcc
-            .get(`/tecnicos/${window.localStorage.getItem('idTcc')}`)
-            .then(res => {
-                setTecnico(res.data);
-                return res.data;
-            })
-            .catch(err => {
-                return err;
-            });
-    }, []);
+    const { returnIndex } = useContext(RoutesContext);
 
+    if (!token) {
+        returnIndex();
+    }
     return (
         <>
-            <HeaderTecnico />
-            {tecnico && (
-                <ContePerfilTec>
-                    <ContePerfilTecImg>
-                        <img src={Perfil} />
-                    </ContePerfilTecImg>
-                    <ContePerfilSpan>{tecnico.cliente.email}</ContePerfilSpan>
-                    <ContePerfilTecForm>
-                        <ContePerfilInput>
-                            <label>Nome</label>
-                            <Input classe="input-perfil-tec">
-                                {tecnico.cliente.name}
-                            </Input>
-                        </ContePerfilInput>
-                        <ContePerfilInput>
-                            <label>Email</label>
-                            <Input classe="input-perfil-tec">
-                                {tecnico.cliente.email}
-                            </Input>
-                        </ContePerfilInput>
-                        <ContePerfilInput>
-                            <label>CPF</label>
-                            <Input classe="input-perfil-tec">
-                                {tecnico.cliente.cpf}
-                            </Input>
-                        </ContePerfilInput>
-                        <ContePerfilInput>
-                            <label>Telefone</label>
-                            <Input classe="input-perfil-tec">
-                                {tecnico.cliente.telefone}
-                            </Input>
-                        </ContePerfilInput>
-                        <ContePerfilInput>
-                            <label>Descrição</label>
-                            <Input classe="input-perfil-tec">
-                                {tecnico.descricao}
-                            </Input>
-                        </ContePerfilInput>
-                        <Button classe="btn-perfil-tec">Atualizar</Button>
-                    </ContePerfilTecForm>
-                </ContePerfilTec>
-            )}
+            <Header tecnico />
+            <Main perfilTec />
         </>
     );
 };
