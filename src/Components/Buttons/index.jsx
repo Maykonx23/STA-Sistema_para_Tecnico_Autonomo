@@ -1,6 +1,7 @@
 import {
     BtnCancelarServico,
     BtnClose,
+    BtnCriarService,
     BtnDrop,
     BtnEdit,
     BtnFilterServico,
@@ -14,8 +15,6 @@ import {
 } from "./styled";
 import MenuH from "./menu_H.svg";
 import MenuClose from "./menu_Close.svg";
-import { useContext } from "react";
-import { DropFilterContext } from "../../Providers/DropFiltro";
 
 export const Button = ({
     children,
@@ -27,16 +26,18 @@ export const Button = ({
     menuHamburger,
     close,
     menuH,
-    drop,
     edit,
     dropMenu,
     voltar,
     filterServico,
-    dropAvaliacao,
-    dropPreco,
     solicitar,
     solicitarServico,
     voltarServico,
+    addCriarService,
+    criarServico,
+    cancelar,
+    excluir,
+    editarServico,
 }) => {
     return (
         <>
@@ -132,6 +133,26 @@ export const Button = ({
                 <BtnCancelarServico onClick={click}>
                     {children}
                 </BtnCancelarServico>
+            )}
+
+            {addCriarService && (
+                <BtnCriarService onClick={click}>{children}</BtnCriarService>
+            )}
+
+            {criarServico && (
+                <BtnCriarService onClick={click}>{children}</BtnCriarService>
+            )}
+
+            {excluir && (
+                <BtnCriarService onClick={click}>{children}</BtnCriarService>
+            )}
+
+            {cancelar && (
+                <BtnCriarService onClick={click}>{children}</BtnCriarService>
+            )}
+
+            {editarServico && (
+                <BtnCriarService onClick={click}>{children}</BtnCriarService>
             )}
         </>
     );

@@ -15,17 +15,7 @@ export const Index = ({ setToken }) => {
 
     return (
         <>
-            {token ? (
-                <>
-                    {typeInfo == "cliente" ? (
-                        <Header cliente />
-                    ) : (
-                        <>{typeInfo == "tecnico" && <Header tecnico />}</>
-                    )}
-                </>
-            ) : (
-                <Header index />
-            )}
+            <Header page index />
         </>
     );
 };

@@ -1,4 +1,5 @@
 import { CadastroProvider } from "./Cadastrar";
+import { ServicoProvider } from "./CriarServico";
 import { DropFilterProvider } from "./DropFiltro";
 import { DropHomeProvider } from "./DropMenu";
 import { ListServicosProvider } from "./ListServicos";
@@ -8,18 +9,22 @@ import { RoutesProvider } from "./Routes";
 
 export const Providers = ({ children }) => {
     return (
-        <ListServicosProvider>
-            <RoutesProvider>
-                <DropFilterProvider>
-                    <DropHomeProvider>
-                        <MenuHamburgerProvider>
-                            <LoginProvider>
-                                <CadastroProvider>{children}</CadastroProvider>
-                            </LoginProvider>
-                        </MenuHamburgerProvider>
-                    </DropHomeProvider>
-                </DropFilterProvider>
-            </RoutesProvider>
-        </ListServicosProvider>
+        <ServicoProvider>
+            <ListServicosProvider>
+                <RoutesProvider>
+                    <DropFilterProvider>
+                        <DropHomeProvider>
+                            <MenuHamburgerProvider>
+                                <LoginProvider>
+                                    <CadastroProvider>
+                                        {children}
+                                    </CadastroProvider>
+                                </LoginProvider>
+                            </MenuHamburgerProvider>
+                        </DropHomeProvider>
+                    </DropFilterProvider>
+                </RoutesProvider>
+            </ListServicosProvider>
+        </ServicoProvider>
     );
 };

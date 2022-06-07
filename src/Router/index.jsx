@@ -11,12 +11,14 @@ import { ClientePerfil } from "../Pages/Cliente/perfil";
 import { Tecnicoindex } from "../Pages/Tecnico";
 import { TecnicoSolicitacao } from "../Pages/Tecnico/Solicitacao";
 import { TecnicoPerfil } from "../Pages/Tecnico/Perfil/Perfil";
+import { SolicitarTecnico } from "../Pages/Cliente/SolicitarTecnico";
+import { CriarServico } from "../Pages/Tecnico/CriarServiços/criarServico";
 
 /* Pages */
 
 export const Rotas = () => {
     const [token, settoken] = useState(
-        window.localStorage.getItem("@TCC/Token")
+        window.localStorage.getItem("@TCC/Token") // eslint-disable-line
     );
 
     return (
@@ -44,9 +46,11 @@ export const Rotas = () => {
                 <Route path="/cliente/:id/perfil">
                     <ClientePerfil />
                 </Route>
+                <Route path="/cliente/:id/solicitacao-tecnico">
+                    <SolicitarTecnico />
+                </Route>
                 {/* Fim Clientes */}
                 {/* Inicio Tecnicos */}
-
                 <Route exact path="/tecnico/:id">
                     <Tecnicoindex />
                 </Route>
@@ -56,10 +60,11 @@ export const Rotas = () => {
                 <Route path="/tecnico/:id/perfil">
                     <TecnicoPerfil />
                 </Route>
+                <Route path="/tecnico/:id/criar-servico">
+                    <CriarServico />
+                </Route>
+
                 {/* 
-                <Route path="/tecnico/criar/servico">
-                    <TecnicoCriarServico />
-                </Route> */}
                 {/* Fim Tecnicos */}
             </Switch>
         </>

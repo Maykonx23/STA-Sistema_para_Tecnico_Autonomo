@@ -223,13 +223,6 @@ export const BtnSolicitar = styled.div`
 
 export const BtnSolicitarServico = styled.button`
     @media (min-width: 760px) {
-        /* 
-        display: flex;
-        align-items: center;
-        justify-content: flex-start;
-        padding: 2px 4px;
-        cursor: pointer;
-         */
         display: flex;
         align-items: center;
         justify-content: center;
@@ -266,6 +259,32 @@ export const BtnCancelarServico = styled.button`
         :hover {
             color: #fefefe;
             background-color: #000036;
+        }
+    }
+`;
+
+export const BtnCriarService = styled.button`
+    @media (min-width: 760px) {
+        cursor: pointer;
+        display: flex;
+        padding: 0 15px;
+        align-items: center;
+        justify-content: center;
+        border: none;
+        background-color: transparent;
+        font-size: 1.5em;
+        font-weight: 600;
+        background-color: transparent;
+        border: 2px solid rgb(194, 115, 4, 10);
+        color: rgb(194, 115, 4, 10);
+        border-radius: 10px;
+        cursor: pointer;
+        img {
+            width: 30px;
+        }
+        :hover {
+            background-color: #d99607;
+            color: white;
         }
     }
 `;

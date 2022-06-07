@@ -1,17 +1,25 @@
-import { useContext, useEffect } from "react";
+import { useContext, useEffect, useState } from "react";
+import { ServicoContext } from "../../Providers/CriarServico";
 import { DropMenuContext } from "../../Providers/DropMenu";
 import { ListServicosContext } from "../../Providers/ListServicos";
 import { LoginContext } from "../../Providers/Login";
 import { MenuHamburgerContext } from "../../Providers/MenuHamburger";
+import { RoutesContext } from "../../Providers/Routes";
 import { Button } from "../Buttons";
+import { CardCriar } from "../CardCriarServico";
 import { Card } from "../Cards";
 import { Input } from "../Inputs";
+import { Label } from "../Label";
 import {
+    ConteCriarServico,
+    ConteFormTec,
+    ConteListCriarService,
     ConteListServico,
     ConteMain,
     ContePerfil,
     DivImg,
     DivInfo,
+    MainCriarServico,
 } from "./styled";
 import User from "./user.svg";
 
@@ -21,11 +29,14 @@ export const Main = ({
     perfil,
     solicitacaoID,
     perfilTec,
+    solicitacaoTecnico,
+    CriarServico,
 }) => {
     const { openMenuHamb, setOpenMenuHamb } = useContext(MenuHamburgerContext);
     const { servicosGerais, listServico } = useContext(ListServicosContext);
 
     const { userInfo, clienteInfo } = useContext(LoginContext);
+    const { servicosCriados } = useContext(ServicoContext);
 
     useEffect(() => {
         listServico();
@@ -145,6 +156,56 @@ export const Main = ({
                             <Button edit>Salvar</Button>
                         </DivInfo>
                     </ContePerfil>
+                </ConteMain>
+            )}
+
+            {solicitacaoTecnico && (
+                <ConteMain onClick={openMenu}>
+                    <ContePerfil>
+                        <h1>Solicitação Para Virar Tecnico</h1>
+                        <p>
+                            Preencha o Formulario a baixo para realizar sua
+                            Solicitação.
+                        </p>
+
+                        <ConteFormTec>
+                            <div>
+                                <Label solitacaoTec>Descrição</Label>
+                                <textarea></textarea>
+                            </div>
+
+                            <Button solicitar>Enviar</Button>
+                        </ConteFormTec>
+                    </ContePerfil>
+                </ConteMain>
+            )}
+
+            {CriarServico && (
+                <ConteMain onClick={openMenu}>
+                    <MainCriarServico>
+                        <Card criarServico />
+                    </MainCriarServico>
+                    <ConteListCriarService>
+                        {servicosCriados.length != 0 && (
+                            <>
+                                {servicosCriados.map((elemento) => {
+                                    return (
+                                        <Card
+                                            cardServico
+                                            elemento={elemento}
+                                            key={elemento.id}
+                                        />
+                                    );
+                                })}
+                            </>
+                        )}
+                        {/* 
+                        <Card cardServico />
+                        <Card cardServico />
+                        <Card cardServico />
+                        <Card cardServico />
+                        <Card cardServico /> */}
+                    </ConteListCriarService>
                 </ConteMain>
             )}
         </>

@@ -16,7 +16,7 @@ import {
 import UserImg from "./user.svg";
 
 export const Menu = ({ index, cliente, tecnico }) => {
-    const id = window.localStorage.getItem("@TCC/ID");
+    const id = window.localStorage.getItem("@TCC/ID"); // eslint-disable-line
 
     const { openMenuHamb, openMenuFunc } = useContext(MenuHamburgerContext);
     const {
@@ -38,6 +38,8 @@ export const Menu = ({ index, cliente, tecnico }) => {
         returnSolicitacao,
         returnPerfil,
         returnLogout,
+        returnSolicitacaoTec,
+        returnCriarServico,
     } = useContext(RoutesContext);
 
     return (
@@ -105,8 +107,20 @@ export const Menu = ({ index, cliente, tecnico }) => {
                                 </Button>
                                 {openDropConfig && (
                                     <DropMenu>
-                                        <Button dropMenu>Virar Técnico</Button>
-                                        <Button dropMenu>Editar Dados</Button>
+                                        <Button
+                                            click={() => {
+                                                returnSolicitacaoTec(
+                                                    id,
+                                                    "cliente"
+                                                );
+                                                FuncCloseAll();
+                                                openMenuFunc();
+                                            }}
+                                            dropMenu
+                                        >
+                                            Virar Técnico
+                                        </Button>
+                                        {/* <Button dropMenu>Editar Dados</Button> */}
                                     </DropMenu>
                                 )}
                             </section>
@@ -179,11 +193,10 @@ export const Menu = ({ index, cliente, tecnico }) => {
                                     <DropMenu>
                                         <Button
                                             click={() => {
-                                                /* 
-                                                returnSolicitacao(
+                                                returnCriarServico(
                                                     id,
                                                     "tecnico"
-                                                ); */
+                                                );
                                                 FuncCloseAll();
                                                 openMenuFunc();
                                             }}
@@ -213,7 +226,7 @@ export const Menu = ({ index, cliente, tecnico }) => {
                                 </Button>
                                 {openDropConfig && (
                                     <DropMenu>
-                                        <Button dropMenu>Virar Técnico</Button>
+                                        {/* <Button dropMenu>Virar Técnico</Button> */}
                                         <Button dropMenu>Editar Dados</Button>
                                     </DropMenu>
                                 )}

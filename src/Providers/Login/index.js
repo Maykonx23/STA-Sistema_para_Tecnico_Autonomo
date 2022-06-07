@@ -34,7 +34,6 @@ export const LoginProvider = ({ children }) => {
                         .get(`/tecnicos/clientes/${response.data.cliente.id}`)
                         .then((res) => {
                             setUserInfo(res.data[0]);
-                            console.log(res.data);
                             window.localStorage.setItem(
                                 "@TCC/ID",
                                 res.data[0].id

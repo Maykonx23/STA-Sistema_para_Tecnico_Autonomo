@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const ModalExcluirServConte = styled.div`
     position: fixed;
@@ -29,5 +29,12 @@ export const ModalCriarServBtn = styled.div`
     justify-content: space-evenly;
     button {
         cursor: pointer;
+    }
+`;
+
+export const ConteExcluirServicoBtn = styled.div`
+    @media (min-width: 760px) {
+        width: 100%;
+        text-align: right;
     }
 `;

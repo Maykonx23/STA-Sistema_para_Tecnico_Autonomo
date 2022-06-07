@@ -1,21 +1,23 @@
-import styled from 'styled-components';
+import styled from "styled-components";
 
 export const ModalEditarServConte = styled.div`
-    position: absolute;
+    position: fixed;
     display: flex;
     align-items: center;
     justify-content: center;
     width: 100%;
     height: 100vh;
     background-color: rgb(0, 0, 0, 0.6);
+    > div {
+        padding: 40px 30px;
+        border-radius: 10px;
+        background-color: white;
+    }
 `;
 
 export const ModalEditarServForm = styled.form`
     display: flex;
     flex-direction: column;
-    padding: 40px 30px;
-    border-radius: 10px;
-    background-color: white;
 `;
 
 export const ModalEditarServInput = styled.div`
@@ -34,5 +36,12 @@ export const ModalEditarServInput = styled.div`
         width: 300px;
         padding: 20px 20px;
         font-size: 1em;
+    }
+`;
+
+export const ConteServicoEditarBtn = styled.div`
+    @media (min-width: 760px) {
+        width: 100%;
+        text-align: right;
     }
 `;

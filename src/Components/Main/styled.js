@@ -72,3 +72,27 @@ export const DivInfo = styled.form`
         }
     }
 `;
+
+export const ConteFormTec = styled.form`
+    @media (min-width: 760px) {
+    }
+`;
+
+export const MainCriarServico = styled.div`
+    @media (min-width: 760px) {
+        width: 100%;
+        display: flex;
+        margin: 0 0 50px 0;
+    }
+`;
+
+export const ConteListCriarService = styled.div`
+    @media (min-width: 760px) {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        > div {
+            margin: 0 30px 30px 0;
+        }
+    }
+`;

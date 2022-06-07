@@ -1,14 +1,17 @@
+import { SolicitacaoServico } from "../../../solicitacaoServicos/typeorm/entities/SolicitacaoServico";
 import {
     Column,
     CreateDateColumn,
     Entity,
+    JoinColumn,
+    ManyToOne,
     PrimaryGeneratedColumn,
     UpdateDateColumn,
-} from 'typeorm';
+} from "typeorm";
 
-@Entity('chats')
+@Entity("chats")
 export class Chat {
-    @PrimaryGeneratedColumn('uuid')
+    @PrimaryGeneratedColumn("uuid")
     id: string;
 
     @Column()
@@ -19,6 +22,13 @@ export class Chat {
 
     @Column()
     tecnico: string;
+
+    @ManyToOne(
+        () => SolicitacaoServico,
+        (solicitacaoServicos) => solicitacaoServicos.chats
+    )
+    @JoinColumn({ name: "solicitacaoServico_id" })
+    solicitacaoServico: SolicitacaoServico;
 
     @CreateDateColumn()
     created_at: Date;

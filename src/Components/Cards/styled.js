@@ -11,6 +11,14 @@ export const ConteCard = styled.div`
     }
 `;
 
+export const ConteCardCriar = styled.div`
+    @media (min-width: 760px) {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+`;
+
 export const FiltroPesq = styled.div`
     @media (min-width: 760px) {
         display: flex;
@@ -25,6 +33,24 @@ export const FiltroPesq = styled.div`
         }
     }
 `;
+
+export const FiltroPesqCriar = styled.div`
+    @media (min-width: 760px) {
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        img {
+            box-sizing: border-box;
+            position: static;
+            width: 30px;
+
+            margin-left: -40px;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+    }
+`;
+
 export const FiltroBtn = styled.div`
     @media (min-width: 760px) {
         display: flex;
@@ -97,14 +123,35 @@ export const ConteCardServico = styled.div`
     }
 `;
 
+export const DivEditServico = styled.div`
+    @media (min-width: 760px) {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
+`;
+
 export const ConteStrela = styled.div`
     @media (min-width: 760px) {
+        display: flex;
+        :nth-last-child(1) {
+            color: red;
+        }
         img {
             width: 20px;
             box-sizing: border-box;
         }
     }
 `;
+
+export const ConeteInfoStatus = styled.div`
+    @media (min-width: 760px) {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+`;
+
 export const ConteInfoServico = styled.div`
     @media (min-width: 760px) {
         width: 100%;
@@ -236,5 +283,11 @@ export const ConteCardServicoSolicitacao = styled.div`
                 }
             }
         }
+    }
+`;
+
+export const ConteBtn = styled.div`
+    @media (min-width: 760px) {
+        display: flex;
     }
 `;

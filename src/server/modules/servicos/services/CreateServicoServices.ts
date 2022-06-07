@@ -1,8 +1,8 @@
-import { TecnicosRepository } from '@modules/tecnicos/typeorm/repositories/TecnicosRepository';
-import AppError from '@shared/errors/AppError';
-import { getCustomRepository } from 'typeorm';
-import { Servico } from '../typeorm/entities/Servico';
-import { ServicosRepository } from '../typeorm/repositories/ServicosRepository';
+import { TecnicosRepository } from "@modules/tecnicos/typeorm/repositories/TecnicosRepository";
+import AppError from "@shared/errors/AppError";
+import { getCustomRepository } from "typeorm";
+import { Servico } from "../typeorm/entities/Servico";
+import { ServicosRepository } from "../typeorm/repositories/ServicosRepository";
 
 interface IRequest {
     titulo: string;
@@ -27,7 +27,7 @@ export class CreateServicoService {
         const tecnicoExists = await tecnicosRepository.findById(tecnico_id);
 
         if (!tecnicoExists) {
-            throw new AppError('Esse Tecnico não existe.');
+            throw new AppError("Esse Tecnico não existe.");
         }
 
         const servico = await servicosRepository.createServico({

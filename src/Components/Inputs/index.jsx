@@ -9,6 +9,9 @@ export const Input = ({
     login,
     info,
     pesquisaServico,
+    criarServico,
+    editarServico,
+    value,
 }) => {
     return (
         <>
@@ -67,16 +70,67 @@ export const Input = ({
                     )}
                 </>
             )}
-            {/* {register ? (
-                <input
-                    {...register(name)}
-                    className={classe}
-                    type={type}
-                    placeholder={children}
-                />
-            ) : (
-                <input className={classe} type={type} placeholder={children} />
-            )} */}
+
+            {criarServico && (
+                <>
+                    {register ? (
+                        <InputPesquisaServ
+                            {...register(name)}
+                            className={classe}
+                            type={type}
+                            placeholder={children}
+                        />
+                    ) : (
+                        <InputPesquisaServ
+                            className={classe}
+                            type={type}
+                            placeholder={children}
+                        />
+                    )}
+                </>
+            )}
+
+            {editarServico && (
+                <>
+                    {value ? (
+                        <>
+                            {register ? (
+                                <InputPesquisaServ
+                                    {...register(name)}
+                                    className={classe}
+                                    type={type}
+                                    defaultValue={value}
+                                    placeholder={children}
+                                />
+                            ) : (
+                                <InputPesquisaServ
+                                    className={classe}
+                                    type={type}
+                                    defaultValue={value}
+                                    placeholder={children}
+                                />
+                            )}
+                        </>
+                    ) : (
+                        <>
+                            {register ? (
+                                <InputPesquisaServ
+                                    {...register(name)}
+                                    className={classe}
+                                    type={type}
+                                    placeholder={children}
+                                />
+                            ) : (
+                                <InputPesquisaServ
+                                    className={classe}
+                                    type={type}
+                                    placeholder={children}
+                                />
+                            )}
+                        </>
+                    )}
+                </>
+            )}
         </>
     );
 };

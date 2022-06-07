@@ -5,20 +5,24 @@ import { Logo } from "../Logo";
 import { Menu } from "../Menus";
 import { ConteHeader, ConteHeaderCliente, ConteHeaderLC } from "./styled";
 
-export const Header = ({ index, login, cadastro, cliente, tecnico }) => {
+export const Header = ({ index, login, cadastro, cliente, tecnico, home }) => {
     const { openMenuHamb, openMenuFunc } = useContext(MenuHamburgerContext);
+
+    const limparInfo = () => {
+        window.localStorage.clear(); // eslint-disable-line
+    };
 
     return (
         <>
             {index && (
-                <ConteHeader>
+                <ConteHeader onClick={limparInfo}>
                     <Logo index />
                     <Menu index />
                 </ConteHeader>
             )}
 
             {(login || cadastro) && (
-                <ConteHeaderLC>
+                <ConteHeaderLC onClick={limparInfo}>
                     <Logo login />
                 </ConteHeaderLC>
             )}
@@ -40,7 +44,7 @@ export const Header = ({ index, login, cadastro, cliente, tecnico }) => {
                         {!openMenuHamb && (
                             <Button click={openMenuFunc} menuHamburger />
                         )}
-                        <Logo cliente />
+                        <Logo tecnico />
                     </ConteHeaderCliente>
                 </>
             )}

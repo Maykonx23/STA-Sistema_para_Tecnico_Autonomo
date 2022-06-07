@@ -1,88 +1,85 @@
-import { useForm } from "react-hook-form";
 import { Button } from "../../Components/Buttons";
 import { Input } from "../../Components/Inputs";
-import apiTcc from "../../APIs/TCC-STA/";
 import {
+    ConteServicoBtn,
     ModalCriarServConte,
     ModalCriarServForm,
     ModalCriarServInput,
 } from "./styled";
 import { useHistory } from "react-router-dom/cjs/react-router-dom.min";
+import { useForm } from "react-hook-form";
+import { Label } from "../../Components/Label";
+import { useContext } from "react";
+import { ServicoContext } from "../../Providers/CriarServico";
 
-export const CriarServico = ({ setCriarService, lists }) => {
+export const CriarNewServico = () => {
     const { register, handleSubmit } = useForm();
-    const history = useHistory();
 
-    const FormCriarService = () => {
-        setCriarService(false);
-    };
+    const { cadastrarServco, CriarServicoFunc } = useContext(ServicoContext);
 
     const onSubmitFunc = (data) => {
-        data.tecnico_id = window.localStorage.getItem("idTcc");
-
-        apiTcc
-            .post(`/servicos`, data)
-            .then((response) => {
-                lists;
-                return response.data;
-            })
-            .catch((err) => {
-                console.log(err);
-            });
+        const id = window.localStorage.getItem("@TCC/ID"); // eslint-disable-line
+        data.tecnico_id = id;
+        cadastrarServco(data);
     };
 
     return (
         <>
             <ModalCriarServConte>
-                <ModalCriarServForm onSubmit={handleSubmit(onSubmitFunc)}>
-                    {/* <Close
-                        CloseForm={FormCriarService}
-                        classe="close-criar-servico"
-                    /> */}
-                    <div className="info-criar">
-                        <ModalCriarServInput>
-                            <label>Titulo</label>
-                            <Input
-                                name="titulo"
-                                register={register}
-                                type="text"
-                            >
-                                Digite um Titulo
-                            </Input>
-                        </ModalCriarServInput>
-                        <ModalCriarServInput>
-                            <label>Tempo Medio</label>
-                            <Input
-                                name="mediaTempo"
-                                register={register}
-                                type="time"
-                            ></Input>
-                        </ModalCriarServInput>
-                        <ModalCriarServInput>
-                            <label>Preço</label>
-                            <Input
-                                name="price"
-                                register={register}
-                                type="number"
-                            >
-                                Preço
-                            </Input>
-                        </ModalCriarServInput>
-                        <ModalCriarServInput>
-                            <label>Descrição</label>
-                            <Input
-                                name="descricao"
-                                register={register}
-                                type="text"
-                            >
-                                Descrição do Serviço
-                            </Input>
-                        </ModalCriarServInput>
-                    </div>
-                    <Button type="submit" classe="btn-criar">
-                        Criar
-                    </Button>
-                </ModalCriarServForm>
+                <div>
+                    <ConteServicoBtn>
+                        <Button click={CriarServicoFunc} close />
+                    </ConteServicoBtn>
+                    <ModalCriarServForm onSubmit={handleSubmit(onSubmitFunc)}>
+                        <div className="info-criar">
+                            <ModalCriarServInput>
+                                <Label criarServico>Titulo</Label>
+                                <Input
+                                    name="titulo"
+                                    register={register}
+                                    type="text"
+                                    criarServico
+                                >
+                                    Digite um Titulo
+                                </Input>
+                            </ModalCriarServInput>
+                            <ModalCriarServInput>
+                                <Label criarServico>Tempo Medio</Label>
+                                <Input
+                                    name="mediaTempo"
+                                    register={register}
+                                    type="time"
+                                    criarServico
+                                ></Input>
+                            </ModalCriarServInput>
+                            <ModalCriarServInput>
+                                <Label criarServico>Preço</Label>
+                                <Input
+                                    name="price"
+                                    register={register}
+                                    type="text"
+                                    criarServico
+                                >
+                                    Preço
+                                </Input>
+                            </ModalCriarServInput>
+                            <ModalCriarServInput>
+                                <Label criarServico>Descrição</Label>
+                                <Input
+                                    name="descricao"
+                                    register={register}
+                                    type="text"
+                                    criarServico
+                                >
+                                    Descrição do Serviço
+                                </Input>
+                            </ModalCriarServInput>
+                        </div>
+                        <Button criarServico type="submit">
+                            Criar
+                        </Button>
+                    </ModalCriarServForm>
+                </div>
             </ModalCriarServConte>
         </>
     );
