@@ -3,6 +3,7 @@ import { EntityRepository, Repository } from "typeorm";
 import { SolicitacaoServico } from "../entities/SolicitacaoServico";
 import { Servico } from "../../../servicos/typeorm/entities/Servico";
 import { Tecnico } from "../../../tecnicos/typeorm/entities/Tecnico";
+import { Chat } from "@modules/chats/typeorm/entities/Chat";
 
 interface IChats {
     id: string;
@@ -19,6 +20,14 @@ interface IRequest {
     chats: IChats[];
 }
 
+interface ICliente {
+    id: string;
+}
+
+interface ITecnico {
+    id: string;
+}
+
 @EntityRepository(SolicitacaoServico)
 export class SolicitacaoServicosRepository extends Repository<SolicitacaoServico> {
     public async findById(id: string): Promise<SolicitacaoServico | undefined> {
@@ -28,14 +37,27 @@ export class SolicitacaoServicosRepository extends Repository<SolicitacaoServico
         return solicitacaoServico;
     }
 
-    /* public async findByIdCliente({ id }: ICliente): Promise<Tecnico[]> {
-        const tecnico = await this.find({
+    public async findByIdCliente({
+        id,
+    }: ICliente): Promise<SolicitacaoServico[]> {
+        const solicitacaoServico = await this.find({
             where: { cliente: { id } },
-            relations: ["cliente", "servicos"],
+            relations: ["cliente", "servicos", "tecnico", "chats"],
         });
 
-        return tecnico;
-    } */
+        return solicitacaoServico;
+    }
+
+    public async findByIdTecnico({
+        id,
+    }: ITecnico): Promise<SolicitacaoServico[]> {
+        const solicitacaoServico = await this.find({
+            where: { tecnico: { id } },
+            relations: ["cliente", "servicos", "tecnico", "chats"],
+        });
+
+        return solicitacaoServico;
+    }
 
     public async createSolicitacaoServico({
         status,

@@ -64,7 +64,6 @@ export const Rotas = () => {
                     <CriarServico />
                 </Route>
 
-                {/* 
                 {/* Fim Tecnicos */}
             </Switch>
         </>

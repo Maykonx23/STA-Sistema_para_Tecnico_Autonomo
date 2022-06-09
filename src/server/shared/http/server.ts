@@ -1,6 +1,6 @@
 import "reflect-metadata";
-import express, { Request, Response, NextFunction } from "express"; /* 
-import "express-async-errors"; */
+import express, { Request, Response, NextFunction } from "express";
+import "express-async-errors";
 import { errors } from "celebrate";
 import cors from "cors";
 import { routes } from "./routes";

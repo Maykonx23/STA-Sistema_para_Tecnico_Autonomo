@@ -16,8 +16,8 @@ export const Cadastro = () => {
     const onSubmitFunc = (data) => {
         delete data.confirmPassword;
         data.nivel = "cliente";
-        data.avaliacao = 0;
-        console.log(data); // eslint-disable-line
+        data.avaliacao = 0; /* 
+        console.log(data); // eslint-disable-line */
         cadastrarUser(data);
         returnLogin();
     };

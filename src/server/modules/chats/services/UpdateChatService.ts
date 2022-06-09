@@ -9,8 +9,7 @@ import { ChatRepository } from "../typeorm/repositories/ChatsReposutiries";
 interface IRequest {
     id: string;
     descricao: string;
-    cliente: string;
-    tecnico: string;
+    usuario: string;
     solicitacaoServico_id: string;
 }
 
@@ -18,8 +17,7 @@ export class UpdateChatService {
     public async execute({
         id,
         descricao,
-        cliente,
-        tecnico,
+        usuario,
         solicitacaoServico_id,
     }: IRequest): Promise<Chat> {
         const chatsRepository = getCustomRepository(ChatRepository);
@@ -27,10 +25,10 @@ export class UpdateChatService {
         const solicitacaoServicosRepository = getCustomRepository(
             SolicitacaoServicosRepository
         );
-
+        /*
         const clientesRepository = getCustomRepository(ClientesRepository);
 
-        const tecnicosRepository = getCustomRepository(TecnicosRepository);
+        const tecnicosRepository = getCustomRepository(TecnicosRepository);  
 
         const clienteExists = await clientesRepository.findById(cliente);
 
@@ -42,7 +40,7 @@ export class UpdateChatService {
 
         if (!tecnicoExists) {
             throw new AppError("Esse Tecnico não existe.");
-        }
+        } */
 
         const solicitacaoServico = await solicitacaoServicosRepository.findById(
             solicitacaoServico_id
@@ -55,12 +53,11 @@ export class UpdateChatService {
         const chat = await chatsRepository.findOne(id);
 
         if (!chat) {
-            throw new AppError("Produto não existe.");
+            throw new AppError("Chat não existe.");
         }
 
         chat.descricao = descricao;
-        chat.cliente = clienteExists.id;
-        chat.tecnico = tecnicoExists.id;
+        chat.usuario = usuario;
         chat.solicitacaoServico = solicitacaoServico;
 
         await chatsRepository.save(chat);

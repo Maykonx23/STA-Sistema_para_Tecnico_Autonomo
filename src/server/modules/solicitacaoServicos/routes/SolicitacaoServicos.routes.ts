@@ -58,4 +58,24 @@ solicitacaoServicosRouter.delete(
     solicitacaoServicoController.delete
 );
 
+solicitacaoServicosRouter.get(
+    "/cliente/:id",
+    celebrate({
+        [Segments.PARAMS]: {
+            id: Joi.string().uuid().required(),
+        },
+    }),
+    solicitacaoServicoController.showCliente
+);
+
+solicitacaoServicosRouter.get(
+    "/tecnico/:id",
+    celebrate({
+        [Segments.PARAMS]: {
+            id: Joi.string().uuid().required(),
+        },
+    }),
+    solicitacaoServicoController.showTecnico
+);
+
 export default solicitacaoServicosRouter;

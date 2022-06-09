@@ -1,4 +1,3 @@
-import { Cliente } from "@modules/clientes/typeorm/entities/Cliente";
 import { ClientesRepository } from "@modules/clientes/typeorm/repositories/ClientesRepository";
 import { ServicosRepository } from "@modules/servicos/typeorm/repositories/ServicosRepository";
 import { TecnicosRepository } from "@modules/tecnicos/typeorm/repositories/TecnicosRepository";
@@ -6,12 +5,6 @@ import AppError from "@shared/errors/AppError";
 import { getCustomRepository } from "typeorm";
 import { SolicitacaoServico } from "../typeorm/entities/SolicitacaoServico";
 import { SolicitacaoServicosRepository } from "../typeorm/repositories/SolicitacaoServicosRepository";
-
-interface IChats {
-    id: string;
-    cliente: string;
-    tecnico: string;
-}
 
 interface IRequest {
     id: string;

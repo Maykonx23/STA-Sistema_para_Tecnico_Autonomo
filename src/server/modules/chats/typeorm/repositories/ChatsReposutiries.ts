@@ -4,20 +4,14 @@ import { Chat } from "../entities/Chat";
 
 interface IRequest {
     descricao: string;
-    cliente: string;
-    tecnico: string;
+    usuario: string;
     solicitacaoServico: SolicitacaoServico;
 }
 
 @EntityRepository(Chat)
 export class ChatRepository extends Repository<Chat> {
-    public async findByCliente(cliente: string): Promise<Chat | undefined> {
-        const chat = this.findOne({ where: { cliente } });
-        return chat;
-    }
-
-    public async findByTecnico(tecnico: string): Promise<Chat | undefined> {
-        const chat = this.findOne({ where: { tecnico } });
+    public async findByUsuario(usuario: string): Promise<Chat | undefined> {
+        const chat = this.findOne({ where: { usuario } });
         return chat;
     }
 
@@ -32,14 +26,12 @@ export class ChatRepository extends Repository<Chat> {
 
     public async createChat({
         descricao,
-        cliente,
-        tecnico,
+        usuario,
         solicitacaoServico,
     }: IRequest): Promise<Chat> {
         const chat = this.create({
             descricao,
-            cliente,
-            tecnico,
+            usuario,
             solicitacaoServico,
         });
 

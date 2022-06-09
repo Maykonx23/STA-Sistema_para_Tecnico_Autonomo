@@ -18,10 +18,7 @@ export class Chat {
     descricao: string;
 
     @Column()
-    cliente: string;
-
-    @Column()
-    tecnico: string;
+    usuario: string;
 
     @ManyToOne(
         () => SolicitacaoServico,

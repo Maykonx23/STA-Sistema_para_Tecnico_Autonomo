@@ -6,16 +6,14 @@ import { ChatRepository } from "../typeorm/repositories/ChatsReposutiries";
 
 interface IRequest {
     descricao: string;
-    cliente: string;
-    tecnico: string;
+    usuario: string;
     solicitacaoServico_id: string;
 }
 
 export class CreateChatService {
     public async execute({
         descricao,
-        cliente,
-        tecnico,
+        usuario,
         solicitacaoServico_id,
     }: IRequest): Promise<Chat> {
         const chatsRepository = getCustomRepository(ChatRepository);
@@ -28,13 +26,12 @@ export class CreateChatService {
             await solicitacaoServicoRepository.findById(solicitacaoServico_id);
 
         if (!solicitacaoServicoExists) {
-            throw new AppError("Esse Cliente não existe.");
+            throw new AppError("Essa Solicitação não existe.");
         }
 
         const chat = await chatsRepository.createChat({
             descricao,
-            cliente,
-            tecnico,
+            usuario,
             solicitacaoServico: solicitacaoServicoExists,
         });
 

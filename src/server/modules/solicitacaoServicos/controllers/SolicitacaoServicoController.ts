@@ -1,8 +1,10 @@
 import { Request, Response } from "express";
+import { ClienteIDSolicitacaoServicoService } from "../services/ClienteIDSolicitacaoServicoServices";
 import { CreateSolicitacaoServicoService } from "../services/CreateSolicitacaoServicoServices";
 import { DeleteSolicitacaoServicoService } from "../services/DeleteSolicitacaoServicoService";
 import { ListSolicitacaoServicoService } from "../services/ListSolicitacaoServicoService";
 import { ShowSolicitacaoServicoService } from "../services/ShowSolicitacaoServicoService";
+import { TecnicoIDSolicitacaoServicoServices } from "../services/TecnicoIDSolicitacaoServicoServices copy";
 import { UpdateSolicitacaoServicoService } from "../services/UpdateSolicitacaoServicoService";
 
 export default class SolicitacaoServicoController {
@@ -83,17 +85,30 @@ export default class SolicitacaoServicoController {
 
         return response.json([]);
     }
-    /* 
+
     public async showCliente(
         request: Request,
-        response: Response,
+        response: Response
     ): Promise<Response> {
         const { id } = request.params;
 
-        const showIDClienteTecnico = new ClienteIDTecnicoService();
+        const showClienteID = new ClienteIDSolicitacaoServicoService();
 
-        const tecnico = await showIDClienteTecnico.execute({ id });
+        const solicitacaoServico = await showClienteID.execute({ id });
 
-        return response.json(tecnico);
-    } */
+        return response.json(solicitacaoServico);
+    }
+
+    public async showTecnico(
+        request: Request,
+        response: Response
+    ): Promise<Response> {
+        const { id } = request.params;
+
+        const showTecnicoID = new TecnicoIDSolicitacaoServicoServices();
+
+        const solicitacaoServico = await showTecnicoID.execute({ id });
+
+        return response.json(solicitacaoServico);
+    }
 }
