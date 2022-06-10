@@ -1,4 +1,3 @@
-import { Divisao } from "../../../Components/Divisao";
 import { Header } from "../../../Components/Header";
 import { Main } from "../../../Components/Main";
 

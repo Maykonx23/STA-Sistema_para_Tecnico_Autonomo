@@ -1,34 +1,35 @@
-import { Router } from 'express';
-import { celebrate, Joi, Segments } from 'celebrate';
-import TecnicoController from '../controllers/TecnicoController';
+import { Router } from "express";
+import { celebrate, Joi, Segments } from "celebrate";
+import TecnicoController from "../controllers/TecnicoController";
+import isAuthenticated from "../../../shared/http/middlewares/isAuthenticated";
 
 const tecnicosRouter = Router();
 const tecnicoController = new TecnicoController();
 
-tecnicosRouter.get('/', tecnicoController.index);
+tecnicosRouter.get("/", tecnicoController.index);
 
 tecnicosRouter.get(
-    '/clientes/:id',
+    "/clientes/:id",
     celebrate({
         [Segments.PARAMS]: {
             id: Joi.string().uuid().required(),
         },
     }),
-    tecnicoController.showCliente,
+    tecnicoController.showCliente
 );
 
 tecnicosRouter.get(
-    '/:id',
+    "/:id",
     celebrate({
         [Segments.PARAMS]: {
             id: Joi.string().uuid().required(),
         },
     }),
-    tecnicoController.show,
+    tecnicoController.show
 );
 
 tecnicosRouter.post(
-    '/',
+    "/",
     celebrate({
         [Segments.BODY]: {
             descricao: Joi.string().required(),
@@ -36,11 +37,11 @@ tecnicosRouter.post(
             cliente_id: Joi.required(),
         },
     }),
-    tecnicoController.create,
+    tecnicoController.create
 );
 
 tecnicosRouter.put(
-    '/:id',
+    "/:id",
     celebrate({
         [Segments.BODY]: {
             descricao: Joi.string(),
@@ -51,17 +52,17 @@ tecnicosRouter.put(
             id: Joi.string().uuid().required(),
         },
     }),
-    tecnicoController.update,
+    tecnicoController.update
 );
 
 tecnicosRouter.delete(
-    '/:id',
+    "/:id",
     celebrate({
         [Segments.PARAMS]: {
             id: Joi.string().uuid().required(),
         },
     }),
-    tecnicoController.delete,
+    tecnicoController.delete
 );
 
 export default tecnicosRouter;

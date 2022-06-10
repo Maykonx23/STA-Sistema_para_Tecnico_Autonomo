@@ -79,6 +79,18 @@ export const RoutesProvider = ({ children }) => {
             history.push(`/tecnico/${id}/criar-servico`);
         }
     };
+
+    const returnSolicitacaoServico = (id, idServico, type) => {
+        if (type == "cliente") {
+            history.push(`/cliente/${id}/solicitacao`);
+        }
+        if (type == "tecnico") {
+            history.push(`/tecnico/${id}/solicitacao/${idServico}`);
+        }
+        if (type == "admin") {
+            history.push(`/admin/${id}/solicitacao`);
+        }
+    };
     return (
         <RoutesContext.Provider
             value={{
@@ -93,6 +105,7 @@ export const RoutesProvider = ({ children }) => {
                 returnTecnico,
                 returnSolicitacaoTec,
                 returnCriarServico,
+                returnSolicitacaoServico,
             }}
         >
             {children}

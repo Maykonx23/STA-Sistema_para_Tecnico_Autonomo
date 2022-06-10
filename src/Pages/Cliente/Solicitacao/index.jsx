@@ -1,7 +1,6 @@
 import { useContext, useState } from "react";
 import { Header } from "../../../Components/Header";
 import { Main } from "../../../Components/Main";
-import { MenuHamburgerContext } from "../../../Providers/MenuHamburger";
 import { RoutesContext } from "../../../Providers/Routes";
 
 export const ClienteSolicitacao = () => {
@@ -15,11 +14,6 @@ export const ClienteSolicitacao = () => {
         returnIndex();
     }
 
-    const { openMenuHamb, setOpenMenuHamb } = useContext(MenuHamburgerContext);
-
-    const closeMenu = () => {
-        setOpenMenuHamb(false);
-    };
     return (
         <>
             <Header cliente />

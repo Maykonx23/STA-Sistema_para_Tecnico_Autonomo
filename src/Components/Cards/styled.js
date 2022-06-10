@@ -152,6 +152,51 @@ export const ConeteInfoStatus = styled.div`
     }
 `;
 
+export const ConteInfoServicoSoli = styled.div`
+    @media (min-width: 760px) {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 0 0 20px 0;
+        > h2 {
+            color: #000036;
+            margin: 20px 0 0 0;
+        }
+
+        > h3 {
+            color: #000036;
+            margin: 20px 0 0 0;
+        }
+        > p {
+            height: 70px;
+            margin: 10px 0;
+            text-align: justify;
+        }
+        > span {
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+    }
+`;
+
+export const ConteInfoCliente = styled.h3`
+    @media (min-width: 760px) {
+        width: 100%;
+        display: flex;
+        justify-content: flex-start;
+        align-items: center;
+        font-size: 1.5em;
+        font-weight: 800;
+        p {
+            margin-left: 8px;
+            font-size: 0.8em;
+            color: black;
+            font-weight: 500;
+        }
+    }
+`;
+
 export const ConteInfoServico = styled.div`
     @media (min-width: 760px) {
         width: 100%;
@@ -289,5 +334,32 @@ export const ConteCardServicoSolicitacao = styled.div`
 export const ConteBtn = styled.div`
     @media (min-width: 760px) {
         display: flex;
+    }
+`;
+
+export const ConteStatus = styled.p`
+    @media (min-width: 760px) {
+        position: static;
+        background-color: ${(props) =>
+            props.color == "red"
+                ? "red"
+                : props.color == "yellow"
+                ? "yellow"
+                : props.color == "green"
+                ? "green"
+                : props.color == "blue" && "blue"};
+        padding: 5px 10px;
+        border-radius: 10px;
+        color: ${(props) =>
+            props.color == "red"
+                ? "white"
+                : props.color == "yellow"
+                ? "black"
+                : props.color == "green"
+                ? "green"
+                : props.color == "blue" && "white"};
+        font-size: 0.8em;
+        font-weight: 200;
+        box-sizing: border-box;
     }
 `;

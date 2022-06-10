@@ -5,26 +5,19 @@ import {
     ConteCardCriar,
     ConteCardImg,
     ConteCardServico,
-    ConteCardServicoSolicitacao,
-    ConteCardSolicitacao,
+    ConteInfoCliente,
     ConteInfoServico,
+    ConteInfoServicoSoli,
+    ConteStatus,
     ConteStrela,
-    DivAcao,
-    DivAcaoSolicitacao,
-    DivDescription,
     DivEditServico,
-    DivPreco,
-    DivServico,
-    DivServicoSolicitacao,
-    DivStatusSolicitacao,
-    DivTecnicoSolicitacao,
     FiltroBtn,
     FiltroPesq,
     FiltroPesqCriar,
 } from "./styled";
 import DropDown from "./arrow_drop_down.svg";
 import DropUp from "./arrow_drop_up.svg";
-import { useContext, useEffect } from "react";
+import { useContext } from "react";
 import { DropFilterContext } from "../../Providers/DropFiltro";
 import { Input } from "../Inputs";
 import Perquisa from "./search.svg";
@@ -33,6 +26,8 @@ import Computador from "../../Imgs/computer.svg";
 import StarVazio from "../../Imgs/star_vazia.svg";
 import { ListServicosContext } from "../../Providers/ListServicos";
 import { ServicoContext } from "../../Providers/CriarServico";
+import { SolicitacaoServicoContext } from "../../Providers/SolicitacaoServico";
+import { RoutesContext } from "../../Providers/Routes";
 
 export const Card = ({
     listCabecalho,
@@ -42,17 +37,15 @@ export const Card = ({
     elemento,
     criarServico,
     cardServico,
+    listSolicitacaoServicoTecnico,
 }) => {
-    const {
-        openDropServico,
-        openDropDescription,
-        openDropPreco,
-        openDropAvaliacao,
-        dropServico,
-        dropDescription,
-        dropPreco,
-        dropAvaliacao,
-    } = useContext(DropFilterContext);
+    const id = window.localStorage.getItem("@TCC/ID"); // eslint-disable-line
+    const { openDropPreco, openDropAvaliacao, dropPreco, dropAvaliacao } =
+        useContext(DropFilterContext);
+
+    const { funcAlterarSolicitacaoServico, funcInfoServico } = useContext(
+        SolicitacaoServicoContext
+    );
 
     const {
         CriarServicoFunc,
@@ -64,6 +57,8 @@ export const Card = ({
 
     const { servicoId } = useContext(ListServicosContext);
 
+    const { returnSolicitacaoServico } = useContext(RoutesContext);
+
     const eventoId = (e) => {
         setIdServico(e.target.id);
         setExcluirServico(true);
@@ -73,6 +68,19 @@ export const Card = ({
     const eventoEdit = (e) => {
         setIdServico(e.target.id);
         editarServicoFunc();
+    };
+
+    const eventoRejeitar = (e) => {
+        funcAlterarSolicitacaoServico(e.target.id, "rejeitar");
+    };
+
+    const eventoAceitar = (e) => {
+        funcAlterarSolicitacaoServico(e.target.id, "aceitar");
+    };
+
+    const eventoDetalhe = (e) => {
+        returnSolicitacaoServico(id, e.target.id, "tecnico");
+        funcInfoServico(e.target.id);
     };
 
     return (
@@ -116,43 +124,6 @@ export const Card = ({
                         </Button>
                     </ConteBtn>
                 </ConteCardCriar>
-                /* <ConteCardSolicitacao>
-                    <DivServicoSolicitacao>
-                        <p>SERVIÇO</p>
-                        {openDropServico ? (
-                            <img onClick={dropServico} src={DropUp} alt="" />
-                        ) : (
-                            <img onClick={dropServico} src={DropDown} alt="" />
-                        )}
-                    </DivServicoSolicitacao>
-                    <DivTecnicoSolicitacao>
-                        <p>TÉCNICO</p>
-                        {openDropDescription ? (
-                            <img
-                                onClick={dropDescription}
-                                src={DropUp}
-                                alt=""
-                            />
-                        ) : (
-                            <img
-                                onClick={dropDescription}
-                                src={DropDown}
-                                alt=""
-                            />
-                        )}
-                    </DivTecnicoSolicitacao>
-                    <DivStatusSolicitacao>
-                        <p>STATUS</p>
-                        {openDropPreco ? (
-                            <img onClick={dropPreco} src={DropUp} alt="" />
-                        ) : (
-                            <img onClick={dropPreco} src={DropDown} alt="" />
-                        )}
-                    </DivStatusSolicitacao>
-                    <DivAcaoSolicitacao>
-                        <p>AÇÃO</p>
-                    </DivAcaoSolicitacao>
-                </ConteCardSolicitacao> */
             )}
 
             {listServicos && (
@@ -209,22 +180,6 @@ export const Card = ({
                         </DivEditServico>
                     </ConteCardServico>
                 </>
-
-                /*
-                <ConteCardServicoSolicitacao>
-                    <DivServicoSolicitacao>
-                        <p>Manutenção de Impressora</p>
-                    </DivServicoSolicitacao>
-                    <DivTecnicoSolicitacao>
-                        <p>Maykon Dias Guedes</p>
-                    </DivTecnicoSolicitacao>
-                    <DivStatusSolicitacao>
-                        <p>Solicitado</p>
-                    </DivStatusSolicitacao>
-                    <DivAcaoSolicitacao>
-                        <p>Detalhes</p>
-                    </DivAcaoSolicitacao>
-                </ConteCardServicoSolicitacao> */
             )}
 
             {criarServico && (
@@ -266,6 +221,96 @@ export const Card = ({
                             <button onClick={eventoId} id={elemento.id}>
                                 Excluir
                             </button>
+                        </DivEditServico>
+                    </ConteCardServico>
+                </>
+            )}
+
+            {listSolicitacaoServicoTecnico && (
+                <>
+                    <ConteCardServico>
+                        <ConteCardImg>
+                            <img src={Computador} alt="Computador" />
+                        </ConteCardImg>
+                        <ConteInfoServicoSoli>
+                            <h2> {elemento.servicos.titulo}</h2>
+                            <ConeteInfoStatus>
+                                <ConteStrela>
+                                    <img src={StarVazio} alt="" />
+                                    <img src={StarVazio} alt="" />
+                                    <img src={StarVazio} alt="" />
+                                    <img src={StarVazio} alt="" />
+                                    <img src={StarVazio} alt="" />
+                                </ConteStrela>
+                                <div>
+                                    {elemento.status == "Encerrado" ? (
+                                        <ConteStatus color="red">
+                                            Encerrado
+                                        </ConteStatus>
+                                    ) : (
+                                        <>
+                                            {elemento.status == "Aguardando" ? (
+                                                <ConteStatus color="yellow">
+                                                    Aguardando
+                                                </ConteStatus>
+                                            ) : (
+                                                <>
+                                                    {elemento.status ==
+                                                    "Concluido" ? (
+                                                        <ConteStatus color="green">
+                                                            Concluido
+                                                        </ConteStatus>
+                                                    ) : (
+                                                        <>
+                                                            {elemento.status ==
+                                                                "Processando" && (
+                                                                <ConteStatus color="blue">
+                                                                    Processando
+                                                                </ConteStatus>
+                                                            )}
+                                                        </>
+                                                    )}
+                                                </>
+                                            )}
+                                        </>
+                                    )}
+                                </div>
+                            </ConeteInfoStatus>
+                            <p>{elemento.servicos.descricao} </p>
+                            <ConteInfoCliente>
+                                Cliente: <p>{elemento.cliente.name} </p>
+                            </ConteInfoCliente>
+                        </ConteInfoServicoSoli>
+                        <DivEditServico>
+                            {elemento.status == "Aguardando" ? (
+                                <>
+                                    <button
+                                        onClick={eventoRejeitar}
+                                        id={elemento.id}
+                                    >
+                                        Rejeitar
+                                    </button>
+                                    <button
+                                        onClick={eventoAceitar}
+                                        id={elemento.id}
+                                    >
+                                        Aceitar
+                                    </button>
+                                </>
+                            ) : (
+                                <>
+                                    {elemento.status == "Encerrado" ? (
+                                        <div>Encerrado</div>
+                                    ) : (
+                                        <button
+                                            onClick={eventoDetalhe}
+                                            id={elemento.id}
+                                        >
+                                            + Detalhes
+                                        </button>
+                                    )}
+                                </>
+                            )}
                         </DivEditServico>
                     </ConteCardServico>
                 </>

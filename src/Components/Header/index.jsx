@@ -15,14 +15,22 @@ export const Header = ({ index, login, cadastro, cliente, tecnico, home }) => {
     return (
         <>
             {index && (
-                <ConteHeader onClick={limparInfo}>
+                <ConteHeader
+                    onClick={() => {
+                        limparInfo();
+                    }}
+                >
                     <Logo index />
                     <Menu index />
                 </ConteHeader>
             )}
 
             {(login || cadastro) && (
-                <ConteHeaderLC onClick={limparInfo}>
+                <ConteHeaderLC
+                    onClick={() => {
+                        limparInfo();
+                    }}
+                >
                     <Logo login />
                 </ConteHeaderLC>
             )}
@@ -31,7 +39,12 @@ export const Header = ({ index, login, cadastro, cliente, tecnico, home }) => {
                     {openMenuHamb && <Menu cliente />}
                     <ConteHeaderCliente>
                         {!openMenuHamb && (
-                            <Button click={openMenuFunc} menuHamburger />
+                            <Button
+                                click={() => {
+                                    openMenuFunc();
+                                }}
+                                menuHamburger
+                            />
                         )}
                         <Logo cliente />
                     </ConteHeaderCliente>
@@ -42,7 +55,12 @@ export const Header = ({ index, login, cadastro, cliente, tecnico, home }) => {
                     {openMenuHamb && <Menu tecnico />}
                     <ConteHeaderCliente>
                         {!openMenuHamb && (
-                            <Button click={openMenuFunc} menuHamburger />
+                            <Button
+                                click={() => {
+                                    openMenuFunc();
+                                }}
+                                menuHamburger
+                            />
                         )}
                         <Logo tecnico />
                     </ConteHeaderCliente>

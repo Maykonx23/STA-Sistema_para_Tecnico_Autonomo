@@ -8,12 +8,20 @@ export const Logo = ({ index, login, cadastro, cliente, tecnico }) => {
     return (
         <>
             {index && (
-                <ConteLogo onClick={returnIndex}>
+                <ConteLogo
+                    onClick={() => {
+                        returnIndex();
+                    }}
+                >
                     <h2>STA - Sistema para Técnicos Autônomo</h2>
                 </ConteLogo>
             )}
             {(login || cadastro) && (
-                <ConteLogoLC onClick={returnIndex}>
+                <ConteLogoLC
+                    onClick={() => {
+                        returnIndex();
+                    }}
+                >
                     <h2>STA - Sistema para Técnicos Autônomo</h2>
                 </ConteLogoLC>
             )}

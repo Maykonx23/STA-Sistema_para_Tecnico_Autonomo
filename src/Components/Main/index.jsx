@@ -1,24 +1,33 @@
 import { useContext, useEffect, useState } from "react";
+import { useForm } from "react-hook-form";
+import { useParams } from "react-router-dom/cjs/react-router-dom.min";
 import { ServicoContext } from "../../Providers/CriarServico";
 import { DropMenuContext } from "../../Providers/DropMenu";
 import { ListServicosContext } from "../../Providers/ListServicos";
 import { LoginContext } from "../../Providers/Login";
 import { MenuHamburgerContext } from "../../Providers/MenuHamburger";
 import { RoutesContext } from "../../Providers/Routes";
+import { SolicitacaoServicoContext } from "../../Providers/SolicitacaoServico";
 import { Button } from "../Buttons";
-import { CardCriar } from "../CardCriarServico";
 import { Card } from "../Cards";
+import { Divisao } from "../Divisao";
 import { Input } from "../Inputs";
 import { Label } from "../Label";
 import {
-    ConteCriarServico,
     ConteFormTec,
+    ConteInfoDescricao,
+    ConteInfoTec,
     ConteListCriarService,
     ConteListServico,
     ConteMain,
+    ConteMainSolicitacaoServico,
     ContePerfil,
+    ContePerfilSolicitacaoTec,
+    ConteSolicitacaoServico,
+    ConteStatus,
     DivImg,
     DivInfo,
+    InfoServico,
     MainCriarServico,
 } from "./styled";
 import User from "./user.svg";
@@ -31,15 +40,33 @@ export const Main = ({
     perfilTec,
     solicitacaoTecnico,
     CriarServico,
+    tecnico,
+    solicitacaoServico,
 }) => {
+    const param = useParams();
+    const id = window.localStorage.getItem("@TCC/ID"); // eslint-disable-line
+    const { register, handleSubmit } = useForm();
     const { openMenuHamb, setOpenMenuHamb } = useContext(MenuHamburgerContext);
     const { servicosGerais, listServico } = useContext(ListServicosContext);
 
+    const { returnLogin } = useContext(RoutesContext);
+
     const { userInfo, clienteInfo } = useContext(LoginContext);
     const { servicosCriados } = useContext(ServicoContext);
+    const {
+        funcInfoSolicitacaoServico,
+        solicitacaoServicoInfo,
+        servicoInfo,
+        tecnicoInfo,
+        funcInfoServico,
+        idServico,
+        funcSolicitacaoTec,
+    } = useContext(SolicitacaoServicoContext);
 
     useEffect(() => {
         listServico();
+        funcInfoSolicitacaoServico(id, "tecnico");
+        funcInfoServico(param.idSer);
     }, []);
 
     const {
@@ -56,6 +83,11 @@ export const Main = ({
         setOpenDropServico(false);
         setOpenDropConfig(false);
         setOpenDropPerfil(false);
+    };
+
+    const onSubmitSoliTec = (data) => {
+        data.avaliacao = 0;
+        funcSolicitacaoTec(data, returnLogin);
     };
 
     return (
@@ -86,6 +118,7 @@ export const Main = ({
                     </ConteListServico>
                 </ConteMain>
             )}
+
             {solicitacao && (
                 <ConteMain onClick={openMenu}>
                     <ConteListServico>
@@ -161,22 +194,27 @@ export const Main = ({
 
             {solicitacaoTecnico && (
                 <ConteMain onClick={openMenu}>
-                    <ContePerfil>
+                    <ContePerfilSolicitacaoTec>
                         <h1>Solicitação Para Virar Tecnico</h1>
                         <p>
                             Preencha o Formulario a baixo para realizar sua
                             Solicitação.
                         </p>
 
-                        <ConteFormTec>
+                        <ConteFormTec onSubmit={handleSubmit(onSubmitSoliTec)}>
                             <div>
                                 <Label solitacaoTec>Descrição</Label>
-                                <textarea></textarea>
+                                <textarea
+                                    name="descricao"
+                                    {...register("descricao")}
+                                    rows="12"
+                                    cols="100"
+                                ></textarea>
                             </div>
 
-                            <Button solicitar>Enviar</Button>
+                            <Button solicitarTec>Enviar</Button>
                         </ConteFormTec>
-                    </ContePerfil>
+                    </ContePerfilSolicitacaoTec>
                 </ConteMain>
             )}
 
@@ -206,6 +244,98 @@ export const Main = ({
                         <Card cardServico />
                         <Card cardServico /> */}
                     </ConteListCriarService>
+                </ConteMain>
+            )}
+
+            {solicitacaoID && tecnico && (
+                <>
+                    {servicoInfo.length != 0 && tecnicoInfo.length != 0 && (
+                        <ConteMainSolicitacaoServico
+                            onClick={() => {
+                                openMenu();
+                            }}
+                        >
+                            <ConteSolicitacaoServico>
+                                {servicoInfo.status == "Encerrado" ? (
+                                    <ConteStatus color="red">
+                                        Encerrado
+                                    </ConteStatus>
+                                ) : (
+                                    <>
+                                        {servicoInfo.status == "Processando" ? (
+                                            <ConteStatus color="yellow">
+                                                Processando
+                                            </ConteStatus>
+                                        ) : (
+                                            <>
+                                                {servicoInfo.status ==
+                                                    "Concluido" && (
+                                                    <ConteStatus color="green">
+                                                        Concluido
+                                                    </ConteStatus>
+                                                )}
+                                            </>
+                                        )}
+                                    </>
+                                )}
+                                <InfoServico>
+                                    <h1>{servicoInfo.servicos.titulo}</h1>
+                                </InfoServico>
+                                <ConteInfoTec>
+                                    <p>
+                                        Técnico:
+                                        <span>{tecnicoInfo.cliente.name}</span>
+                                    </p>
+                                </ConteInfoTec>
+                                <ConteInfoDescricao>
+                                    {servicoInfo.servicos.descricao}
+                                </ConteInfoDescricao>
+                                <h3>Chat</h3>
+                                <Divisao menu />
+                                <div>
+                                    <div>
+                                        <h2>Maykon</h2>
+                                        <p>Texto</p>
+                                    </div>
+                                </div>
+                                <Divisao menu />
+                                <form>
+                                    <textarea
+                                        name=""
+                                        id=""
+                                        cols="100"
+                                        rows="10"
+                                    ></textarea>
+                                    <Button>Enviar</Button>
+                                </form>
+                            </ConteSolicitacaoServico>
+                        </ConteMainSolicitacaoServico>
+                    )}
+                </>
+            )}
+
+            {solicitacaoServico && (
+                <ConteMain
+                    onClick={() => {
+                        openMenu();
+                    }}
+                >
+                    <ConteListServico>
+                        <Card listCabecalhoSolicitacao />
+                        {solicitacaoServicoInfo.length != 0 && (
+                            <>
+                                {solicitacaoServicoInfo.map((elemento) => {
+                                    return (
+                                        <Card
+                                            elemento={elemento}
+                                            key={elemento.id}
+                                            listSolicitacaoServicoTecnico
+                                        />
+                                    );
+                                })}
+                            </>
+                        )}
+                    </ConteListServico>
                 </ConteMain>
             )}
         </>

@@ -57,7 +57,12 @@ export const Menu = ({ index, cliente, tecnico }) => {
             {cliente && userInfo.name && (
                 <ConteMenuCliente>
                     <ConteClose>
-                        <Button click={openMenuFunc} close></Button>
+                        <Button
+                            click={() => {
+                                openMenuFunc();
+                            }}
+                            close
+                        ></Button>
                         <InfoUser>
                             <div>
                                 <img src={UserImg} alt="Name user" />
@@ -163,7 +168,12 @@ export const Menu = ({ index, cliente, tecnico }) => {
             {tecnico && userInfo.cliente && (
                 <ConteMenuCliente>
                     <ConteClose>
-                        <Button click={openMenuFunc} close></Button>
+                        <Button
+                            click={() => {
+                                openMenuFunc();
+                            }}
+                            close
+                        ></Button>
                         <InfoUser>
                             <div>
                                 <img src={UserImg} alt="Name user" />

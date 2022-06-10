@@ -38,6 +38,7 @@ export const Button = ({
     cancelar,
     excluir,
     editarServico,
+    solicitarTec,
 }) => {
     return (
         <>
@@ -152,6 +153,10 @@ export const Button = ({
             )}
 
             {editarServico && (
+                <BtnCriarService onClick={click}>{children}</BtnCriarService>
+            )}
+
+            {solicitarTec && (
                 <BtnCriarService onClick={click}>{children}</BtnCriarService>
             )}
         </>

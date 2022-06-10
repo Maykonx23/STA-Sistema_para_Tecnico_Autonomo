@@ -6,25 +6,28 @@ import { ListServicosProvider } from "./ListServicos";
 import { LoginProvider } from "./Login";
 import { MenuHamburgerProvider } from "./MenuHamburger";
 import { RoutesProvider } from "./Routes";
+import { SolicitacaoServicoProvider } from "./SolicitacaoServico";
 
 export const Providers = ({ children }) => {
     return (
-        <ServicoProvider>
-            <ListServicosProvider>
-                <RoutesProvider>
-                    <DropFilterProvider>
-                        <DropHomeProvider>
-                            <MenuHamburgerProvider>
-                                <LoginProvider>
-                                    <CadastroProvider>
-                                        {children}
-                                    </CadastroProvider>
-                                </LoginProvider>
-                            </MenuHamburgerProvider>
-                        </DropHomeProvider>
-                    </DropFilterProvider>
-                </RoutesProvider>
-            </ListServicosProvider>
-        </ServicoProvider>
+        <SolicitacaoServicoProvider>
+            <ServicoProvider>
+                <ListServicosProvider>
+                    <RoutesProvider>
+                        <DropFilterProvider>
+                            <DropHomeProvider>
+                                <MenuHamburgerProvider>
+                                    <LoginProvider>
+                                        <CadastroProvider>
+                                            {children}
+                                        </CadastroProvider>
+                                    </LoginProvider>
+                                </MenuHamburgerProvider>
+                            </DropHomeProvider>
+                        </DropFilterProvider>
+                    </RoutesProvider>
+                </ListServicosProvider>
+            </ServicoProvider>
+        </SolicitacaoServicoProvider>
     );
 };
