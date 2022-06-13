@@ -5,9 +5,11 @@ import {
     ConteCardCriar,
     ConteCardImg,
     ConteCardServico,
+    ConteCardServicoSolicitTec,
     ConteInfoCliente,
     ConteInfoServico,
     ConteInfoServicoSoli,
+    ConteRejeitado,
     ConteStatus,
     ConteStrela,
     DivEditServico,
@@ -38,7 +40,10 @@ export const Card = ({
     criarServico,
     cardServico,
     listSolicitacaoServicoTecnico,
+    listSolicitacaoServicoCliente,
 }) => {
+    const typeInfo = window.localStorage.getItem("@TCC/Type"); // eslint-disable-line
+
     const id = window.localStorage.getItem("@TCC/ID"); // eslint-disable-line
     const { openDropPreco, openDropAvaliacao, dropPreco, dropAvaliacao } =
         useContext(DropFilterContext);
@@ -79,7 +84,7 @@ export const Card = ({
     };
 
     const eventoDetalhe = (e) => {
-        returnSolicitacaoServico(id, e.target.id, "tecnico");
+        returnSolicitacaoServico(id, e.target.id, typeInfo);
         funcInfoServico(e.target.id);
     };
 
@@ -133,7 +138,13 @@ export const Card = ({
                             <img src={Computador} alt="Computador" />
                         </ConteCardImg>
                         <ConteInfoServico>
-                            <h2>{elemento.titulo}</h2>
+                            {elemento.titulo.length > 25 ? (
+                                <h2>{elemento.titulo.substr(0, 25)}...</h2>
+                            ) : (
+                                <h2>{elemento.titulo}</h2>
+                            )}
+                            {/* 
+                            <h2>{elemento.titulo}</h2> */}
                             <ConteStrela>
                                 <img src={StarVazio} alt="" />
                                 <img src={StarVazio} alt="" />
@@ -141,7 +152,12 @@ export const Card = ({
                                 <img src={StarVazio} alt="" />
                                 <img src={StarVazio} alt="" />
                             </ConteStrela>
-                            <p>{elemento.descricao}</p>
+                            {elemento.descricao.length > 168 ? (
+                                <p>{elemento.descricao.substr(0, 168)}...</p>
+                            ) : (
+                                <p>{elemento.descricao}</p>
+                            )}
+                            {/* <p>{elemento.descricao}</p> */}
                             <span>R$ {elemento.price}</span>
                         </ConteInfoServico>
                         <button onClick={servicoId} id={elemento.id}>
@@ -203,7 +219,11 @@ export const Card = ({
                             <img src={Computador} alt="Computador" />
                         </ConteCardImg>
                         <ConteInfoServico>
-                            <h2> {elemento.titulo}</h2>
+                            {elemento.titulo.length > 25 ? (
+                                <h2>{elemento.titulo.substr(0, 25)}...</h2>
+                            ) : (
+                                <h2>{elemento.titulo}</h2>
+                            )}
                             <ConteStrela>
                                 <img src={StarVazio} alt="" />
                                 <img src={StarVazio} alt="" />
@@ -211,7 +231,11 @@ export const Card = ({
                                 <img src={StarVazio} alt="" />
                                 <img src={StarVazio} alt="" />
                             </ConteStrela>
-                            <p>{elemento.descricao} </p>
+                            {elemento.descricao.length > 168 ? (
+                                <p>{elemento.descricao.substr(0, 168)}...</p>
+                            ) : (
+                                <p>{elemento.descricao}</p>
+                            )}
                             <span>R$ {elemento.price}</span>
                         </ConteInfoServico>
                         <DivEditServico>
@@ -228,12 +252,20 @@ export const Card = ({
 
             {listSolicitacaoServicoTecnico && (
                 <>
-                    <ConteCardServico>
+                    <ConteCardServicoSolicitTec>
                         <ConteCardImg>
                             <img src={Computador} alt="Computador" />
                         </ConteCardImg>
                         <ConteInfoServicoSoli>
-                            <h2> {elemento.servicos.titulo}</h2>
+                            {elemento.servicos.titulo.length > 25 ? (
+                                <h2>
+                                    {elemento.servicos.titulo.substr(0, 25)}...
+                                </h2>
+                            ) : (
+                                <h2>{elemento.servicos.titulo}</h2>
+                            )}
+                            {/* 
+                            <h2> {elemento.servicos.titulo}</h2> */}
                             <ConeteInfoStatus>
                                 <ConteStrela>
                                     <img src={StarVazio} alt="" />
@@ -245,7 +277,7 @@ export const Card = ({
                                 <div>
                                     {elemento.status == "Encerrado" ? (
                                         <ConteStatus color="red">
-                                            Encerrado
+                                            Rejeitado
                                         </ConteStatus>
                                     ) : (
                                         <>
@@ -263,10 +295,19 @@ export const Card = ({
                                                     ) : (
                                                         <>
                                                             {elemento.status ==
-                                                                "Processando" && (
+                                                            "Processando" ? (
                                                                 <ConteStatus color="blue">
                                                                     Processando
                                                                 </ConteStatus>
+                                                            ) : (
+                                                                <>
+                                                                    {elemento.status ==
+                                                                        "Cancelado" && (
+                                                                        <ConteStatus color="red">
+                                                                            Cancelado
+                                                                        </ConteStatus>
+                                                                    )}
+                                                                </>
                                                             )}
                                                         </>
                                                     )}
@@ -276,43 +317,166 @@ export const Card = ({
                                     )}
                                 </div>
                             </ConeteInfoStatus>
-                            <p>{elemento.servicos.descricao} </p>
+                            {elemento.servicos.descricao.length > 168 ? (
+                                <p>
+                                    {elemento.servicos.descricao.substr(0, 168)}
+                                    ...
+                                </p>
+                            ) : (
+                                <p>{elemento.servicos.descricao}</p>
+                            )}
                             <ConteInfoCliente>
-                                Cliente: <p>{elemento.cliente.name} </p>
+                                Cliente:{" "}
+                                {elemento.cliente.name.length > 20 ? (
+                                    <p>
+                                        {elemento.cliente.name.substr(0, 20)}
+                                        ...
+                                    </p>
+                                ) : (
+                                    <p>{elemento.cliente.name}</p>
+                                )}
+                                {/* <p>{elemento.cliente.name} </p> */}
                             </ConteInfoCliente>
                         </ConteInfoServicoSoli>
                         <DivEditServico>
                             {elemento.status == "Aguardando" ? (
                                 <>
-                                    <button
-                                        onClick={eventoRejeitar}
+                                    <Button
+                                        rejeitar
+                                        click={eventoRejeitar}
                                         id={elemento.id}
                                     >
                                         Rejeitar
-                                    </button>
-                                    <button
-                                        onClick={eventoAceitar}
+                                    </Button>
+                                    <Button
+                                        aceitar
+                                        click={eventoAceitar}
                                         id={elemento.id}
                                     >
                                         Aceitar
-                                    </button>
+                                    </Button>
                                 </>
                             ) : (
                                 <>
                                     {elemento.status == "Encerrado" ? (
-                                        <div>Encerrado</div>
+                                        <ConteRejeitado>
+                                            Rejeitado
+                                        </ConteRejeitado>
                                     ) : (
-                                        <button
-                                            onClick={eventoDetalhe}
+                                        <Button
+                                            detalhe
+                                            click={eventoDetalhe}
                                             id={elemento.id}
                                         >
                                             + Detalhes
-                                        </button>
+                                        </Button>
                                     )}
                                 </>
                             )}
                         </DivEditServico>
-                    </ConteCardServico>
+                    </ConteCardServicoSolicitTec>
+                </>
+            )}
+
+            {listSolicitacaoServicoCliente && (
+                <>
+                    <ConteCardServicoSolicitTec>
+                        <ConteCardImg>
+                            <img src={Computador} alt="Computador" />
+                        </ConteCardImg>
+                        <ConteInfoServicoSoli>
+                            {elemento.servicos.titulo.length > 25 ? (
+                                <h2>
+                                    {elemento.servicos.titulo.substr(0, 25)}...
+                                </h2>
+                            ) : (
+                                <h2>{elemento.servicos.titulo}</h2>
+                            )}
+                            <ConeteInfoStatus>
+                                <ConteStrela>
+                                    <img src={StarVazio} alt="" />
+                                    <img src={StarVazio} alt="" />
+                                    <img src={StarVazio} alt="" />
+                                    <img src={StarVazio} alt="" />
+                                    <img src={StarVazio} alt="" />
+                                </ConteStrela>
+                                <div>
+                                    {elemento.status == "Encerrado" ? (
+                                        <ConteStatus color="red">
+                                            Rejeitado
+                                        </ConteStatus>
+                                    ) : (
+                                        <>
+                                            {elemento.status == "Aguardando" ? (
+                                                <ConteStatus color="yellow">
+                                                    Aguardando
+                                                </ConteStatus>
+                                            ) : (
+                                                <>
+                                                    {elemento.status ==
+                                                    "Concluido" ? (
+                                                        <ConteStatus color="green">
+                                                            Concluido
+                                                        </ConteStatus>
+                                                    ) : (
+                                                        <>
+                                                            {elemento.status ==
+                                                            "Processando" ? (
+                                                                <ConteStatus color="blue">
+                                                                    Processando
+                                                                </ConteStatus>
+                                                            ) : (
+                                                                <>
+                                                                    {elemento.status ==
+                                                                        "Cancelado" && (
+                                                                        <ConteStatus color="red">
+                                                                            Cancelado
+                                                                        </ConteStatus>
+                                                                    )}
+                                                                </>
+                                                            )}
+                                                        </>
+                                                    )}
+                                                </>
+                                            )}
+                                        </>
+                                    )}
+                                </div>
+                            </ConeteInfoStatus>
+                            {elemento.servicos.descricao.length > 168 ? (
+                                <p>
+                                    {elemento.servicos.descricao.substr(0, 168)}
+                                    ...
+                                </p>
+                            ) : (
+                                <p>{elemento.servicos.descricao}</p>
+                            )}
+                            <ConteInfoCliente>
+                                Cliente:{" "}
+                                {elemento.cliente.name.length > 20 ? (
+                                    <p>
+                                        {elemento.cliente.name.substr(0, 20)}
+                                        ...
+                                    </p>
+                                ) : (
+                                    <p>{elemento.cliente.name}</p>
+                                )}
+                            </ConteInfoCliente>
+                        </ConteInfoServicoSoli>
+                        <DivEditServico>
+                            {elemento.status == "Encerrado" ? (
+                                <ConteRejeitado>Rejeitado</ConteRejeitado>
+                            ) : (
+                                <Button
+                                    detalhe
+                                    click={eventoDetalhe}
+                                    id={elemento.id}
+                                >
+                                    + Detalhes
+                                </Button>
+                            )}
+                        </DivEditServico>
+                    </ConteCardServicoSolicitTec>
                 </>
             )}
         </>

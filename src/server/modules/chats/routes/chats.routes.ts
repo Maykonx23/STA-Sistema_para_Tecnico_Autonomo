@@ -22,8 +22,9 @@ chatsRouter.post(
     celebrate({
         [Segments.BODY]: {
             descricao: Joi.string().required(),
-            cliente: Joi.string().required(),
-            tecnico: Joi.string().required(),
+            usuario: Joi.string().required(),
+            name: Joi.string().required(),
+            type: Joi.string().required(),
             solicitacaoServico_id: Joi.string().required(),
         },
     }),
@@ -35,8 +36,9 @@ chatsRouter.put(
     celebrate({
         [Segments.BODY]: {
             descricao: Joi.string(),
-            cliente: Joi.string(),
-            tecnico: Joi.string(),
+            usuario: Joi.string(),
+            name: Joi.string(),
+            type: Joi.string(),
             solicitacaoServico_id: Joi.string(),
         },
         [Segments.PARAMS]: {

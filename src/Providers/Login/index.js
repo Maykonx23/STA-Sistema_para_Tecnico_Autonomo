@@ -21,6 +21,11 @@ export const LoginProvider = ({ children }) => {
                     setTypeInfo(response.data.cliente.nivel);
                     setUserInfo(response.data.cliente);
                     window.localStorage.setItem(
+                        "@TCC/Type",
+                        response.data.cliente.nivel
+                    ); // eslint-disable-line
+
+                    window.localStorage.setItem(
                         "@TCC/ID",
                         response.data.cliente.id
                     );
@@ -30,6 +35,10 @@ export const LoginProvider = ({ children }) => {
                 if (response.data.cliente.nivel === "tecnico") {
                     setClienteInfo(response.data.cliente);
                     setTypeInfo(response.data.cliente.nivel);
+                    window.localStorage.setItem(
+                        "@TCC/Type",
+                        response.data.cliente.nivel
+                    ); // eslint-disable-line
                     apiTcc
                         .get(`/tecnicos/clientes/${response.data.cliente.id}`)
                         .then((res) => {

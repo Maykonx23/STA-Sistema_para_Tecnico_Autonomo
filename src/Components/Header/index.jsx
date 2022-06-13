@@ -1,5 +1,6 @@
 import { useContext } from "react";
 import { MenuHamburgerContext } from "../../Providers/MenuHamburger";
+import { UsuarioContext } from "../../Providers/Usuario";
 import { Button } from "../Buttons";
 import { Logo } from "../Logo";
 import { Menu } from "../Menus";
@@ -7,6 +8,8 @@ import { ConteHeader, ConteHeaderCliente, ConteHeaderLC } from "./styled";
 
 export const Header = ({ index, login, cadastro, cliente, tecnico, home }) => {
     const { openMenuHamb, openMenuFunc } = useContext(MenuHamburgerContext);
+
+    const { funcUserInfo, usersInfo } = useContext(UsuarioContext);
 
     const limparInfo = () => {
         window.localStorage.clear(); // eslint-disable-line

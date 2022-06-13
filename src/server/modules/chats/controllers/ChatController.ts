@@ -31,13 +31,16 @@ export default class ChatController {
         request: Request,
         response: Response
     ): Promise<Response> {
-        const { descricao, usuario, solicitacaoServico_id } = request.body;
+        const { descricao, usuario, name, type, solicitacaoServico_id } =
+            request.body;
 
         const createChat = new CreateChatService();
 
         const chat = await createChat.execute({
             descricao,
             usuario,
+            name,
+            type,
             solicitacaoServico_id,
         });
 
@@ -48,7 +51,8 @@ export default class ChatController {
         request: Request,
         response: Response
     ): Promise<Response> {
-        const { descricao, usuario, solicitacaoServico_id } = request.body;
+        const { descricao, usuario, name, type, solicitacaoServico_id } =
+            request.body;
 
         const { id } = request.params;
 
@@ -58,6 +62,8 @@ export default class ChatController {
             id,
             descricao,
             usuario,
+            name,
+            type,
             solicitacaoServico_id,
         });
 

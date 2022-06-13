@@ -16,8 +16,14 @@ export const ModalCriarServConte = styled.div`
 `;
 
 export const ModalCriarServForm = styled.form`
-    display: flex;
-    flex-direction: column;
+    @media (min-width: 760px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        button {
+            margin: 30px 0 0 0;
+        }
+    }
 `;
 
 export const ConteServicoBtn = styled.div`

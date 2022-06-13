@@ -20,6 +20,12 @@ export class Chat {
     @Column()
     usuario: string;
 
+    @Column()
+    name: string;
+
+    @Column()
+    type: string;
+
     @ManyToOne(
         () => SolicitacaoServico,
         (solicitacaoServicos) => solicitacaoServicos.chats

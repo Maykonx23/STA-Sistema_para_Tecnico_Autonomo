@@ -13,6 +13,7 @@ import { TecnicoSolicitacao } from "../Pages/Tecnico/Solicitacao";
 import { TecnicoPerfil } from "../Pages/Tecnico/Perfil/Perfil";
 import { SolicitarTecnico } from "../Pages/Cliente/SolicitarTecnico";
 import { CriarServico } from "../Pages/Tecnico/CriarServiços/criarServico";
+import { TecnicoSolicitacaoServicoID } from "../Pages/Tecnico/SolicitacaoID";
 
 /* Pages */
 
@@ -24,10 +25,11 @@ export const Rotas = () => {
     return (
         <>
             <Switch>
+                {/* 
                 <Route exact path="/">
                     <Index />
-                </Route>
-                <Route exact path="/login">
+                </Route> */}
+                <Route exact path="/">
                     <Login />
                 </Route>
                 <Route exact path="/register">
@@ -40,7 +42,7 @@ export const Rotas = () => {
                 <Route exact path="/cliente/:id/solicitacao">
                     <ClienteSolicitacao />
                 </Route>
-                <Route path="/cliente/:id/solicitacao/:id">
+                <Route path="/cliente/:id/solicitacao/:idSer">
                     <ClienteSolicitacaoID />
                 </Route>
                 <Route path="/cliente/:id/perfil">
@@ -63,7 +65,9 @@ export const Rotas = () => {
                 <Route path="/tecnico/:id/criar-servico">
                     <CriarServico />
                 </Route>
-
+                <Route path="/tecnico/:id/solicitacao/:idSer">
+                    <TecnicoSolicitacaoServicoID />
+                </Route>
                 {/* Fim Tecnicos */}
             </Switch>
         </>

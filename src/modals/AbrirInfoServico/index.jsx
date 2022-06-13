@@ -5,6 +5,7 @@ import { SolicitacaoServicoContext } from "../../Providers/SolicitacaoServico";
 import {
     BtnServico,
     ConteBtn,
+    ConteDescricao,
     ConteInfoS,
     ConteInfoServico,
     InfoServico,
@@ -46,7 +47,7 @@ export const AbrirIndoServico = () => {
                                 {tecnicoServico.cliente.name.substr(1)}
                             </span>
                         </InfoTec>
-                        <p>Descrição</p>
+                        <ConteDescricao>Descrição</ConteDescricao>
                         <InfoServico>
                             <h3>Tempo: {servico.mediaTempo}</h3>
                             <h3>Preço: {servico.price}</h3>

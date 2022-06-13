@@ -10,6 +10,8 @@ interface IRequest {
     id: string;
     descricao: string;
     usuario: string;
+    name: string;
+    type: string;
     solicitacaoServico_id: string;
 }
 
@@ -18,6 +20,8 @@ export class UpdateChatService {
         id,
         descricao,
         usuario,
+        name,
+        type,
         solicitacaoServico_id,
     }: IRequest): Promise<Chat> {
         const chatsRepository = getCustomRepository(ChatRepository);
@@ -25,23 +29,6 @@ export class UpdateChatService {
         const solicitacaoServicosRepository = getCustomRepository(
             SolicitacaoServicosRepository
         );
-        /*
-        const clientesRepository = getCustomRepository(ClientesRepository);
-
-        const tecnicosRepository = getCustomRepository(TecnicosRepository);  
-
-        const clienteExists = await clientesRepository.findById(cliente);
-
-        if (!clienteExists) {
-            throw new AppError("Esse Cliente não existe.");
-        }
-
-        const tecnicoExists = await tecnicosRepository.findById(tecnico);
-
-        if (!tecnicoExists) {
-            throw new AppError("Esse Tecnico não existe.");
-        } */
-
         const solicitacaoServico = await solicitacaoServicosRepository.findById(
             solicitacaoServico_id
         );
@@ -58,6 +45,8 @@ export class UpdateChatService {
 
         chat.descricao = descricao;
         chat.usuario = usuario;
+        chat.name = name;
+        chat.type = type;
         chat.solicitacaoServico = solicitacaoServico;
 
         await chatsRepository.save(chat);

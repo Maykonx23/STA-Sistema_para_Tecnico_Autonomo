@@ -1,14 +1,21 @@
 import {
+    BtnAceitar,
+    BtnAddCriarService,
+    BtnCancelar,
     BtnCancelarServico,
     BtnClose,
+    BtnConcluir,
     BtnCriarService,
+    BtnDetalhe,
     BtnDrop,
     BtnEdit,
+    BtnEnviarM,
     BtnFilterServico,
     BtnH,
     BtnHamburg,
     BtnMenu,
     BtnMenuL,
+    BtnRejeitar,
     BtnSolicitar,
     BtnSolicitarServico,
     BtnVoltar,
@@ -39,6 +46,13 @@ export const Button = ({
     excluir,
     editarServico,
     solicitarTec,
+    enviarMensagem,
+    concluir,
+    id,
+    rejeitar,
+    aceitar,
+    detalhe,
+    buttonCriarServico,
 }) => {
     return (
         <>
@@ -144,12 +158,20 @@ export const Button = ({
                 <BtnCriarService onClick={click}>{children}</BtnCriarService>
             )}
 
+            {buttonCriarServico && (
+                <BtnAddCriarService onClick={click}>
+                    {children}
+                </BtnAddCriarService>
+            )}
+
             {excluir && (
                 <BtnCriarService onClick={click}>{children}</BtnCriarService>
             )}
 
             {cancelar && (
-                <BtnCriarService onClick={click}>{children}</BtnCriarService>
+                <BtnCancelar id={id} onClick={click}>
+                    {children}
+                </BtnCancelar>
             )}
 
             {editarServico && (
@@ -158,6 +180,36 @@ export const Button = ({
 
             {solicitarTec && (
                 <BtnCriarService onClick={click}>{children}</BtnCriarService>
+            )}
+
+            {enviarMensagem && (
+                <BtnEnviarM id={id} onClick={click}>
+                    {children}
+                </BtnEnviarM>
+            )}
+
+            {concluir && (
+                <BtnConcluir id={id} onClick={click}>
+                    {children}
+                </BtnConcluir>
+            )}
+
+            {rejeitar && (
+                <BtnRejeitar id={id} onClick={click}>
+                    {children}
+                </BtnRejeitar>
+            )}
+
+            {aceitar && (
+                <BtnAceitar id={id} onClick={click}>
+                    {children}
+                </BtnAceitar>
+            )}
+
+            {detalhe && (
+                <BtnDetalhe id={id} onClick={click}>
+                    {children}
+                </BtnDetalhe>
             )}
         </>
     );

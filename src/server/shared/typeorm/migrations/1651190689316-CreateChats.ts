@@ -17,6 +17,14 @@ export class CreateChats1651190689316 implements MigrationInterface {
                         name: "descricao",
                         type: "text",
                     },
+                    {
+                        name: "name",
+                        type: "varchar",
+                    },
+                    {
+                        name: "type",
+                        type: "varchar",
+                    },
 
                     {
                         name: "usuario",

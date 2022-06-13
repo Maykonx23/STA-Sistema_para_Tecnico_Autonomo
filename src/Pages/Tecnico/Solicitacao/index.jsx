@@ -26,12 +26,12 @@ export const TecnicoSolicitacao = () => {
 
     useEffect(() => {
         funcInfoSolicitacaoServico(id, "tecnico");
-    }, [funcInfoSolicitacaoServico]);
+    }, []);
 
     return (
         <>
             <Header tecnico />
-            <Main solicitacaoServico />
+            <Main solicitacaoServicoTec />
         </>
     );
 };

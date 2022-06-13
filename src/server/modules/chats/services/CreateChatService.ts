@@ -7,6 +7,8 @@ import { ChatRepository } from "../typeorm/repositories/ChatsReposutiries";
 interface IRequest {
     descricao: string;
     usuario: string;
+    name: string;
+    type: string;
     solicitacaoServico_id: string;
 }
 
@@ -14,6 +16,8 @@ export class CreateChatService {
     public async execute({
         descricao,
         usuario,
+        name,
+        type,
         solicitacaoServico_id,
     }: IRequest): Promise<Chat> {
         const chatsRepository = getCustomRepository(ChatRepository);
@@ -32,6 +36,8 @@ export class CreateChatService {
         const chat = await chatsRepository.createChat({
             descricao,
             usuario,
+            name,
+            type,
             solicitacaoServico: solicitacaoServicoExists,
         });
 

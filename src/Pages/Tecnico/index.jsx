@@ -16,15 +16,13 @@ export const Tecnicoindex = () => {
     if (!token) {
         returnIndex();
     }
-    const { openMenuHamb, setOpenMenuHamb } = useContext(MenuHamburgerContext);
-
     const { servico } = useContext(ListServicosContext);
 
     return (
         <>
             {servico.length != 0 && <AbrirIndoServico />}
             <Header tecnico />
-            <Main home />
+            <Main homeTecnico />
         </>
     );
 };

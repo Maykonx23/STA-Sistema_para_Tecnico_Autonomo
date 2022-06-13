@@ -1,24 +1,24 @@
-import { Router } from 'express';
-import EnderecoController from '../controllers/EnderecoController';
-import { celebrate, Joi, Segments } from 'celebrate';
+import { Router } from "express";
+import EnderecoController from "../controllers/EnderecoController";
+import { celebrate, Joi, Segments } from "celebrate";
 
 const enderecosRouter = Router();
 const enderecosController = new EnderecoController();
 
-enderecosRouter.get('/', enderecosController.index);
+enderecosRouter.get("/", enderecosController.index);
 
 enderecosRouter.get(
-    '/:id',
+    "/:id",
     celebrate({
         [Segments.PARAMS]: {
             id: Joi.string().uuid().required(),
         },
     }),
-    enderecosController.show,
+    enderecosController.show
 );
 
 enderecosRouter.post(
-    '/',
+    "/",
     celebrate({
         [Segments.BODY]: {
             cep: Joi.string().required(),
@@ -30,18 +30,18 @@ enderecosRouter.post(
             complemento: Joi.string(),
         },
     }),
-    enderecosController.create,
+    enderecosController.create
 );
 
 enderecosRouter.put(
-    '/:id',
+    "/:id",
     celebrate({
         [Segments.BODY]: {
-            cep: Joi.string().required(),
-            rua: Joi.string().required(),
-            bairro: Joi.string().required(),
-            cidade: Joi.string().required(),
-            uf: Joi.string().required(),
+            cep: Joi.string(),
+            rua: Joi.string(),
+            bairro: Joi.string(),
+            cidade: Joi.string(),
+            uf: Joi.string(),
             numero: Joi.number(),
             complemento: Joi.string(),
         },
@@ -49,17 +49,17 @@ enderecosRouter.put(
             id: Joi.string().uuid().required(),
         },
     }),
-    enderecosController.update,
+    enderecosController.update
 );
 
 enderecosRouter.delete(
-    '/:id',
+    "/:id",
     celebrate({
         [Segments.PARAMS]: {
             id: Joi.string().uuid().required(),
         },
     }),
-    enderecosController.delete,
+    enderecosController.delete
 );
 
 export default enderecosRouter;

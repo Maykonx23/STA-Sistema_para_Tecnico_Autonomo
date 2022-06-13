@@ -1,8 +1,10 @@
+import { useEffect } from "react";
 import { useContext } from "react";
 import { DropMenuContext } from "../../Providers/DropMenu";
 import { LoginContext } from "../../Providers/Login";
 import { MenuHamburgerContext } from "../../Providers/MenuHamburger";
 import { RoutesContext } from "../../Providers/Routes";
+import { UsuarioContext } from "../../Providers/Usuario";
 import { Button } from "../Buttons";
 import { Divisao } from "../Divisao";
 import {
@@ -17,6 +19,7 @@ import UserImg from "./user.svg";
 
 export const Menu = ({ index, cliente, tecnico }) => {
     const id = window.localStorage.getItem("@TCC/ID"); // eslint-disable-line
+    const typeInfo = window.localStorage.getItem("@TCC/Type"); // eslint-disable-line
 
     const { openMenuHamb, openMenuFunc } = useContext(MenuHamburgerContext);
     const {
@@ -28,6 +31,8 @@ export const Menu = ({ index, cliente, tecnico }) => {
         funcDropConfig,
         FuncCloseAll,
     } = useContext(DropMenuContext);
+
+    const { funcUserInfo, usersInfo } = useContext(UsuarioContext);
 
     const { userInfo } = useContext(LoginContext);
 
@@ -42,6 +47,17 @@ export const Menu = ({ index, cliente, tecnico }) => {
         returnCriarServico,
     } = useContext(RoutesContext);
 
+    if (typeInfo == "tecnico") {
+        useEffect(() => {
+            funcUserInfo(id, "tecnico");
+        }, []);
+    }
+    if (typeInfo == "cliente") {
+        useEffect(() => {
+            funcUserInfo(id, "cliente");
+        }, []);
+    }
+
     return (
         <>
             {index && (
@@ -54,7 +70,7 @@ export const Menu = ({ index, cliente, tecnico }) => {
                     </Button>
                 </ConteMenu>
             )}
-            {cliente && userInfo.name && (
+            {cliente && usersInfo.name && (
                 <ConteMenuCliente>
                     <ConteClose>
                         <Button
@@ -67,7 +83,7 @@ export const Menu = ({ index, cliente, tecnico }) => {
                             <div>
                                 <img src={UserImg} alt="Name user" />
                             </div>
-                            <h1>Name User</h1>
+                            <h1>{usersInfo.name}</h1>
                         </InfoUser>
 
                         <Divisao menu />
@@ -165,7 +181,7 @@ export const Menu = ({ index, cliente, tecnico }) => {
                 </ConteMenuCliente>
             )}
 
-            {tecnico && userInfo.cliente && (
+            {tecnico && usersInfo.length != 0 && (
                 <ConteMenuCliente>
                     <ConteClose>
                         <Button
@@ -178,7 +194,7 @@ export const Menu = ({ index, cliente, tecnico }) => {
                             <div>
                                 <img src={UserImg} alt="Name user" />
                             </div>
-                            <h1>{userInfo.cliente.name}</h1>
+                            <h1>{usersInfo.cliente.name} </h1>
                         </InfoUser>
 
                         <Divisao menu />

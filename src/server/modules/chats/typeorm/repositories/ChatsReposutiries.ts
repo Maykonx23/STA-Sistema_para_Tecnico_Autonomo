@@ -5,6 +5,8 @@ import { Chat } from "../entities/Chat";
 interface IRequest {
     descricao: string;
     usuario: string;
+    name: string;
+    type: string;
     solicitacaoServico: SolicitacaoServico;
 }
 
@@ -27,11 +29,15 @@ export class ChatRepository extends Repository<Chat> {
     public async createChat({
         descricao,
         usuario,
+        name,
+        type,
         solicitacaoServico,
     }: IRequest): Promise<Chat> {
         const chat = this.create({
             descricao,
             usuario,
+            name,
+            type,
             solicitacaoServico,
         });
 

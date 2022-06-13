@@ -48,11 +48,19 @@ export const SolicitacaoServicoProvider = ({ children }) => {
     const funcAlterarSolicitacaoServico = (idServico, type) => {
         if (type == "rejeitar") {
             apiTcc
-                .put(`/solicitacao-servico/${idServico}`, {
-                    status: "Encerrado",
-                })
+                .get(`/solicitacao-servico/${idServico}`)
                 .then((response) => {
-                    return response.data;
+                    apiTcc
+                        .put(`/solicitacao-servico/${idServico}`, {
+                            cliente_id: response.data.cliente.id,
+                            status: "Encerrado",
+                        })
+                        .then((response) => {
+                            return response.data;
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                        });
                 })
                 .catch((err) => {
                     console.log(err);
@@ -60,11 +68,61 @@ export const SolicitacaoServicoProvider = ({ children }) => {
         }
         if (type == "aceitar") {
             apiTcc
-                .put(`/solicitacao-servico/${idServico}`, {
-                    status: "Processando",
-                })
+                .get(`/solicitacao-servico/${idServico}`)
                 .then((response) => {
-                    return response.data;
+                    console.log(response.data.cliente);
+                    apiTcc
+                        .put(`/solicitacao-servico/${idServico}`, {
+                            cliente_id: response.data.cliente.id,
+                            status: "Processando",
+                        })
+                        .then((response) => {
+                            return response.data;
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                        });
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        }
+        if (type == "cancelado") {
+            apiTcc
+                .get(`/solicitacao-servico/${idServico}`)
+                .then((response) => {
+                    console.log(response.data.cliente);
+                    apiTcc
+                        .put(`/solicitacao-servico/${idServico}`, {
+                            cliente_id: response.data.cliente.id,
+                            status: "Cancelado",
+                        })
+                        .then((response) => {
+                            return response.data;
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                        });
+                })
+                .catch((err) => {
+                    console.log(err);
+                });
+        }
+        if (type == "concluido") {
+            apiTcc
+                .get(`/solicitacao-servico/${idServico}`)
+                .then((response) => {
+                    apiTcc
+                        .put(`/solicitacao-servico/${idServico}`, {
+                            cliente_id: response.data.cliente.id,
+                            status: "Concluido",
+                        })
+                        .then((response) => {
+                            return response.data;
+                        })
+                        .catch((err) => {
+                            console.log(err);
+                        });
                 })
                 .catch((err) => {
                     console.log(err);
@@ -81,7 +139,6 @@ export const SolicitacaoServicoProvider = ({ children }) => {
                     apiTcc
                         .get(`/tecnicos/${response.data.tecnico.id}`)
                         .then((response) => {
-                            console.log(response.data);
                             setTecnicoInfo(response.data);
                         })
                         .catch((err) => {

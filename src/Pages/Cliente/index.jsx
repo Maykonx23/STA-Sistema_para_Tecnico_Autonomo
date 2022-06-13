@@ -16,7 +16,6 @@ export const Cliente = () => {
     if (!token) {
         returnIndex();
     }
-    const { openMenuHamb, setOpenMenuHamb } = useContext(MenuHamburgerContext);
 
     const { servico } = useContext(ListServicosContext);
 

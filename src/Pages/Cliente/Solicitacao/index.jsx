@@ -17,7 +17,7 @@ export const ClienteSolicitacao = () => {
     return (
         <>
             <Header cliente />
-            <Main solicitacao />
+            <Main solicitacaoServico />
         </>
     );
 };

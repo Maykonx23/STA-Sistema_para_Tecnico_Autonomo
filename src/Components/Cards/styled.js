@@ -131,6 +131,22 @@ export const DivEditServico = styled.div`
     }
 `;
 
+export const ConteRejeitado = styled.div`
+    @media (min-width: 760px) {
+        display: flex;
+        padding: 5px 10px;
+        align-items: center;
+        justify-content: center;
+        font-size: 1.2em;
+        font-weight: 600;
+        background-color: red;
+        color: white;
+        border-radius: 10px;
+        border: 2px solid transparent;
+        cursor: pointer;
+    }
+`;
+
 export const ConteStrela = styled.div`
     @media (min-width: 760px) {
         display: flex;
@@ -348,7 +364,7 @@ export const ConteStatus = styled.p`
                 : props.color == "green"
                 ? "green"
                 : props.color == "blue" && "blue"};
-        padding: 5px 10px;
+        padding: 3px 6px;
         border-radius: 10px;
         color: ${(props) =>
             props.color == "red"
@@ -356,10 +372,28 @@ export const ConteStatus = styled.p`
                 : props.color == "yellow"
                 ? "black"
                 : props.color == "green"
-                ? "green"
+                ? "white"
                 : props.color == "blue" && "white"};
         font-size: 0.8em;
-        font-weight: 200;
+        font-weight: 600;
         box-sizing: border-box;
+    }
+`;
+
+export const ConteCardServicoSolicitTec = styled.div`
+    @media (min-width: 760px) {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 300px;
+        box-sizing: border-box;
+        border: 2px solid rgb(46, 52, 59, 0.5);
+        padding: 10px;
+        border-radius: 10px;
+        background-color: white;
+        :hover {
+            border: 2px solid #e84a05;
+        }
     }
 `;

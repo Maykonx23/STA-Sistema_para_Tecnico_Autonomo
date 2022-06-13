@@ -8,7 +8,7 @@ export const RoutesProvider = ({ children }) => {
     const history = useHistory();
 
     const returnLogin = () => {
-        history.push("/login");
+        history.push("/");
     };
     const returnCadastro = () => {
         history.push("/register");
@@ -82,7 +82,7 @@ export const RoutesProvider = ({ children }) => {
 
     const returnSolicitacaoServico = (id, idServico, type) => {
         if (type == "cliente") {
-            history.push(`/cliente/${id}/solicitacao`);
+            history.push(`/cliente/${id}/solicitacao/${idServico}`);
         }
         if (type == "tecnico") {
             history.push(`/tecnico/${id}/solicitacao/${idServico}`);

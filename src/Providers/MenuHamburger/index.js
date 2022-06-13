@@ -11,6 +11,7 @@ export const MenuHamburgerProvider = ({ children }) => {
             setOpenMenuHamb(true);
         }
     };
+
     return (
         <MenuHamburgerContext.Provider
             value={{ openMenuHamb, setOpenMenuHamb, openMenuFunc }}

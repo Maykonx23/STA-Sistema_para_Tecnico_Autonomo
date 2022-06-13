@@ -12,6 +12,14 @@ export const ConteInfoServico = styled.div`
     }
 `;
 
+export const ConteDescricao = styled.div`
+    @media (min-width: 760px) {
+        width: 100%;
+        font-size: 1.2em;
+        margin: 20px 0;
+    }
+`;
+
 export const ConteInfoS = styled.div`
     @media (min-width: 760px) {
         display: flex;
