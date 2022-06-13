@@ -116,7 +116,6 @@ export const Main = ({
 
     if (typeInfo == "cliente") {
         useEffect(() => {
-            listServico();
             funcInfoServico(param.idSer);
             funcInfoUser(id, "cliente");
             funcUserInfo(id, "cliente");
@@ -372,7 +371,7 @@ export const Main = ({
                                 <h3>Chat</h3>
                                 <Divisao menu />
                                 <ConteChat>
-                                    {servicoInfo.chats.length != 0 ? (
+                                    {chatInfo.length != 0 ? (
                                         <>
                                             {chatInfo.map((elemento, index) => {
                                                 return (
@@ -756,7 +755,7 @@ export const Main = ({
                                 <h3>Chat</h3>
                                 <Divisao menu />
                                 <ConteChat>
-                                    {servicoInfo.chats.length != 0 ? (
+                                    {chatInfo.length != 0 ? (
                                         <>
                                             {chatInfo.map((elemento) => {
                                                 return (

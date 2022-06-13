@@ -91,7 +91,6 @@ export const SolicitacaoServicoProvider = ({ children }) => {
             apiTcc
                 .get(`/solicitacao-servico/${idServico}`)
                 .then((response) => {
-                    console.log(response.data.cliente);
                     apiTcc
                         .put(`/solicitacao-servico/${idServico}`, {
                             cliente_id: response.data.cliente.id,
@@ -177,7 +176,6 @@ export const SolicitacaoServicoProvider = ({ children }) => {
         apiTcc
             .post("/solicitacao-servico", data)
             .then((response) => {
-                console.log(response.data);
                 closeInfoServico();
             })
             .catch((err) => console.log(err));
