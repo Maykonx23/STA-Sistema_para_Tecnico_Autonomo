@@ -96,9 +96,9 @@ export const Main = ({
 
     if (typeInfo == "tecnico") {
         useEffect(() => {
-            listServico();
             funcInfoServico(param.idSer);
             funcInfoUser(id, "tecnico");
+            funcUserInfo(id, "tecnico");
         }, []);
         useEffect(() => {
             funcListChat(param.idSer);
@@ -109,9 +109,6 @@ export const Main = ({
         useEffect(() => {
             listServico();
         }, [listServico]);
-        useEffect(() => {
-            funcUserInfo(id, "tecnico");
-        }, [funcUserInfo]);
     }
 
     if (typeInfo == "cliente") {
@@ -129,9 +126,6 @@ export const Main = ({
         useEffect(() => {
             listServico();
         }, [listServico]);
-        useEffect(() => {
-            funcUserInfo(id, "cliente");
-        }, [funcUserInfo]);
     }
 
     const {
