@@ -1,29 +1,26 @@
 {
     "compilerOptions": {
-        "target": "es2016",
-        "lib": ["es6"],
-        "experimentalDecorators": true,
-        "emitDecoratorMetadata": true,
+        "target": "es5",
         "module": "commonjs",
-        "rootDir": "src/server/",
-
-        "baseUrl": "./",
-        "paths": {
-            "@config/*": ["src/server/config/*"],
-            "@modules/*": ["src/server/modules/*"],
-            "@shared/*": ["src/server/shared/*"]
-        },
-        "typeRoots": ["@types", "./node_modules/@types"],
-        "resolveJsonModule": true,
+        "lib": ["es6"],
         "allowJs": true,
         "outDir": "build",
-        "esModuleInterop": true,
-        "forceConsistentCasingInFileNames": true,
+        "rootDir": "src/server",
         "strict": true,
         "noImplicitAny": true,
         "strictPropertyInitialization": false,
-        "skipLibCheck": true
-    },
-    "exclude": ["node_modules", "build"],
-    "include": ["src/server/**/*"]
+        "baseUrl": "./",
+        "paths": {
+            "@config/*": ["./src/server/config/*"],
+            "@modules/*": ["./src/server/modules/*"],
+            "@shared/*": ["./src/server/shared/*"]
+        },
+        "typeRoots": ["@types", "./node_modules/@types"],
+        "esModuleInterop": true,
+        "experimentalDecorators": true,
+        "emitDecoratorMetadata": true,
+        "resolveJsonModule": true,
+        "skipLibCheck": true,
+        "forceConsistentCasingInFileNames": true
+    }
 }

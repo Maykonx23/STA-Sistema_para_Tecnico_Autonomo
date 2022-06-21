@@ -11,7 +11,6 @@ export const DropHomeProvider = ({ children }) => {
     const funcDropServico = () => {
         if (openDropServico) {
             setOpenDropServico(false);
-            setOpenDropConfig(false);
         } else {
             setOpenDropServico(true);
             setOpenDropPerfil(false);

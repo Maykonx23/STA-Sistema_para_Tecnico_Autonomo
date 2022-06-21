@@ -8,13 +8,13 @@ const enderecosController = new EnderecoController();
 enderecosRouter.get("/", enderecosController.index);
 
 enderecosRouter.get(
-    "/:id",
+    "/:cep",
     celebrate({
         [Segments.PARAMS]: {
-            id: Joi.string().uuid().required(),
+            cep: Joi.string().required(),
         },
     }),
-    enderecosController.show
+    enderecosController.showCep
 );
 
 enderecosRouter.post(

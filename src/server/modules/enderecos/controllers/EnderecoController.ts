@@ -1,14 +1,15 @@
-import { Request, Response } from 'express';
-import { CreateEnderecoService } from '../services/CreateEnderecoService';
-import { DeleteEnderecoService } from '../services/DeleteEnderecoService';
-import { ListEnderecoService } from '../services/ListEnderecoService';
-import { ShowEnderecoService } from '../services/ShowEnderecoService';
-import { UpdateEnderecoService } from '../services/UpdateEnderecoService';
+import { Request, Response } from "express";
+import { CreateEnderecoService } from "../services/CreateEnderecoService";
+import { DeleteEnderecoService } from "../services/DeleteEnderecoService";
+import { ListEnderecoService } from "../services/ListEnderecoService";
+import { ShowCepEnderecoService } from "../services/ShowCepEnderecoService";
+import { ShowEnderecoService } from "../services/ShowEnderecoService";
+import { UpdateEnderecoService } from "../services/UpdateEnderecoService";
 
 export default class EnderecoController {
     public async index(
         request: Request,
-        response: Response,
+        response: Response
     ): Promise<Response> {
         const listEnderecos = new ListEnderecoService();
 
@@ -27,9 +28,22 @@ export default class EnderecoController {
         return response.json(endereco);
     }
 
+    public async showCep(
+        request: Request,
+        response: Response
+    ): Promise<Response> {
+        const { cep } = request.params;
+
+        const showCepEndereco = new ShowCepEnderecoService();
+
+        const endereco = await showCepEndereco.execute({ cep });
+
+        return response.json(endereco);
+    }
+
     public async create(
         request: Request,
-        response: Response,
+        response: Response
     ): Promise<Response> {
         const { cep, rua, bairro, cidade, uf, numero, complemento } =
             request.body;
@@ -51,7 +65,7 @@ export default class EnderecoController {
 
     public async update(
         request: Request,
-        response: Response,
+        response: Response
     ): Promise<Response> {
         const { cep, uf, cidade, bairro, rua, numero, complemento } =
             request.body;
@@ -76,7 +90,7 @@ export default class EnderecoController {
 
     public async delete(
         request: Request,
-        response: Response,
+        response: Response
     ): Promise<Response> {
         const { id } = request.params;
 
