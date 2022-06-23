@@ -5,6 +5,8 @@ import { MenuHamburgerContext } from "../../Providers/MenuHamburger";
 import { AbrirIndoServico } from "../../modals/AbrirInfoServico";
 import { ListServicosContext } from "../../Providers/ListServicos";
 import { RoutesContext } from "../../Providers/Routes";
+import { ErrosGeral } from "src/modals/Errors";
+import { SolicitacaoServicoContext } from "src/Providers/SolicitacaoServico";
 
 export const Cliente = () => {
     const [token, settoken] = useState(
@@ -12,6 +14,7 @@ export const Cliente = () => {
     );
 
     const { returnIndex } = useContext(RoutesContext);
+    const { solicitacaoServicoOn } = useContext(SolicitacaoServicoContext);
 
     if (!token) {
         returnIndex();
@@ -21,6 +24,9 @@ export const Cliente = () => {
 
     return (
         <>
+            {solicitacaoServicoOn && (
+                <ErrosGeral solicitacaoFeita>Solicitação Realizada</ErrosGeral>
+            )}
             {servico.length != 0 && <AbrirIndoServico />}
             <Header cliente />
             <Main home />

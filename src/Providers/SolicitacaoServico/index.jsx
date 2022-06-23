@@ -5,6 +5,8 @@ export const SolicitacaoServicoContext = createContext();
 
 export const SolicitacaoServicoProvider = ({ children }) => {
     const [solicitacaoServicoTec, setSolicitacaoServicoTec] = useState(false);
+
+    const [solicitacaoServicoOn, setSolicitacaoServicoOn] = useState(false);
     const [solicitacaoServicoInfo, setSolicitacaoServicoInfo] = useState([]);
     const [servicosId, setServicosId] = useState();
     const [servicoInfo, setServicoInfo] = useState([]);
@@ -188,8 +190,10 @@ export const SolicitacaoServicoProvider = ({ children }) => {
                 solicitacaoServicoInfo,
                 servicoInfo,
                 servicosId,
+                solicitacaoServicoOn,
                 tecnicoInfo,
                 setServicosId,
+                setSolicitacaoServicoOn,
                 solicitacaoServicoTecFunc,
                 funcInfoSolicitacaoServico,
                 funcAlterarSolicitacaoServico,

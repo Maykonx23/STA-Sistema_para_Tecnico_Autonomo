@@ -38,7 +38,6 @@ clientesRouter.post(
 
 clientesRouter.put(
     "/:id",
-    isAuthenticated,
     celebrate({
         [Segments.BODY]: {
             name: Joi.string(),

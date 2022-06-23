@@ -18,6 +18,9 @@ export const ModalEditarServConte = styled.div`
 export const ModalEditarServForm = styled.form`
     display: flex;
     flex-direction: column;
+    button {
+        margin-top: 20px;
+    }
 `;
 
 export const ModalEditarServInput = styled.div`

@@ -8,6 +8,8 @@ export const LoginProvider = ({ children }) => {
     const [typeInfo, setTypeInfo] = useState();
     const [userInfo, setUserInfo] = useState([]);
     const [clienteInfo, setClienteInfo] = useState([]);
+
+    const [errorLogin, setErrorLogin] = useState([]);
     const { returnCliente, returnTecnico } = useContext(RoutesContext);
 
     const logar = (data) => {
@@ -53,11 +55,21 @@ export const LoginProvider = ({ children }) => {
                         .catch((err) => console.log(err)); // eslint-disable-line
                 }
             })
-            .catch((err) => console.log(err)); // eslint-disable-line
+            .catch((err) => {
+                setErrorLogin(err.response.data);
+                return err.response.data;
+            }); // eslint-disable-line
     };
     return (
         <LoginContext.Provider
-            value={{ logar, typeInfo, userInfo, clienteInfo }}
+            value={{
+                logar,
+                errorLogin,
+                typeInfo,
+                userInfo,
+                clienteInfo,
+                setErrorLogin,
+            }}
         >
             {children}
         </LoginContext.Provider>

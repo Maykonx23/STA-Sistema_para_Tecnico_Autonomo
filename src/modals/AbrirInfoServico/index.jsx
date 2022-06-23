@@ -17,7 +17,9 @@ export const AbrirIndoServico = () => {
     const { closeInfoServico, servico, tecnicoServico, servicoId } =
         useContext(ListServicosContext);
 
-    const { funcSolicitarServico } = useContext(SolicitacaoServicoContext);
+    const { funcSolicitarServico, setSolicitacaoServicoOn } = useContext(
+        SolicitacaoServicoContext
+    );
 
     const funcSolicitar = () => {
         funcSolicitarServico(
@@ -30,6 +32,11 @@ export const AbrirIndoServico = () => {
             },
             closeInfoServico
         );
+
+        setSolicitacaoServicoOn(true);
+        setTimeout(() => {
+            setSolicitacaoServicoOn(false);
+        }, 3000);
     };
     return (
         <>
@@ -47,7 +54,7 @@ export const AbrirIndoServico = () => {
                                 {tecnicoServico.cliente.name.substr(1)}
                             </span>
                         </InfoTec>
-                        <ConteDescricao>Descrição</ConteDescricao>
+                        <ConteDescricao>{servico.descricao}</ConteDescricao>
                         <InfoServico>
                             <h3>Tempo: {servico.mediaTempo}</h3>
                             <h3>Preço: {servico.price}</h3>

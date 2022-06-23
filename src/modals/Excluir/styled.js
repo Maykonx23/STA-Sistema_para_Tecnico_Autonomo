@@ -29,6 +29,10 @@ export const ModalCriarServBtn = styled.div`
     justify-content: space-evenly;
     button {
         cursor: pointer;
+        margin-left: 20px;
+        :nth-child(1) {
+            margin-left: 0;
+        }
     }
 `;
 

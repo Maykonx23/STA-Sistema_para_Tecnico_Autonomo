@@ -152,12 +152,11 @@ export const Card = ({
                                 <img src={StarVazio} alt="" />
                                 <img src={StarVazio} alt="" />
                             </ConteStrela>
-                            {elemento.descricao.length > 168 ? (
-                                <p>{elemento.descricao.substr(0, 168)}...</p>
+                            {elemento.descricao.length > 100 ? (
+                                <p>{elemento.descricao.substr(0, 100)}...</p>
                             ) : (
                                 <p>{elemento.descricao}</p>
                             )}
-                            {/* <p>{elemento.descricao}</p> */}
                             <span>R$ {elemento.price}</span>
                         </ConteInfoServico>
                         <button onClick={servicoId} id={elemento.id}>
@@ -174,7 +173,7 @@ export const Card = ({
                             <img src={Computador} alt="Computador" />
                         </ConteCardImg>
                         <ConteInfoServico>
-                            <h2> Titulo{/* {elemento.titulo} */}</h2>
+                            <h2>{elemento.titulo} </h2>
                             <ConeteInfoStatus>
                                 <ConteStrela>
                                     <img src={StarVazio} alt="" />
@@ -185,8 +184,8 @@ export const Card = ({
                                 </ConteStrela>
                                 <div>Status</div>
                             </ConeteInfoStatus>
-                            <p>Descrição{/* {elemento.descricao} */} </p>
-                            <span>R$ 100{/* {elemento.price} */}</span>
+                            <p>{elemento.descricao} </p>
+                            <span>R$ {elemento.price}</span>
                         </ConteInfoServico>
                         <DivEditServico>
                             <button /* onClick={eventoEdit} */ /* id={elemento.id} */
@@ -231,8 +230,8 @@ export const Card = ({
                                 <img src={StarVazio} alt="" />
                                 <img src={StarVazio} alt="" />
                             </ConteStrela>
-                            {elemento.descricao.length > 168 ? (
-                                <p>{elemento.descricao.substr(0, 168)}...</p>
+                            {elemento.descricao.length > 100 ? (
+                                <p>{elemento.descricao.substr(0, 100)}...</p>
                             ) : (
                                 <p>{elemento.descricao}</p>
                             )}

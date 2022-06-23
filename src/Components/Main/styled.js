@@ -86,6 +86,9 @@ export const ConteFormTec = styled.form`
                 font-size: 1.5em;
                 font-weight: 800;
             }
+            textarea {
+                font-size: 1.2em;
+            }
         }
         button {
             margin: 40px 0;

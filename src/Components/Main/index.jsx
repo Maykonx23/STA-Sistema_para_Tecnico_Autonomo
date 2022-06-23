@@ -245,7 +245,7 @@ export const Main = ({
     return (
         <>
             {home && usersInfo.length != 0 && (
-                <ConteMain onClick={() => openMenu()}>
+                <ConteMain>
                     <h1>
                         Bem vindo <span>{usersInfo.name}</span>.
                     </h1>

@@ -11,14 +11,18 @@ import { useForm } from "react-hook-form";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { LoginContext } from "../../Providers/Login";
+import { ErrorContext } from "src/Providers/Errors";
+import { ErrosGeral } from "src/modals/Errors";
 
 export const Login = () => {
     const { returnCadastro } = useContext(RoutesContext);
-    const { logar } = useContext(LoginContext);
+    const { logar, errorLogin, setErrorLogin } = useContext(LoginContext);
+    const { errorInfo, setErrorInfo, funcOnErrorInfo } =
+        useContext(ErrorContext);
 
     const formSchema = yup.object().shape({
-        email: yup.string().email().required("Campo Obrigatório*"),
-        password: yup.string().required("Campo Obrigatório*"),
+        email: yup.string().email().required("Campo Email Obrigatório*"),
+        password: yup.string().required("Campo Senha  Obrigatório*"),
     });
 
     const {
@@ -41,9 +45,37 @@ export const Login = () => {
         // eslint-disable-line
         logar(data);
     };
+    const funcTime = () => {
+        setTimeout(() => setErrorInfo(false), 3000);
+    };
+
+    const funcAddErro = () => {
+        setErrorInfo(true);
+        funcTime();
+    };
     return (
         <>
             <Header login />
+            {errorLogin.length != 0 && (
+                <>
+                    <ErrosGeral
+                        login
+                        loginSenha={errors.password}
+                        loginEmail={errors.email}
+                        loginApi={errorLogin}
+                    ></ErrosGeral>
+                    {setTimeout(() => {
+                        setErrorLogin("");
+                    }, 3000)}
+                </>
+            )}
+            {errorInfo && (
+                <ErrosGeral
+                    login
+                    loginSenha={errors.password}
+                    loginEmail={errors.email}
+                ></ErrosGeral>
+            )}
             <ConteLogin>
                 <div>
                     <h1>Login</h1>
@@ -56,6 +88,8 @@ export const Login = () => {
                         >
                             Email
                         </Input>
+                        {errors.email && funcAddErro()}
+
                         <ContePass>
                             <Input
                                 login
@@ -78,6 +112,7 @@ export const Login = () => {
                                     alt="Esconder Senha"
                                 />
                             )}
+                            {errors.password && funcAddErro()}
                         </ContePass>
                         <Button type={"submit"} login>
                             Entrar

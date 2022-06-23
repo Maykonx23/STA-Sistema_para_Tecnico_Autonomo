@@ -4,6 +4,7 @@ import { ServicoProvider } from "./CriarServico";
 import { DropFilterProvider } from "./DropFiltro";
 import { DropHomeProvider } from "./DropMenu";
 import { EditarUserProvider } from "./Editar User";
+import { ErrorProvider } from "./Errors";
 import { ListServicosProvider } from "./ListServicos";
 import { LoginProvider } from "./Login";
 import { MenuHamburgerProvider } from "./MenuHamburger";
@@ -13,30 +14,32 @@ import { UsuarioProvider } from "./Usuario";
 
 export const Providers = ({ children }) => {
     return (
-        <EditarUserProvider>
-            <UsuarioProvider>
-                <ChatProvider>
-                    <SolicitacaoServicoProvider>
-                        <ServicoProvider>
-                            <ListServicosProvider>
-                                <RoutesProvider>
-                                    <DropFilterProvider>
-                                        <DropHomeProvider>
-                                            <MenuHamburgerProvider>
-                                                <LoginProvider>
-                                                    <CadastroProvider>
-                                                        {children}
-                                                    </CadastroProvider>
-                                                </LoginProvider>
-                                            </MenuHamburgerProvider>
-                                        </DropHomeProvider>
-                                    </DropFilterProvider>
-                                </RoutesProvider>
-                            </ListServicosProvider>
-                        </ServicoProvider>
-                    </SolicitacaoServicoProvider>
-                </ChatProvider>
-            </UsuarioProvider>
-        </EditarUserProvider>
+        <ErrorProvider>
+            <EditarUserProvider>
+                <UsuarioProvider>
+                    <ChatProvider>
+                        <SolicitacaoServicoProvider>
+                            <ServicoProvider>
+                                <ListServicosProvider>
+                                    <RoutesProvider>
+                                        <DropFilterProvider>
+                                            <DropHomeProvider>
+                                                <MenuHamburgerProvider>
+                                                    <LoginProvider>
+                                                        <CadastroProvider>
+                                                            {children}
+                                                        </CadastroProvider>
+                                                    </LoginProvider>
+                                                </MenuHamburgerProvider>
+                                            </DropHomeProvider>
+                                        </DropFilterProvider>
+                                    </RoutesProvider>
+                                </ListServicosProvider>
+                            </ServicoProvider>
+                        </SolicitacaoServicoProvider>
+                    </ChatProvider>
+                </UsuarioProvider>
+            </EditarUserProvider>
+        </ErrorProvider>
     );
 };
