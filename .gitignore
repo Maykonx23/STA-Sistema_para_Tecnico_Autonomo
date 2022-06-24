@@ -35,3 +35,4 @@ dist
 
 uploads/*
 !uploads/.gitkeep
+.vercel

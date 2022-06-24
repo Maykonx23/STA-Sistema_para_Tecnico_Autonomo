@@ -10,7 +10,7 @@ export const ListServicosProvider = ({ children }) => {
 
     const listServico = async () => {
         await apiTcc
-            .get("servicos")
+            .get("/servicos")
             .then((response) => {
                 /* 
                 console.log(response.data); */
