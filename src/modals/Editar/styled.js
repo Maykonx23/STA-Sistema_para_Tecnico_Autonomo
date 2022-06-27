@@ -43,6 +43,10 @@ export const ModalEditarServInput = styled.div`
 `;
 
 export const ConteServicoEditarBtn = styled.div`
+    @media (min-width: 320px) and (max-width: 759px) {
+        width: 100%;
+        text-align: right;
+    }
     @media (min-width: 760px) {
         width: 100%;
         text-align: right;

@@ -1,24 +1,53 @@
 import styled from "styled-components";
 
 export const ConteMain = styled.main`
-    display: flex;
-    align-items: center;
-    flex-direction: column;
-    padding: 40px 190px;
-    width: 100%;
-    height: 100%;
-    box-sizing: border-box;
-    h1 {
+    @media (min-width: 320px) and (max-width: 759px) {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding: 10px 40px;
         width: 100%;
-        margin: 0 0 40px 0;
-        span {
-            font-weight: 800;
-            color: #2a2a22;
+        height: 100%;
+        box-sizing: border-box;
+        h1 {
+            font-size: 1.5em;
+            width: 100%;
+            margin: 0 0 10px 0;
+            span {
+                font-weight: 800;
+                color: #2a2a22;
+            }
+        }
+    }
+    @media (min-width: 760px) {
+        display: flex;
+        align-items: center;
+        flex-direction: column;
+        padding: 40px 190px;
+        width: 100%;
+        height: 100%;
+        box-sizing: border-box;
+        h1 {
+            width: 100%;
+            margin: 0 0 40px 0;
+            span {
+                font-weight: 800;
+                color: #2a2a22;
+            }
         }
     }
 `;
 
 export const ConteListServico = styled.div`
+    @media (min-width: 320px) and (max-width: 759px) {
+        width: 100%;
+        display: flex;
+        overflow-x: auto;
+        padding-left: 20px;
+        > div {
+            margin: 0 25px 20px 0;
+        }
+    }
     @media (min-width: 760px) {
         width: 100%;
         display: flex;
@@ -97,6 +126,11 @@ export const ConteFormTec = styled.form`
 `;
 
 export const MainCriarServico = styled.div`
+    @media (min-width: 320px) and (max-width: 759px) {
+        width: 100%;
+        display: flex;
+        margin: 0 0 50px 0;
+    }
     @media (min-width: 760px) {
         width: 100%;
         display: flex;
@@ -105,6 +139,17 @@ export const MainCriarServico = styled.div`
 `;
 
 export const ConteListCriarService = styled.div`
+    @media (min-width: 320px) and (max-width: 759px) {
+        display: flex;
+        width: 100%;
+        overflow-x: auto;
+        padding: 5px;
+        border: 2px solid white;
+        border-radius: 5px;
+        > div {
+            margin: 0 30px 30px 0;
+        }
+    }
     @media (min-width: 760px) {
         display: flex;
         flex-wrap: wrap;
@@ -116,6 +161,8 @@ export const ConteListCriarService = styled.div`
 `;
 
 export const ContePerfilSolicitacaoTec = styled.div`
+    @media (min-width: 320px) and (max-width: 759px) {
+    }
     @media (min-width: 760px) {
         width: 100%;
         display: flex;
@@ -132,6 +179,8 @@ export const ContePerfilSolicitacaoTec = styled.div`
 `;
 
 export const ConteMainSolicitacaoServico = styled.main`
+    @media (min-width: 320px) and (max-width: 759px) {
+    }
     @media (min-width: 760px) {
         display: flex;
         align-items: center;
@@ -144,6 +193,8 @@ export const ConteMainSolicitacaoServico = styled.main`
 `;
 
 export const ConteSolicitacaoServico = styled.div`
+    @media (min-width: 320px) and (max-width: 759px) {
+    }
     @media (min-width: 760px) {
         width: 100%;
         display: flex;
@@ -162,6 +213,8 @@ export const ConteSolicitacaoServico = styled.div`
 `;
 
 export const ConteStatus = styled.p`
+    @media (min-width: 320px) and (max-width: 759px) {
+    }
     @media (min-width: 760px) {
         position: absolute;
         background-color: ${(props) =>
@@ -182,6 +235,8 @@ export const ConteStatus = styled.p`
 `;
 
 export const ConteChat = styled.div`
+    @media (min-width: 320px) and (max-width: 759px) {
+    }
     @media (min-width: 760px) {
         width: 100%;
         max-height: 500px;
@@ -190,6 +245,8 @@ export const ConteChat = styled.div`
 `;
 
 export const ChatStatus = styled.div`
+    @media (min-width: 320px) and (max-width: 759px) {
+    }
     @media (min-width: 760px) {
         width: 100%;
         text-align: center;
@@ -199,6 +256,8 @@ export const ChatStatus = styled.div`
 `;
 
 export const ConteMensage = styled.div`
+    @media (min-width: 320px) and (max-width: 759px) {
+    }
     @media (min-width: 760px) {
         margin-bottom: 40px;
         background-color: ${(props) =>
@@ -219,6 +278,8 @@ export const ConteMensage = styled.div`
     }
 `;
 export const ConteInfoPrecoHora = styled.div`
+    @media (min-width: 320px) and (max-width: 759px) {
+    }
     @media (min-width: 760px) {
         width: 100%;
         display: flex;
@@ -238,6 +299,8 @@ export const ConteInfoPrecoHora = styled.div`
 `;
 
 export const ConteBtnSolicitacao = styled.div`
+    @media (min-width: 320px) and (max-width: 759px) {
+    }
     @media (min-width: 760px) {
         width: 100%;
         display: flex;
@@ -253,6 +316,8 @@ export const ConteBtnSolicitacao = styled.div`
 `;
 
 export const InfoServico = styled.div`
+    @media (min-width: 320px) and (max-width: 759px) {
+    }
     @media (min-width: 760px) {
         display: flex;
         align-items: center;
@@ -266,6 +331,8 @@ export const InfoServico = styled.div`
 `;
 
 export const ConteFormChat = styled.form`
+    @media (min-width: 320px) and (max-width: 759px) {
+    }
     @media (min-width: 760px) {
         textarea {
             border-radius: 10px;
@@ -276,6 +343,8 @@ export const ConteFormChat = styled.form`
 `;
 
 export const ConteInfoTec = styled.div`
+    @media (min-width: 320px) and (max-width: 759px) {
+    }
     @media (min-width: 760px) {
         width: 100%;
         display: flex;
@@ -292,6 +361,8 @@ export const ConteInfoTec = styled.div`
 `;
 
 export const ConteInfoDescricao = styled.div`
+    @media (min-width: 320px) and (max-width: 759px) {
+    }
     @media (min-width: 760px) {
         width: 100%;
         margin: 40px 0;

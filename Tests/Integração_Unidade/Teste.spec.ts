@@ -1,51 +1,60 @@
 import axios from "axios";
 import "reflect-metadata";
 
-describe("Endereço", () => {
+describe("Endereço - Teste de Unidade", () => {
     it("Criação de um endereço 1", async () => {
-        const response = await axios.post(`http://localhost:3333/enderecos`, {
-            cep: "798390076",
-            rua: "Abacateiro",
-            bairro: "Harrison 2",
-            cidade: "Dourados",
-            uf: "MS",
-        });
+        const response = await axios.post(
+            `https://tcc-sta-bd.herokuapp.com/enderecos`,
+            {
+                cep: "798390076",
+                rua: "Abacateiro",
+                bairro: "Harrison 2",
+                cidade: "Dourados",
+                uf: "MS",
+            }
+        );
         expect(response.data).toHaveProperty("id");
     });
 
     it("Criação de um endereço 2", async () => {
-        const response = await axios.post(`http://localhost:3333/enderecos`, {
-            cep: "798390075",
-            rua: "Jabuticabeira",
-            bairro: "Jardim",
-            cidade: "Dourados",
-            uf: "MS",
-        });
+        const response = await axios.post(
+            `https://tcc-sta-bd.herokuapp.com/enderecos`,
+            {
+                cep: "798390075",
+                rua: "Jabuticabeira",
+                bairro: "Jardim",
+                cidade: "Dourados",
+                uf: "MS",
+            }
+        );
         expect(response.data).toHaveProperty("id");
     });
 
     it("Criação de um endereço 3", async () => {
-        const response = await axios.post(`http://localhost:3333/enderecos`, {
-            cep: "798390074",
-            rua: "Marcelino",
-            bairro: "Centro",
-            cidade: "Dourados",
-            uf: "MS",
-        });
+        const response = await axios.post(
+            `https://tcc-sta-bd.herokuapp.com/enderecos`,
+            {
+                cep: "798390074",
+                rua: "Marcelino",
+                bairro: "Centro",
+                cidade: "Dourados",
+                uf: "MS",
+            }
+        );
         expect(response.data).toHaveProperty("id");
     });
 });
 
-describe("Clientes", () => {
+describe("Clientes - Teste Integração", () => {
     it("Criação de um Cliente 1", async () => {
         const cep = "798390076";
 
         const responseEndereco = await axios.get(
-            `http://localhost:3333/enderecos/${cep}`
+            `https://tcc-sta-bd.herokuapp.com/enderecos/${cep}`
         );
 
         const responseCliente = await axios.post(
-            `http://localhost:3333/clientes`,
+            `https://tcc-sta-bd.herokuapp.com/clientes`,
             {
                 name: "Aline",
                 email: "aline@gmail.com",
@@ -65,11 +74,11 @@ describe("Clientes", () => {
         const cep = "798390075";
 
         const responseEndereco = await axios.get(
-            `http://localhost:3333/enderecos/${cep}`
+            `https://tcc-sta-bd.herokuapp.com/enderecos/${cep}`
         );
 
         const responseCliente = await axios.post(
-            `http://localhost:3333/clientes`,
+            `https://tcc-sta-bd.herokuapp.com/clientes`,
             {
                 name: "Luan",
                 email: "luan@gmail.com",
@@ -86,16 +95,16 @@ describe("Clientes", () => {
     });
 });
 
-describe("Tecnico", () => {
+describe("Tecnico  - Teste Integração", () => {
     it("Criação de um Tecnico", async () => {
         const cep = "798390074";
 
         const responseEndereco = await axios.get(
-            `http://localhost:3333/enderecos/${cep}`
+            `https://tcc-sta-bd.herokuapp.com/enderecos/${cep}`
         );
 
         const responseCliente = await axios.post(
-            `http://localhost:3333/clientes`,
+            `https://tcc-sta-bd.herokuapp.com/clientes`,
             {
                 name: "Antonia",
                 email: "antonia@gmail.com",
@@ -109,14 +118,14 @@ describe("Tecnico", () => {
         );
 
         const responseClientePut = await axios.put(
-            `http://localhost:3333/clientes/${responseCliente.data.id}`,
+            `https://tcc-sta-bd.herokuapp.com/clientes/${responseCliente.data.id}`,
             {
                 nivel: "tecnico",
             }
         );
 
         const responseTecnico = await axios.post(
-            `http://localhost:3333/tecnicos`,
+            `https://tcc-sta-bd.herokuapp.com/tecnicos`,
             {
                 descricao: "Tecnico de TI",
                 avaliacao: 0,
@@ -128,16 +137,16 @@ describe("Tecnico", () => {
     });
 });
 
-describe("Serviço", () => {
+describe("Serviço  - Teste Integração", () => {
     it("Criação de Serviços", async () => {
         const cep = "798390074";
 
         const responseEndereco = await axios.get(
-            `http://localhost:3333/enderecos/${cep}`
+            `https://tcc-sta-bd.herokuapp.com/enderecos/${cep}`
         );
 
         const responseCliente = await axios.post(
-            `http://localhost:3333/clientes`,
+            `https://tcc-sta-bd.herokuapp.com/clientes`,
             {
                 name: "Maykon Dias",
                 email: "maykonD@gmail.com",
@@ -151,14 +160,14 @@ describe("Serviço", () => {
         );
 
         const responseClientePut = await axios.put(
-            `http://localhost:3333/clientes/${responseCliente.data.id}`,
+            `https://tcc-sta-bd.herokuapp.com/clientes/${responseCliente.data.id}`,
             {
                 nivel: "tecnico",
             }
         );
 
         const responseTecnico = await axios.post(
-            `http://localhost:3333/tecnicos/`,
+            `https://tcc-sta-bd.herokuapp.com/tecnicos/`,
             {
                 descricao: "Tecnico de TI",
                 avaliacao: 0,
@@ -167,7 +176,7 @@ describe("Serviço", () => {
         );
 
         const responseServico1 = await axios.post(
-            `http://localhost:3333/servicos`,
+            `https://tcc-sta-bd.herokuapp.com/servicos`,
             {
                 titulo: "Impressora",
                 mediaTempo: "3",
@@ -178,7 +187,7 @@ describe("Serviço", () => {
         );
 
         const responseServico2 = await axios.post(
-            `http://localhost:3333/servicos`,
+            `https://tcc-sta-bd.herokuapp.com/servicos`,
             {
                 titulo: "Formatação",
                 mediaTempo: "3",
@@ -189,7 +198,7 @@ describe("Serviço", () => {
         );
 
         const responseServico3 = await axios.post(
-            `http://localhost:3333/servicos`,
+            `https://tcc-sta-bd.herokuapp.com/servicos`,
 
             {
                 titulo: "Formatação",
@@ -201,7 +210,7 @@ describe("Serviço", () => {
         );
 
         const responseServico4 = await axios.post(
-            `http://localhost:3333/servicos`,
+            `https://tcc-sta-bd.herokuapp.com/servicos`,
 
             {
                 titulo: "Rede Internet",

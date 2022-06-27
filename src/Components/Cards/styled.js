@@ -1,6 +1,13 @@
 import styled from "styled-components";
 
 export const ConteCard = styled.div`
+    @media (min-width: 320px) and (max-width: 759px) {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        box-sizing: border-box;
+        margin: 0 0 40px 0;
+    }
     @media (min-width: 760px) {
         width: 100%;
         display: flex;
@@ -12,6 +19,14 @@ export const ConteCard = styled.div`
 `;
 
 export const ConteCardCriar = styled.div`
+    @media (min-width: 320px) and (max-width: 759px) {
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+        > div {
+            margin-left: 10px;
+        }
+    }
     @media (min-width: 760px) {
         width: 100%;
         display: flex;
@@ -20,6 +35,21 @@ export const ConteCardCriar = styled.div`
 `;
 
 export const FiltroPesq = styled.div`
+    @media (min-width: 320px) and (max-width: 759px) {
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        margin: 0 0 20px 0;
+        box-sizing: border-box;
+        img {
+            box-sizing: border-box;
+            box-sizing: border-box;
+            position: static;
+            width: 30px;
+            margin-left: -40px;
+            cursor: pointer;
+        }
+    }
     @media (min-width: 760px) {
         display: flex;
         align-items: center;
@@ -35,6 +65,20 @@ export const FiltroPesq = styled.div`
 `;
 
 export const FiltroPesqCriar = styled.div`
+    @media (min-width: 320px) and (max-width: 759px) {
+        display: flex;
+        align-items: center;
+        box-sizing: border-box;
+        img {
+            box-sizing: border-box;
+            position: static;
+            width: 30px;
+
+            margin-left: -40px;
+            cursor: pointer;
+            box-sizing: border-box;
+        }
+    }
     @media (min-width: 760px) {
         display: flex;
         align-items: center;
@@ -52,6 +96,15 @@ export const FiltroPesqCriar = styled.div`
 `;
 
 export const FiltroBtn = styled.div`
+    @media (min-width: 320px) and (max-width: 759px) {
+        display: flex;
+        div {
+            margin-left: 20px;
+            :nth-child(1) {
+                margin-left: 0px;
+            }
+        }
+    }
     @media (min-width: 760px) {
         display: flex;
         div {
@@ -88,6 +141,38 @@ export const DivAcao = styled.div`
 `;
 
 export const ConteCardServico = styled.div`
+    @media (min-width: 320px) and (max-width: 759px) {
+        width: 300px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        align-content: space-around;
+        border: 2px solid rgb(46, 52, 59, 0.5);
+        padding: 10px;
+        border-radius: 10px;
+        background-color: white;
+        :hover {
+            border: 2px solid #e84a05;
+        }
+        button {
+            border: 1px solid black;
+            border-radius: 10px;
+            background-color: #000036;
+            color: white;
+            padding: 10px 20px;
+            line-height: 1.2em;
+            font-weight: 600;
+            cursor: pointer;
+            :hover {
+                background-color: white;
+                color: #000036;
+                font-weight: 800;
+            }
+            span {
+                font-weight: 800;
+            }
+        }
+    }
     @media (min-width: 760px) {
         display: flex;
         flex-direction: column;
@@ -124,6 +209,11 @@ export const ConteCardServico = styled.div`
 `;
 
 export const DivEditServico = styled.div`
+    @media (min-width: 320px) and (max-width: 759px) {
+        width: 100%;
+        display: flex;
+        justify-content: space-around;
+    }
     @media (min-width: 760px) {
         width: 100%;
         display: flex;
@@ -148,6 +238,16 @@ export const ConteRejeitado = styled.div`
 `;
 
 export const ConteStrela = styled.div`
+    @media (min-width: 320px) and (max-width: 759px) {
+        display: flex;
+        :nth-last-child(1) {
+            color: red;
+        }
+        img {
+            width: 20px;
+            box-sizing: border-box;
+        }
+    }
     @media (min-width: 760px) {
         display: flex;
         :nth-last-child(1) {
@@ -169,6 +269,31 @@ export const ConeteInfoStatus = styled.div`
 `;
 
 export const ConteInfoServicoSoli = styled.div`
+    @media (min-width: 320px) and (max-width: 759px) {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 0 0 20px 0;
+        > h2 {
+            color: #000036;
+            margin: 20px 0 0 0;
+        }
+
+        > h3 {
+            color: #000036;
+            margin: 20px 0 0 0;
+        }
+        > p {
+            height: 70px;
+            margin: 10px 0;
+            text-align: justify;
+        }
+        > span {
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+    }
     @media (min-width: 760px) {
         width: 100%;
         display: flex;
@@ -214,6 +339,31 @@ export const ConteInfoCliente = styled.h3`
 `;
 
 export const ConteInfoServico = styled.div`
+    @media (min-width: 320px) and (max-width: 759px) {
+        width: 100%;
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        margin: 0 0 20px 0;
+        h2 {
+            color: #000036;
+            margin: 20px 0 0 0;
+        }
+
+        h3 {
+            color: #000036;
+            margin: 20px 0 0 0;
+        }
+        p {
+            height: 70px;
+            margin: 10px 0;
+            text-align: justify;
+        }
+        span {
+            font-size: 1.3em;
+            font-weight: 600;
+        }
+    }
     @media (min-width: 760px) {
         width: 100%;
         display: flex;
@@ -242,6 +392,17 @@ export const ConteInfoServico = styled.div`
 `;
 
 export const ConteCardImg = styled.div`
+    @media (min-width: 320px) and (max-width: 759px) {
+        width: 210px;
+        padding: 10px;
+        box-sizing: border-box;
+        background-color: #e0e0e0;
+        border-radius: 10px;
+        img {
+            width: 100%;
+            box-sizing: border-box;
+        }
+    }
     @media (min-width: 760px) {
         width: 100%;
         padding: 10px;
@@ -348,6 +509,9 @@ export const ConteCardServicoSolicitacao = styled.div`
 `;
 
 export const ConteBtn = styled.div`
+    @media (min-width: 320px) and (max-width: 759px) {
+        display: flex;
+    }
     @media (min-width: 760px) {
         display: flex;
     }

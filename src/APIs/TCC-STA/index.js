@@ -1,6 +1,6 @@
 import axios from "axios";
 const apiTcc = axios.create({
-    baseURL: "https://3471-131-196-16-67.sa.ngrok.io",
+    baseURL: "https://tcc-sta-bd.herokuapp.com/",
 });
 
 /* const apiTcc = axios.create({

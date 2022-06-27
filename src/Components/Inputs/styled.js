@@ -1,6 +1,18 @@
 import styled from "styled-components";
 
 export const InputLogin = styled.input`
+    @media (min-width: 320px) and (max-width: 759px) {
+        font-size: 1em;
+        padding: 10px 20px;
+        border: 2px solid #05182a;
+        border-radius: 10px;
+        outline: none;
+        background-color: #05182a;
+        color: white;
+        ::placeholder {
+            color: #95aaaa;
+        }
+    }
     @media (min-width: 760px) {
         font-size: 1.6em;
         padding: 10px 20px;
@@ -32,6 +44,20 @@ export const InputPerfil = styled.input`
 `;
 
 export const InputPesquisaServ = styled.input`
+    @media (min-width: 320px) and (max-width: 759px) {
+        width: 100%;
+        font-size: 1.2em;
+        padding: 5px 15px;
+        border: 2px solid #05182a;
+        border-radius: 10px;
+        outline: none;
+        background-color: white;
+        color: black;
+        box-sizing: border-box;
+        ::placeholder {
+            color: #95aaaa;
+        }
+    }
     @media (min-width: 760px) {
         font-size: 1.6em;
         padding: 5px 15px;
