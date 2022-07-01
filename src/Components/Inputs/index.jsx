@@ -1,4 +1,5 @@
 import { InputLogin, InputPerfil, InputPesquisaServ } from "./styled";
+import InputMask from "react-input-mask";
 
 export const Input = ({
     classe,

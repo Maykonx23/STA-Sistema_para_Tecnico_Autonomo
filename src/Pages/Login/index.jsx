@@ -64,9 +64,9 @@ export const Login = () => {
                         loginEmail={errors.email}
                         loginApi={errorLogin}
                     ></ErrosGeral>
-                    {setTimeout(() => {
-                        setErrorLogin("");
-                    }, 3000)}
+                    {() => {
+                        funcTime();
+                    }}
                 </>
             )}
             {errorInfo && (

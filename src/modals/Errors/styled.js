@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ConteErrorLogin = styled.div`
     @media (min-width: 760px) {
-        position: absolute;
+        position: fixed;
         width: 300px;
         right: 0;
         background-color: white;
@@ -13,7 +13,9 @@ export const ConteErrorLogin = styled.div`
 
 export const ConteErroInfo = styled.div`
     @media (min-width: 760px) {
+        color: red;
         font-size: 1.2em;
+        font-weight: 600;
     }
 `;
 

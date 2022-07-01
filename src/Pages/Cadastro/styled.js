@@ -72,14 +72,21 @@ export const ConteForm = styled.form`
         display: flex;
         flex-direction: column;
         align-items: center;
-        input {
+        > div {
             width: 100%;
-            margin: 0 0 40px 0;
-            filter: wi;
-        }
-        input[type="date"]::-webkit-calendar-picker-indicator {
-            cursor: pointer;
-            filter: invert(1);
+            label {
+                font-size: 1.2em;
+                font-weight: 600;
+            }
+            input {
+                width: 100%;
+                margin: 0 0 40px 0;
+                filter: white;
+            }
+            input[type="date"]::-webkit-calendar-picker-indicator {
+                cursor: pointer;
+                filter: invert(1);
+            }
         }
     }
 `;
