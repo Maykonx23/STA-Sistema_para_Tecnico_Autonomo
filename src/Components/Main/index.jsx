@@ -19,6 +19,7 @@ import { Label } from "../Label";
 import {
     ChatStatus,
     ConteBtnSolicitacao,
+    ConteBtnSolicitacaoVoltar,
     ConteChat,
     ConteFormChat,
     ConteFormTec,
@@ -239,6 +240,11 @@ export const Main = ({
 
     const eventoCancelado = (e) => {
         funcAlterarSolicitacaoServico(e.target.id, "cancelado");
+        returnSolicitacao(id, typeInfo);
+    };
+
+    const eventoAceitar = (e) => {
+        funcAlterarSolicitacaoServico(e.target.id, "aceitar");
         returnSolicitacao(id, typeInfo);
     };
 
@@ -466,15 +472,54 @@ export const Main = ({
                                                         Enviar
                                                     </Button>
                                                 </ConteFormChat>
-                                                <ConteBtnSolicitacao>
-                                                    <Button
-                                                        click={eventoCancelado}
-                                                        id={servicoInfo.id}
-                                                        cancelar
-                                                    >
-                                                        Cancelar
-                                                    </Button>
-                                                </ConteBtnSolicitacao>
+                                                {servicoInfo.status ==
+                                                    "Aguardando" && (
+                                                    <>
+                                                        <ConteBtnSolicitacao>
+                                                            <h2>
+                                                                Aceitar
+                                                                Orçamento?
+                                                            </h2>
+                                                            <div>
+                                                                <Button
+                                                                    click={
+                                                                        eventoCancelado
+                                                                    }
+                                                                    id={
+                                                                        servicoInfo.id
+                                                                    }
+                                                                    cancelar
+                                                                >
+                                                                    Cancelar
+                                                                </Button>
+                                                                <Button
+                                                                    click={
+                                                                        eventoAceitar
+                                                                    }
+                                                                    id={
+                                                                        servicoInfo.id
+                                                                    }
+                                                                    concluir
+                                                                >
+                                                                    Aceitar
+                                                                </Button>
+                                                            </div>
+                                                        </ConteBtnSolicitacao>
+                                                        <ConteBtnSolicitacaoVoltar>
+                                                            <Button
+                                                                click={() => {
+                                                                    returnSolicitacao(
+                                                                        id,
+                                                                        typeInfo
+                                                                    );
+                                                                }}
+                                                                enviarMensagem
+                                                            >
+                                                                Voltar
+                                                            </Button>
+                                                        </ConteBtnSolicitacaoVoltar>
+                                                    </>
+                                                )}
                                             </>
                                         ) : (
                                             <ConteBtnSolicitacao>
@@ -850,25 +895,72 @@ export const Main = ({
                                                         Enviar
                                                     </Button>
                                                 </form>
-                                                <ConteBtnSolicitacao>
-                                                    <Button
-                                                        click={eventoCancelado}
-                                                        id={servicoInfo.id}
-                                                        cancelar
-                                                    >
-                                                        Cancelar
-                                                    </Button>
-                                                    <Button
-                                                        click={eventoConcluir}
-                                                        id={servicoInfo.id}
-                                                        concluir
-                                                    >
-                                                        Concluir
-                                                    </Button>
-                                                </ConteBtnSolicitacao>
+
+                                                {servicoInfo.status !=
+                                                "Aguardando" ? (
+                                                    <>
+                                                        <ConteBtnSolicitacao>
+                                                            <Button
+                                                                click={
+                                                                    eventoCancelado
+                                                                }
+                                                                id={
+                                                                    servicoInfo.id
+                                                                }
+                                                                cancelar
+                                                            >
+                                                                Cancelar
+                                                            </Button>
+                                                            <Button
+                                                                click={
+                                                                    eventoConcluir
+                                                                }
+                                                                id={
+                                                                    servicoInfo.id
+                                                                }
+                                                                concluir
+                                                            >
+                                                                Concluir
+                                                            </Button>
+                                                        </ConteBtnSolicitacao>
+                                                    </>
+                                                ) : (
+                                                    <>
+                                                        <ConteBtnSolicitacao>
+                                                            <h2>
+                                                                Cancelar
+                                                                Orçamento?
+                                                            </h2>
+                                                            <Button
+                                                                click={
+                                                                    eventoCancelado
+                                                                }
+                                                                id={
+                                                                    servicoInfo.id
+                                                                }
+                                                                cancelar
+                                                            >
+                                                                Cancelar
+                                                            </Button>
+                                                        </ConteBtnSolicitacao>
+                                                        <ConteBtnSolicitacaoVoltar>
+                                                            <Button
+                                                                click={() => {
+                                                                    returnSolicitacao(
+                                                                        id,
+                                                                        typeInfo
+                                                                    );
+                                                                }}
+                                                                enviarMensagem
+                                                            >
+                                                                Voltar
+                                                            </Button>
+                                                        </ConteBtnSolicitacaoVoltar>
+                                                    </>
+                                                )}
                                             </>
                                         ) : (
-                                            <ConteBtnSolicitacao>
+                                            <ConteBtnSolicitacaoVoltar>
                                                 <Button
                                                     click={() => {
                                                         returnSolicitacao(
@@ -880,7 +972,7 @@ export const Main = ({
                                                 >
                                                     Voltar
                                                 </Button>
-                                            </ConteBtnSolicitacao>
+                                            </ConteBtnSolicitacaoVoltar>
                                         )}
                                     </>
                                 ) : (

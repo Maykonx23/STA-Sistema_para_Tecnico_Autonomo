@@ -57,6 +57,12 @@ export const Cadastro = () => {
         setTimeout(() => funcCepError(), 5000);
         setTimeout(() => funcApiError(), 5000);
     };
+    const funcTimeApi = () => {
+        setTimeout(() => funcApiError(), 5000);
+    };
+    const funcTimeCep = () => {
+        setTimeout(() => funcCepError(), 5000);
+    };
 
     const funcErrorCad = () => {
         setErrorInfo(true);
@@ -69,13 +75,13 @@ export const Cadastro = () => {
             {cepError && (
                 <>
                     <ErrosGeral cadastroCep>CEP não Existe</ErrosGeral>
-                    {funcTime()}
+                    {funcTimeCep()}
                 </>
             )}
             {apiError != "" && (
                 <>
                     <ErrosGeral apiErrorCad>{apiError}</ErrosGeral>
-                    {funcTime()}
+                    {funcTimeApi()}
                 </>
             )}
             {errorInfo && (

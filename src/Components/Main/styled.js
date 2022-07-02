@@ -304,8 +304,32 @@ export const ConteBtnSolicitacao = styled.div`
     @media (min-width: 760px) {
         width: 100%;
         display: flex;
+        justify-content: center;
+        flex-direction: row;
+        h2 {
+            width: 100%;
+            text-align: center;
+            margin: 20px 0;
+        }
+        display: flex;
+        button {
+            margin: 50px 30px 0 0;
+            :nth-last-child(1) {
+                margin-right: 0px;
+            }
+        }
+    }
+`;
+
+export const ConteBtnSolicitacaoVoltar = styled.div`
+    @media (min-width: 320px) and (max-width: 759px) {
+    }
+    @media (min-width: 760px) {
+        width: 100%;
+        display: flex;
         justify-content: flex-end;
-        align-items: center;
+        flex-direction: column;
+        align-items: flex-end;
         button {
             margin: 50px 30px 0 0;
             :nth-last-child(1) {

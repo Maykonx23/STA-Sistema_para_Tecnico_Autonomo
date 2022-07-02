@@ -341,6 +341,13 @@ export const Card = ({
                             {elemento.status == "Aguardando" ? (
                                 <>
                                     <Button
+                                        detalhe
+                                        click={eventoDetalhe}
+                                        id={elemento.id}
+                                    >
+                                        + Detalhes
+                                    </Button>
+                                    {/* <Button
                                         rejeitar
                                         click={eventoRejeitar}
                                         id={elemento.id}
@@ -353,7 +360,7 @@ export const Card = ({
                                         id={elemento.id}
                                     >
                                         Aceitar
-                                    </Button>
+                                    </Button> */}
                                 </>
                             ) : (
                                 <>
